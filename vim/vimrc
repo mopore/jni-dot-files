@@ -1,5 +1,7 @@
+" Installed via jni-dot-files
+"
 " Ignore when installed via jni-dot-files:
-
+"
 " Place this file as .vimrc in your home folder
 " Use this to have it for root as well sudo cp  /root/.vimrc
 " 

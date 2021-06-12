@@ -1,7 +1,7 @@
 J N I   V I M   C O N F I G U R A T I O N 
 =========================================
 
-This script work only on user level and must not be executed with 'sudo'.
+This script workis only on user level and must not be executed with 'sudo'.
 
 ## What it will perform
 * Removes an existing version of vim plugin manager 'vim plug'.
