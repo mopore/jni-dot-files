@@ -20,6 +20,7 @@ others with installation scripts.
 
 Supported configurations:
 * Vim
+* GTile Gnome Extension
 
 # What's the motivation?
 The aim is to get a system quicker configured to a state that I like it to be.
@@ -41,3 +42,4 @@ pacman -S mdr
 
 ## v0.1.0
 - Vim configuration added.
+- GTile Gnome extension added.
