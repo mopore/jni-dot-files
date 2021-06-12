@@ -19,6 +19,11 @@ $md_viewer ./README.md
 read -n 1 -s -r -p "Press any key to start installation..."
 printf "\n"
 
+if [ -f "~/.vimrc" ] ; then
+    # Remove old vim config as backup to current folder
+    mv ~/.vimrc ./vimrc.backup
+fi
+
 # Remove old Vim plug
 rm -f ~/.vim/autoload/plug.vim
 
@@ -26,8 +31,7 @@ rm -f ~/.vim/autoload/plug.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Remove of vim config as backup to current folder
-mv ~/.vimrc ./vimrc.backup
+# Install new config
 cp -v ./vimrc ~/.vimrc
 
 echo "Run :PlugInstall in Vim"

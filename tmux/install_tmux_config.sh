@@ -18,8 +18,10 @@ $md_viewer ./README.md
 read -n 1 -s -r -p "Press any key to start installation..."
 printf "\n"
 
-# Remove old Tmux config as backup to current folder
-mv ~/.tmux.conf ./tmux.conf.backup
+if [ -f "~/.tmux.conf" ] ; then
+    # Remove old Tmux config as backup to current folder
+    mv ~/.tmux.conf ./tmux.conf.backup
+fi
 
 # Install tmux config
 cp ./tmux.conf ~/.tmux.conf
