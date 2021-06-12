@@ -43,3 +43,4 @@ pacman -S mdr
 ## v0.1.0
 - Vim configuration added.
 - GTile Gnome extension added.
+- Tmux configuration added.
