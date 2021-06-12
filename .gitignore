@@ -61,6 +61,6 @@ Temporary Items
 # /resources/offline-data/*
 /resources/deprecated
 /var
-/gtile/gtile_settings.backup
+/alacritty/alacritty.yml
 
 *.backup

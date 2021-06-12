@@ -44,3 +44,4 @@ pacman -S mdr
 - Vim configuration added.
 - GTile Gnome extension added.
 - Tmux configuration added.
+- Alacritty terminal added.
