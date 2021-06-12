@@ -14,7 +14,7 @@ Run `:PlugInstall` inside vim and reload vim.
 
 ## Configuration Overview
 
-### Genaral
+### General
 * Enables synstax highligting
 * Furhter better visualizations
 * Better formating (e.g. standard tab stop width)
@@ -27,27 +27,27 @@ Run `:PlugInstall` inside vim and reload vim.
 * Sets leader p to paste from system clipboard
 
 ### Plugin 'Undotree'
-	Make sure to create mkdir -p ~/.vim/undodir
-	Call it by <Space> plus 'u' (custom binding)
+Make sure to create mkdir -p ~/.vim/undodir
+Call it by Space plus 'u' (custom binding)
 
 ### Plugin 'fzf'
-	Call it by <Ctrl> plus 'f' inside a file (custom binding)
-	Call <Space> plus 'f" to find a file (custom binding)	
+Call it by Ctrl plus 'f' inside a file (custom binding)
+Call Space plus 'f" to find a file (custom binding)	
 
 ### Plugin 'lightline'
-	It's just a the nicer status bar at the bottom
+It's just a the nicer status bar at the bottom
 
 ### Plugin 'Gruvbox'
-	Custom vim theme
+Custom vim theme
 
 ### Plugin 'Nerdcommenter'
-	A language sensitive commenting helper
-	Use <Space> plus c plus <Space> to toggle commenting.
+A language sensitive commenting helper
+Use Space plus c plus Space to toggle commenting.
 
 ### Plugin 'Autocomplete Popup'
-	This plugin will automatically pop up autocompletion
-	Use <Ctrl> plus 'p' for autocomplete (word spelling)
+This plugin will automatically pop up autocompletion
+Use Ctrl + 'p' for autocomplete (word spelling)
 When the menu is shown...
-	right arrow or Tabulator will select the item.
-	left arrow will make the autocompletion menu disappear
-	arrows up and down will navigate over the items.
+right arrow or Tabulator will select the item.
+left arrow will make the autocompletion menu disappear
+arrows up and down will navigate over the items.

@@ -37,6 +37,6 @@ Main features of this configuration
 | z     | Left Bottom 1/3                 | Left Bottom 2/3  | 
 | x     | Middle Bottom 1/3               | Bottom Full      | 
 | c     | Right Bottom 1/3                | Right Bottom 2/3 | 
-| <Space> | Centered 1/2 witdth             | Centered almost 2/3 |
+| Space | Centered 1/2 witdth             | Centered almost 2/3 |
 | h     | Left half with larger margins   | Left half full |
 | l     | Right half with larger margins  | Right half full |
