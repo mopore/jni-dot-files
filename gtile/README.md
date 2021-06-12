@@ -1,7 +1,7 @@
 J N I   G T I L E   C O N F I G U R A T I O N 
 =============================================
 
-This script work only on user level and must not be executed with 'sudo'.
+This script works only on user level and must not be executed with 'sudo'.
 
 ## What it will perform
 * Backups existing settings in `./gtile_settings.backup`
