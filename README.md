@@ -26,7 +26,7 @@ The aim is to get a system quicker configured to a state that I like it to be.
 
 # How to use
 There is a subfolder for each app (e.g. `./vim` for Vim).
-Each subfolders holds at least one app related config file and an installation scripts.
+Each subfolder holds at least one app related config file and an installation script.
 View the config file(s) and and use the corresponding installation script to apply the configuration
 to your system.
 
