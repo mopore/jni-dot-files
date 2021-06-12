@@ -1,5 +1,5 @@
-J N I   V I M   C O N F I G U R A T I O N 
-=========================================
+JNI VIM CONFIGURATION
+=====================
 
 This script workis only on user level and must not be executed with 'sudo'.
 

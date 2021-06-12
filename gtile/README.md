@@ -1,5 +1,5 @@
-J N I   G T I L E   C O N F I G U R A T I O N 
-=============================================
+JNI GTILE CONFIGURATION
+=======================
 
 This script works only on user level and must not be executed with 'sudo'.
 

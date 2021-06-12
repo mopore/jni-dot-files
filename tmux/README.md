@@ -1,5 +1,5 @@
-J N I   T M U X   C O N F I G U R A T I O N 
-===========================================
+JNI TMUX CONFIGURATION
+======================
 
 This script works only on user level and must not be executed with 'sudo'.
 
