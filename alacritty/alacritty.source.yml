@@ -186,9 +186,9 @@ font:
     family: 'MesloLGS NF'
     style: Bold Italic
   size: 14.0
-  # glyph_offset:
-  #   x: 10
-  #   y: 0
+  glyph_offset:
+     x: 1
+     y: 0
   use_thin_strokes: true
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
