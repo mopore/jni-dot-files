@@ -172,7 +172,7 @@ inoremap  <expr> <Up> pumvisible() ? "<C-p>" : "<Up>"
 inoremap  <expr> <Right> pumvisible() ? "<C-y>" : "<Right>"
 inoremap  <expr> <Tab> pumvisible() ? "<C-y>" : "<Tab>"
 " Exit the completion item with escape (when it is shown)
-inoremap  <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+inoremap  <expr> <Esc> pumvisible() ? "<C-e>" : "<Esc>"
 
 " Remap copy paste to and from system clipboard when in virtual mode
 vnoremap <leader>y "+y
