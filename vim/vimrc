@@ -104,6 +104,15 @@ let g:lightline = {
 " Necessary to allow man vim, when vim is defined as man page viewer
 let $PAGER=''
 
+" Settings from Youtuber Jake Wiesler
+set shiftwidth=4
+set splitbelow
+set splitright
+set scrolloff=8
+set updatetime=250
+set encoding=UTF-8
+set mouse=a
+
 " Settings for Nerdcommenter
 "
 " Create default mappings

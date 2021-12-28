@@ -19,6 +19,7 @@ $md_viewer ./README.md
 read -n 1 -s -r -p "Press any key to start installation..."
 printf "\n"
 
+# INSTALLATION FOR VIM
 if [ -f "~/.vimrc" ] ; then
     # Remove old vim config as backup to current folder
     mv ~/.vimrc ./vimrc.backup
