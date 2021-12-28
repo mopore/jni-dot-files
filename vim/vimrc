@@ -187,6 +187,8 @@ vnoremap <leader>y "+y
 nnoremap <leader>y "+yy
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Map K to split line at the cursor and stay at the rest of the line
 nnoremap K i<CR><Esc>k$
