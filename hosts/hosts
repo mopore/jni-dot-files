@@ -1,0 +1,39 @@
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		    ip6-allnodes
+ff02::2		    ip6-allrouters
+127.0.1.1	    MY_HOSTNAME <---
+
+## JNI AUTOMATION MARKER
+## THE FOLLOWING LINES ARE ADDED AUTOMATICALLY
+
+# JNI Local Home
+192.168.199.1 unifi-setup
+192.168.199.1 unifi.local
+192.168.199.103 lo.BridgeHue
+192.168.199.106	lo.2021iPadPro
+192.168.199.107 lo.Living
+192.168.199.108 lo.roborock-vacuum-a15
+192.168.199.110	lo.KodiHomePi
+192.168.199.111	lo.JNIs-12-Pro
+192.168.199.113	lo.HomePiNeo
+192.168.199.118	lo.Nautilus
+192.168.199.119	lo.Quieter2
+192.168.199.200 lo.SonosZP
+192.168.199.208	lo.AppleWatch
+192.168.199.214 lo.PdManjaro
+# 192.168.199.104 PD-jni-manjaro
+# 192.168.199.114 jni-deskpi-frank
+
+# JNI Wireguard
+10.50.0.1 wg.Server
+10.50.0.2 wg.Nautilus
+10.50.0.3 wg.BebbiOfficeNuc
+10.50.0.4 wg.PdManjaro
+10.50.0.5 wg.2021iPadPro
+10.50.0.6 wg.Quieter2
+10.50.0.7 wg.HomePiNeo
+
+# PRODYNA Setup
+10.5.120.136 pd.local.BebbiOfficePi
+10.5.120.86	pd.local.BebbiOfficeNuc
