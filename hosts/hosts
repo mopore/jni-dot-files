@@ -12,16 +12,16 @@ ff02::2		    ip6-allrouters
 192.168.199.1 unifi.local
 192.168.199.103 lo.HueBridge
 192.168.199.106	lo.iPadPro2021
-192.168.199.107 lo.Living
+192.168.199.107 lo.LivingAppleTv
 192.168.199.108 lo.RoborockVacuum
 192.168.199.110	lo.KodiHomePi
 192.168.199.111	lo.iPhonePro2020
 192.168.199.113	lo.HomePiNeo
-192.168.199.118	lo.Nautilus
+192.168.199.118	lo.PdJniNautilus
 192.168.199.119	lo.Quieter2
 192.168.199.200 lo.SonosZP
-192.168.199.208	lo.AppleWatch
-192.168.199.214 lo.PdManjaro
+192.168.199.208	lo.AppleWatch2021
+192.168.199.214 lo.PdJniManjaro
 # 192.168.199.104 PD-jni-manjaro
 # 192.168.199.114 jni-deskpi-frank
 
