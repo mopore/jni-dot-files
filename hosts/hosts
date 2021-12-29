@@ -10,12 +10,12 @@ ff02::2		    ip6-allrouters
 # JNI Local Home
 192.168.199.1 unifi-setup
 192.168.199.1 unifi.local
-192.168.199.103 lo.BridgeHue
-192.168.199.106	lo.2021iPadPro
+192.168.199.103 lo.HueBridge
+192.168.199.106	lo.iPadPro2021
 192.168.199.107 lo.Living
-192.168.199.108 lo.roborock-vacuum-a15
+192.168.199.108 lo.RoborockVacuum
 192.168.199.110	lo.KodiHomePi
-192.168.199.111	lo.JNIs-12-Pro
+192.168.199.111	lo.iPhonePro2020
 192.168.199.113	lo.HomePiNeo
 192.168.199.118	lo.Nautilus
 192.168.199.119	lo.Quieter2
