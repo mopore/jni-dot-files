@@ -7,30 +7,30 @@ ff02::2		    ip6-allrouters
 ## JNI AUTOMATION MARKER
 ## THE FOLLOWING LINES ARE ADDED AUTOMATICALLY
 
-# JNI Local Home
+# JNI Home
 192.168.199.1 unifi-setup
 192.168.199.1 unifi.local
-192.168.199.103 lo.HueBridge
-192.168.199.106	lo.iPadPro2021
-192.168.199.107 lo.LivingAppleTv
-192.168.199.108 lo.RoborockVacuum
-192.168.199.110	lo.KodiHomePi
-192.168.199.111	lo.iPhonePro2020
-192.168.199.113	lo.HomePiNeo
-192.168.199.118	lo.PdJniNautilus
-192.168.199.119	lo.Quieter2
-192.168.199.200 lo.SonosZP
-192.168.199.208	lo.AppleWatch2021
-192.168.199.214 lo.PdJniManjaro
+192.168.199.103 ho.HueBridge
+192.168.199.106	ho.iPadPro2021
+192.168.199.107 ho.LivingAppleTv
+192.168.199.108 ho.RoborockVacuum
+192.168.199.110	ho.KodiHomePi
+192.168.199.111	ho.iPhonePro2020
+192.168.199.113	ho.HomePiNeo
+192.168.199.118	ho.PdJniNautilus
+192.168.199.119	ho.Quieter2
+192.168.199.200 ho.SonosZP
+192.168.199.208	ho.AppleWatch2021
+192.168.199.214 ho.PdJniManjaro
 # 192.168.199.104 PD-jni-manjaro
 # 192.168.199.114 jni-deskpi-frank
 
 # JNI Wireguard
 10.50.0.1 wg.Server
-10.50.0.2 wg.Nautilus
+10.50.0.2 wg.PdJniNautilus
 10.50.0.3 wg.BebbiOfficeNuc
-10.50.0.4 wg.PdManjaro
-10.50.0.5 wg.2021iPadPro
+10.50.0.4 wg.PdJniManjaro
+10.50.0.5 wg.iPadPro2021
 10.50.0.6 wg.Quieter2
 10.50.0.7 wg.HomePiNeo
 
