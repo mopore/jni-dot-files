@@ -145,6 +145,14 @@ let g:NERDToggleCheckAllLines = 1
 " Remap leader key to space
 let mapleader=" "
 
+
+" Fix to use normal cursor keys via SSH
+" Source (Solution 15) : https://vim.fandom.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi
+
 " Move with Space and Nav key to next split
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
