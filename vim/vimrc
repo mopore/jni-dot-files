@@ -104,7 +104,6 @@ let g:lightline = {
 " Necessary to allow man vim, when vim is defined as man page viewer
 let $PAGER=''
 
-" Settings from Youtuber Jake Wiesler
 set shiftwidth=4
 set splitbelow
 set splitright
@@ -112,6 +111,8 @@ set scrolloff=8
 set updatetime=250
 set encoding=UTF-8
 set mouse=a
+set colorcolumn=80
+set showtabline=2
 
 " Settings for Nerdcommenter
 "
@@ -158,10 +159,17 @@ nnoremap <silent> <leader>= :wincmd =<CR>
 " Open Undotree
 nnoremap <leader>u :UndotreeShow<CR>
 
-" Space + f to open Fuzzy File Manager (FZF)
-nnoremap <silent><leader>f :Files /<CR>
-" Ctrl + x (horizontal split) Ctrl + v (vertical split), or simply Enter to
-" open in the current buffer.
+" Open FZF File Manager
+nnoremap <silent><leader>f :Files .<CR>
+" Ctrl + x (horizontal split) 
+" Ctrl + v (vertical split),
+" Ctrl + t (open in new tab)
+" or simply Enter to open in the current buffer.
+"
+" Working with Tabs
+" gt to go to next Tab.
+" gT to go to previous Tab.
+" <num>gt to got to number tab.
 "
 " Ctrl + F to FZF search in the current buffer; this overrides the page down binding
 nnoremap <silent> <C-f> :BLines<CR>
