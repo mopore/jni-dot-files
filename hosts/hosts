@@ -19,6 +19,7 @@ ff02::2		    ip6-allrouters
 192.168.199.113	ho.HomePiNeo
 192.168.199.118	ho.PdJniNautilus
 192.168.199.119	ho.Quieter2
+192.168.199.119	backups
 192.168.199.200 ho.SonosZP
 192.168.199.208	ho.AppleWatch2021
 192.168.199.214 ho.PdJniManjaro
