@@ -23,6 +23,7 @@ ff02::2		    ip6-allrouters
 192.168.199.200 ho.SonosZP
 192.168.199.208	ho.AppleWatch2021
 192.168.199.214 ho.PdJniManjaro
+192.168.199.245 ho.NzxtLinux
 # 192.168.199.104 PD-jni-manjaro
 # 192.168.199.114 jni-deskpi-frank
 
