@@ -35,6 +35,8 @@ ff02::2		    ip6-allrouters
 10.200.0.5 wg.iPadPro2021
 10.200.0.6 wg.Quieter2
 10.200.0.7 wg.HomePiNeo
+10.200.0.8 wg.iPhonePro2020
+10.200.0.9 wg.watchdog
 
 # PRODYNA Setup
 10.5.120.136 pd.local.BebbiOfficePi
