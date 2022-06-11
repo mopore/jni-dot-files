@@ -64,7 +64,7 @@ docker run --rm -it debian /bin/bash
 ```
 In container
 ```
-apt-get update && apt-get upgrade -y && apt-get install sudo curl
+apt-get update && apt-get upgrade -y && apt-get install -y sudo curl
 ```
 
 `docker run --rm -it manjarolinux/base /bin/bash`

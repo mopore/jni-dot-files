@@ -57,7 +57,7 @@ mv -v vimrc ~/.vimrc
 
 # For undodir plugin
 mkdir -p ~/.vim/undodir
-vim +PluginInstall +qall
+# vim +PluginInstall +qall
 
 echo "Vim is ready!"
 exit 0
