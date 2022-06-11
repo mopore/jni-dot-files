@@ -1,21 +1,17 @@
 #!/usr/bin/env bash
 
-set euo pipefail
+set -euo pipefail
 
-if ! command -v vim >/dev/null 2>&1 ;
-then
-	if command -v apt-get; then
-        if ! command -v sudo; then
-            echo "Please apt-get update and install sudo"
-            exit 1
-        fi
+if ! command -v sudo >/dev/null; then
+    echo "Please update repos and install sudo."
+    exit 1
+fi
+
+if ! command -v vim >/dev/null 2>&1 ; then
+	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
         sudo apt-get install vim curl git -y
-    else if command -v pacman; then
-        if ! command -v sudo; then
-            echo "Please install sudo"
-            exit 1
-        fi
+    elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
         sudo pacman -S vim curl git --noconfirm
     else
@@ -29,8 +25,7 @@ git clone https://github.com/mopore/jni-dot-files.git
 cd jni-dot-files
 
 md_viewer="less";
-if command -v mdr >/dev/null 2>&1 ;
-then
+if command -v mdr >/dev/null 2>&1 ; then
     md_viewer="mdr"
 fi
 
@@ -41,10 +36,8 @@ read -n 1 -s -r -p "Press any key to start installation..."
 printf "\n"
 
 
-
-
 # INSTALLATION FOR VIM
-if [ -f "~/.vimrc" ] ; then
+if [ -f "$HOME/vimrc" ] ; then
     # Remove old vim config as backup to current folder
     mv ~/.vimrc ./vimrc.backup
 fi
