@@ -10,10 +10,10 @@ fi
 if ! command -v vim >/dev/null 2>&1 ; then
 	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
-        sudo apt-get install vim curl wget -y
+        sudo apt-get install vim curl -y
     elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
-        sudo pacman -S vim curl wget --noconfirm
+        sudo pacman -S vim curl --noconfirm
     else
     	echo "System does not seam to be debian or arch-based."
         echo "Please install 'vim' to execute this script."
@@ -48,13 +48,12 @@ fi
 rm -f ~/.vim/autoload/plug.vim
 
 # Install new Vim plug
-curl -sSL ~/.vim/autoload/plug.vim --create-dirs \
-   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | /bin/bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install new vimrc
-rm -f vimrc
-wget https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/vimrc 
-cp -v vimrc ~/.vimrc
+curl -fLo ./vimrc https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/vimrc
+mv -v vimrc ~/.vimrc
 
 # For undodir plugin
 mkdir -p ~/.vim/undodir
