@@ -10,7 +10,7 @@ This script workis only on user level and must not be executed with 'sudo'.
 
 ## How to install
 ```
-https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh
+curl https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh | /bin/bash
 ```
 
 ## What you will have to do post installation

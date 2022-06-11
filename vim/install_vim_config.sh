@@ -25,17 +25,17 @@ rm -rf jni-dot-files
 git clone https://github.com/mopore/jni-dot-files.git
 cd jni-dot-files/vim
 
-md_viewer="less"
+# md_viewer="less"
 
-if command -v mdr >/dev/null 2>&1 ; then
-    md_viewer="mdr"
-fi
+# if command -v mdr >/dev/null 2>&1 ; then
+#     md_viewer="mdr"
+# fi
 
-clear
-$md_viewer ./README.md
+# clear
+# $md_viewer ./README.md
 
-read -n 1 -s -r -p "Press any key to start installation..."
-printf "\n"
+# read -n 1 -s -r -p "Press any key to start installation..."
+# printf "\n"
 
 
 # INSTALLATION FOR VIM
@@ -48,7 +48,7 @@ fi
 rm -f ~/.vim/autoload/plug.vim
 
 # Install new Vim plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+curl -sSL ~/.vim/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | /bin/bash
 
 # Install new config
