@@ -10,10 +10,10 @@ fi
 if ! command -v vim >/dev/null 2>&1 ; then
 	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
-        sudo apt-get install vim curl git -y
+        sudo apt-get install vim curl wget -y
     elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
-        sudo pacman -S vim curl git --noconfirm
+        sudo pacman -S vim curl wget --noconfirm
     else
     	echo "System does not seam to be debian or arch-based."
         echo "Please install 'vim' to execute this script."
@@ -21,9 +21,9 @@ if ! command -v vim >/dev/null 2>&1 ; then
     fi
 fi
 
-rm -rf jni-dot-files
-git clone https://github.com/mopore/jni-dot-files.git
-cd jni-dot-files/vim
+# rm -rf jni-dot-files
+# git clone https://github.com/mopore/jni-dot-files.git
+# cd jni-dot-files/vim
 
 # md_viewer="less"
 
@@ -51,8 +51,10 @@ rm -f ~/.vim/autoload/plug.vim
 curl -sSL ~/.vim/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | /bin/bash
 
-# Install new config
-cp -v ./vimrc ~/.vimrc
+# Install new vimrc
+rm -f vimrc
+wget https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/vimrc 
+cp -v vimrc ~/.vimrc
 
 # For undodir plugin
 mkdir -p ~/.vim/undodir
