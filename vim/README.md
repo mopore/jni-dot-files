@@ -58,6 +58,13 @@ arrows up and down will navigate over the items.
 
 
 ## For testing with Debian or Manjaro
+Create the container
+```
+docker run --rm -it debian /bin/bash
+```
+In container
+```
+apt-get update && apt-get upgrade -y && apt-get install sudo curl
+```
 
-`docker run --rm -it debian /bin/bash`
 `docker run --rm -it manjarolinux/base /bin/bash`
