@@ -10,10 +10,10 @@ fi
 if ! command -v vim >/dev/null 2>&1 ; then
 	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
-        sudo apt-get install vim curl -y
+        sudo apt-get install vim curl git -y
     elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
-        sudo pacman -S vim curl --noconfirm
+        sudo pacman -S vim curl git --noconfirm
     else
     	echo "System does not seam to be debian or arch-based."
         echo "Please install 'vim' to execute this script."
