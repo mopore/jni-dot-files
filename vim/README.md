@@ -8,6 +8,10 @@ This script workis only on user level and must not be executed with 'sudo'.
 * Installs the current version of 'vim plug' from git hub master.
 * Overwrites any existing `~/.vimrc` file with the `vimrc` file in this directory.
 
+## How to install
+```
+https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh
+```
 
 ## What you will have to do post installation
 Run `:PlugInstall` inside vim and reload vim.
@@ -51,3 +55,9 @@ When the menu is shown...
 right arrow or Tabulator will select the item.
 left arrow will make the autocompletion menu disappear
 arrows up and down will navigate over the items.
+
+
+## For testing with Debian or Manjaro
+
+`docker run --rm -it debian /bin/bash`
+`docker run --rm -it manjarolinux/base /bin/bash`
