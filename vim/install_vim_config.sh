@@ -25,7 +25,8 @@ rm -rf jni-dot-files
 git clone https://github.com/mopore/jni-dot-files.git
 cd jni-dot-files/vim
 
-md_viewer="less";
+md_viewer="less"
+
 if command -v mdr >/dev/null 2>&1 ; then
     md_viewer="mdr"
 fi
