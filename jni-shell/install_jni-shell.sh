@@ -27,6 +27,9 @@ sudo chsh -s /usr/bin/zsh $(whoami)
 # Install Oh my Zsh!
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/zsh
 
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+
 # Apply my configs
 curl -fLo ~/.zshrc https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/zshrc
 curl -fLo ~/.p10k.zsh https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/p10k.zsh
