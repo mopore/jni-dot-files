@@ -22,7 +22,7 @@ fi
 
 
 # Set Zsh as the default Shell
-sudo chsh -s /usr/bin/zsh $USER
+sudo chsh -s /usr/bin/zsh $(whoami)
 
 # Install Oh my Zsh!
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/zsh
