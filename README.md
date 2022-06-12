@@ -62,7 +62,7 @@ curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/insta
 ## JNI Shell (ZSH, Oh my ZSH!, PowerLevel10k)
 To install and configure the shell:
 ```
-
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/install_jni-shell.sh | /bin/bash
 ```
 
 
