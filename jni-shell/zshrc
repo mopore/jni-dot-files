@@ -1,0 +1,18 @@
+# Addition to .zshrc
+
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Add plugin support for docker and docker-compose autocompletion
+# Clone autosuggestions to $ZSH_CUSTOM/plugins with the following command
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+plugins=(git docker docker-compose zsh-autosuggestions)
+
+# For opening VS Code by typing 'code' only for MAC
+DEFAULT_USER=`whoami`
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+export PATH=/usr/local/bin/:$PATH

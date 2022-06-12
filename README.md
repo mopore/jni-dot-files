@@ -34,6 +34,13 @@ to your system.
 
 # Install Scripts
 You find the source code under each subfolder.
+
+## JNI Shell
+To install and configure a shell based on ZSH, Oh my ZSH, PowerLevel10k with additional settings:
+```
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash
+```
+
 ## Vim
 To install and configure vim with my settings:
 ```
