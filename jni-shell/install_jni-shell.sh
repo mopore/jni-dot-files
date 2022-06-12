@@ -9,10 +9,10 @@ fi
 if ! command -v zsh >/dev/null 2>&1 ; then
 	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
-        sudo apt-get install zsh curl git wget -y
+        sudo apt-get install zsh curl git wget fzf -y
     elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
-        sudo pacman -S zsh curl git wget --noconfirm
+        sudo pacman -S zsh curl git wget fzf --noconfirm
     else
     	echo "System does not seam to be debian or arch-based."
         echo "Please install 'zsh' to execute this script."
@@ -28,32 +28,22 @@ sudo chsh -s /usr/bin/zsh $USER
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/zsh
 
 # Apply my configs
-git clone https://github.com/mopore/jni-dot-files.git
+curl -fLo ~/.zshrc https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/zshrc
+curl -fLo ~/.p10k.zsh https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/p10k.zsh
 
-cp -fv jni-dot-files/jni-shell/zshrc ~/.zshrc
-cp -fv jni-dot-files/jni-shell/custom.zsh ~/.oh-my-zsh/custom/
-
-
+curl -fLo ~/.oh-my-zsh/custom/custom.zsh https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/custom.zsh
+if command -v pacman >/dev/null; then
+    sed -i 's/# Arch-based /''/g' ~/.oh-my-zsh/custom/custom.zsh
+fi
+if command -v apt-get >/dev/null; then
+    sed -i 's/# Debian-based /''/g' ~/.oh-my-zsh/custom/custom.zsh
+fi
 
 # Apply PowerLevel10k theme
-rm -rf ~/.oh-my-zsh/custom/themes/powerlevel10k
-cp -rv jni-dot-files/jni-shell/powerlevel10k/ ~/.oh-my-zsh/custom/themes/
+rm -rf $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
-
-
-# Clean up
-rm -rf ./jni-dot-files
-
-
-
-# Set up tmux config
-if [ -f "~/.tmux.conf" ] ; then
-    # Remove old Tmux config as backup to current folder
-    mv ~/.tmux.conf ~/tmux.conf.backup
-fi
-curl -fLo ./tmux.conf https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/tmux.conf
-mv ./tmux.conf ~/.tmux.conf
 
 clear
-echo "Tmux is read! Start with 'tmux a'."
+echo "Zsh is ready now. Log out an log back in with Zsh!"
 exit 0

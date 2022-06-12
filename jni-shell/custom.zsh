@@ -124,20 +124,25 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 
 
 # # TODO Optional Add FZF Support
-# #
-# # Install key bindings and complition for zsh in shell (if not installed via install script)
-# #  CTRL-T - Paste the selected files and directories onto the command-line 
-# #  CTRL-R - Paste the selected command from history onto the command-line 
-# #  ALT-C - cd into the selected directory 
-# #
-# # ** Trigger to work like
-# #  Files under your home directory
-# #  vim ~/**<TAB> 
-# #
-# #  Directories under ~/github that match `fzf`
-# #  cd ~/github/fzf**<TAB>
-# source /usr/share/fzf/key-bindings.zsh
-# source /usr/share/fzf/completion.zsh
+#
+# Install key bindings and complition for zsh in shell (if not installed via install script)
+#  CTRL-T - Paste the selected files and directories onto the command-line 
+#  CTRL-R - Paste the selected command from history onto the command-line 
+#  ALT-C - cd into the selected directory 
+#
+# ** Trigger to work like
+#  Files under your home directory
+#  vim ~/**<TAB> 
+#
+#  Directories under ~/github that match `fzf`
+#  cd ~/github/fzf**<TAB>
+# Arch-based source /usr/share/fzf/key-bindings.zsh
+# Arch-based source /usr/share/fzf/completion.zsh
+# Debian-based source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Debian-based source /usr/share/doc/fzf/examples/completion.zsh
+# ??? source /usr/share/zsh/vendor-completions/_fzf
+
+
 
 # # Optional run ripgrep
 # # Install ripgrep first to have a rg command
@@ -150,4 +155,3 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 # if type rg &> /dev/null; then
 #   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # fi
-
