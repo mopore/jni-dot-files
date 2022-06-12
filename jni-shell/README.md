@@ -29,7 +29,7 @@ docker exec -it debian_test /bin/bash
 In the container add sudo and curl an install the shell:
 ```
 apt-get update && apt-get upgrade -y && apt-get install -y sudo curl
-curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash`
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/install_jni-shell.sh | /bin/bash
 ```
 Exit the container.
 
@@ -50,7 +50,7 @@ docker run -it --rm -d --name manjaro_test manjarolinux/base && \
 docker exec -it manjaro_test /bin/bash
 ```
 
-In the container install the shell with: `curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash`
+In the container install the shell with: `curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/install_jni-shell.sh | /bin/bash`
 
 Exit the container.
 
