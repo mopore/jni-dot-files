@@ -57,7 +57,7 @@ left arrow will make the autocompletion menu disappear
 arrows up and down will navigate over the items.
 
 
-## For testing with Debian or Manjaro
+## For testing with Debian or Manjaro in Docker
 ### Debian-based
 Create the container
 ```
@@ -69,4 +69,6 @@ apt-get update && apt-get upgrade -y && apt-get install -y sudo curl
 ```
 
 ### Manjaro
-`docker run --rm -it manjarolinux/base /bin/bash`
+```
+docker run --rm -it manjarolinux/base /bin/bash
+```
