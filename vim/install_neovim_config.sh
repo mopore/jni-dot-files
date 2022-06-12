@@ -43,5 +43,5 @@ mkdir -p ~/.vim/undodir
 
 # Automatically lunch Plugin installation for referenced plugins in config.
 nvim --headless +PlugInstall +qa
-
+clear
 echo "Neovim is ready!"
