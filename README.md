@@ -40,6 +40,11 @@ To install and configure vim with my settings:
 curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh | /bin/bash
 ```
 
+## Neovim
+```
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash
+```
+
 
 ## Tmux
 To install and configure Tmux:
