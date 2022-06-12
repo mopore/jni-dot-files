@@ -31,12 +31,47 @@ Each subfolder holds at least one app related config file and an installation sc
 View the config file(s) and and use the corresponding installation script to apply the configuration
 to your system.
 
+
+# Install Scripts
+You find the source code under each subfolder.
+## Vim
+To install and configure vim with my settings:
+```
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh | /bin/bash
+```
+
+
+## Tmux
+To install and configure Tmux:
+```
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/install_tmux_config.sh  | /bin/bash
+```
+
 ## Optional
 Install "mdr" as a Markdown renderer to have a better viewing experiencing during installation
 Under arch-based distros:
 ```
 pacman -S mdr
 ```
+
+## Testing in a Docker container
+### Debian-based
+Create the container.
+Note that with '--rm' the container will be automatically removed after exiting.
+```
+docker run --rm -it debian /bin/bash
+```
+In container
+```
+apt-get update && apt-get upgrade -y && apt-get install -y sudo curl
+```
+
+### Manjaro (arch-like)
+```
+docker run --rm -it manjarolinux/base /bin/bash
+```
+
+
 
 # Release History
 

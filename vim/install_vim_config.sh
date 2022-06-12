@@ -20,26 +20,29 @@ if ! command -v vim >/dev/null 2>&1 ; then
     fi
 fi
 
-# INSTALLATION FOR VIM
+# Backup of existing Vim config
 if [ -f "$HOME/vimrc" ] ; then
     # Remove old vim config as backup to current folder
     mv ~/.vimrc ~/vimrc.backup
 fi
 
-# Remove old Vim plug
+# Remove old Vim plugin manager
 rm -f ~/.vim/autoload/plug.vim
 
-# Install new Vim plug
+# Install new Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install new vimrc
 curl -fLo ./vimrc https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/vimrc
-mv -v vimrc ~/.vimrc
+mv -v ./vimrc ~/.vimrc
 
 # For undodir plugin
 mkdir -p ~/.vim/undodir
+
+# Automatically lunch Plugin installation for referenced plugins in config.
 vim -c ':PlugInstall | quit | quit'
 clear
 echo "Vim is ready!"
+
 exit 0
