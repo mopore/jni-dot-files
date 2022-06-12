@@ -52,6 +52,13 @@ To install and configure Tmux:
 curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/install_tmux_config.sh  | /bin/bash
 ```
 
+## JNI Shell (ZSH, Oh my ZSH!, PowerLevel10k)
+To install and configure the shell:
+```
+
+```
+
+
 ## Optional
 Install "mdr" as a Markdown renderer to have a better viewing experiencing during installation
 Under arch-based distros:
