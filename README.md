@@ -35,10 +35,10 @@ to your system.
 # Install Scripts
 You find the source code under each subfolder.
 
-## JNI Shell
-To install and configure a shell based on ZSH, Oh my ZSH, PowerLevel10k with additional settings:
+## JNI Shell (ZSH, Oh my ZSH!, PowerLevel10k)
+To install and configure the shell:
 ```
-curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash
+curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/install_jni-shell.sh | /bin/bash
 ```
 
 ## Vim
@@ -58,13 +58,6 @@ To install and configure Tmux:
 ```
 curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/install_tmux_config.sh  | /bin/bash
 ```
-
-## JNI Shell (ZSH, Oh my ZSH!, PowerLevel10k)
-To install and configure the shell:
-```
-curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/install_jni-shell.sh | /bin/bash
-```
-
 
 ## Optional
 Install "mdr" as a Markdown renderer to have a better viewing experiencing during installation
