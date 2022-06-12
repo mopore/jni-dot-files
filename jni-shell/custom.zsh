@@ -142,7 +142,9 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 # Debian-based source /usr/share/doc/fzf/examples/completion.zsh
 # ??? source /usr/share/zsh/vendor-completions/_fzf
 
-
+# # Optional if you use node version manager (nvm)
+# # To run nvm the command has to be sourced.
+# source /usr/share/nvm/init-nvm.sh
 
 # # Optional run ripgrep
 # # Install ripgrep first to have a rg command
