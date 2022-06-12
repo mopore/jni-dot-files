@@ -27,6 +27,22 @@ sudo chsh -s /usr/bin/zsh $USER
 # Install Oh my Zsh!
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | /bin/zsh
 
+# Apply my configs
+git clone https://github.com/mopore/jni-dot-files.git
+
+cp -fv jni-dot-files/jni-shell/zshrc ~/.zshrc
+cp -fv jni-dot-files/jni-shell/custom.zsh ~/.oh-my-zsh/custom/
+
+
+
+# Apply PowerLevel10k theme
+rm -rf ~/.oh-my-zsh/custom/themes/powerlevel10k
+cp -rv jni-dot-files/jni-shell/powerlevel10k/ ~/.oh-my-zsh/custom/themes/
+
+
+
+# Clean up
+rm -rf ./jni-dot-files
 
 
 
