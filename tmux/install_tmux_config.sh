@@ -12,10 +12,10 @@ if ! command -v tmux >/dev/null 2>&1 ; then
         sudo apt-get install tmux curl -y
     elif command -v pacman >/dev/null; then
         sudo pacman -Syu --noconfirm
-        sudo pacman -S vim curl git --noconfirm
+        sudo pacman -S tmux curl --noconfirm
     else
     	echo "System does not seam to be debian or arch-based."
-        echo "Please install 'vim' to execute this script."
+        echo "Please install 'tmux' to execute this script."
         exit 1
     fi
 fi
