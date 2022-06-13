@@ -35,12 +35,19 @@ curl -fLo ~/.zshrc https://raw.githubusercontent.com/mopore/jni-dot-files/main/j
 curl -fLo ~/.p10k.zsh https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/p10k.zsh
 
 curl -fLo ~/.oh-my-zsh/custom/custom.zsh https://raw.githubusercontent.com/mopore/jni-dot-files/main/jni-shell/custom.zsh
-if command -v pacman >/dev/null; then
-    sed -i 's/# Arch-based /''/g' ~/.oh-my-zsh/custom/custom.zsh
-fi
-if command -v apt-get >/dev/null; then
-    sed -i 's/# Debian-based /''/g' ~/.oh-my-zsh/custom/custom.zsh
-fi
+# In the custom.zsh file there are the following lines. Depending whether or not the corresponding
+# file is present on the system. The lines will be uncommented by using sed
+# Arch-Option1 source /usr/share/fzf/key-bindings.zsh
+# Arch-Option2 source /usr/share/fzf/completion.zsh
+# Debian-Option1 source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Debian-Option2 source /usr/share/doc/fzf/examples/completion.zsh
+# Debian-Option3 source /usr/share/zsh/vendor-completions/_fzf
+[ -f /usr/share/fzf/key-bindings.zsh ] && sed -i 's/# Arch-Option1 /''/g' ~/.oh-my-zsh/custom/custom.zsh
+[ -f /usr/share/fzf/completion.zsh ] && sed -i 's/# Arch-Option2 /''/g' ~/.oh-my-zsh/custom/custom.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && sed -i 's/# Debian-Option1 /''/g' ~/.oh-my-zsh/custom/custom.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && sed -i 's/# Debian-Option2 /''/g' ~/.oh-my-zsh/custom/custom.zsh
+[ -f /usr/share/zsh/vendor-completions/_fzf ] && sed -i 's/# Debian-Option3 /''/g' ~/.oh-my-zsh/custom/custom.zsh
+
 
 # Apply PowerLevel10k theme
 rm -rf $HOME/.oh-my-zsh/custom/themes/powerlevel10k

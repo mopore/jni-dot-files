@@ -136,11 +136,11 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 #
 #  Directories under ~/github that match `fzf`
 #  cd ~/github/fzf**<TAB>
-# Arch-based source /usr/share/fzf/key-bindings.zsh
-# Arch-based source /usr/share/fzf/completion.zsh
-# Debian-based source /usr/share/doc/fzf/examples/key-bindings.zsh
-# Debian-based source /usr/share/doc/fzf/examples/completion.zsh
-# ??? source /usr/share/zsh/vendor-completions/_fzf
+# Arch-Option1 source /usr/share/fzf/key-bindings.zsh
+# Arch-Option2 source /usr/share/fzf/completion.zsh
+# Debian-Option1 source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Debian-Option2 source /usr/share/doc/fzf/examples/completion.zsh
+# Debian-Option3 source /usr/share/zsh/vendor-completions/_fzf
 
 # # Optional if you use node version manager (nvm)
 # # To run nvm the command has to be sourced.
