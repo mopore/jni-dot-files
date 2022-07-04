@@ -2,7 +2,7 @@
 # set -euxo pipefail # Print any command beore executing.
 set -euo pipefail # Print any command beore executing.
 
-if (( $EUID != 0 )); then
+if (( EUID != 0 )); then
     echo "Please run as root."
     exit
 fi
@@ -50,8 +50,9 @@ cat "$HOSTS_SRC" | sed "$param" >> $HOSTS_TEMP
 # (3) Backup old system hosts file and replace with updated file.
 #
 rm -f "$HOSTS_TARGET".backup
-cp "$HOSTS_TARGET" "$HOSTS_TARGET".backup
-echo "Backup file has been written."
+BACKUP_FILEPATH="${HOSTS_TARGET}.backup"
+cp "$HOSTS_TARGET" "$BACKUP_FILEPATH"
+echo "Backup file has been written to $BACKUP_FILEPATH"
 rm -f "HOSTS_TARGET"
 mv $HOSTS_TEMP $HOSTS_TARGET
 
