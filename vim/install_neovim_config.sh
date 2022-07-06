@@ -29,7 +29,6 @@ fi
 # Remove old Neovim plugin manager
 rm -f $HOME/.config/nvim/im/autoload/plug.vim
 
-
 # Install new Neovim plugin manager
 sh -c 'curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
