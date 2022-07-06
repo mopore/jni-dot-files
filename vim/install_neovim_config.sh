@@ -6,7 +6,7 @@ if ! command -v sudo >/dev/null; then
     exit 1
 fi
 
-if ! command -v vim >/dev/null 2>&1 ; then
+if ! command -v nvim >/dev/null 2>&1 ; then
 	if command -v apt-get >/dev/null ; then
         sudo apt-get update && sudo apt-get upgrade -y
         sudo apt-get install neovim curl git -y
