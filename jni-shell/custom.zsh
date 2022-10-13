@@ -53,6 +53,8 @@ alias ..='cd ..'
 
 alias svim='sudo vim'
 
+alias grep='grep --ignore-case'
+
 # Optional if gdu installed: Ignore PD mounted folders when exexuting Go Disk Usage tool
 # alias gdu='gdu --ignore-dirs /proc,/dev,/sys,/run,/home/jni/PdChKaderSync,/home/jni/PdOneDriveSync'
 # alias ncdu='echo "Use gdu please"'
