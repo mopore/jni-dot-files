@@ -10,6 +10,7 @@ ff02::2		    ip6-allrouters
 # JNI Home
 192.168.199.1 unifi-setup
 192.168.199.1 unifi.local
+192.168.199.74	ho.iPhonePro2022
 192.168.199.103 ho.HueBridge
 192.168.199.106	ho.iPadPro2021
 192.168.199.107 ho.LivingAppleTv
