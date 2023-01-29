@@ -70,9 +70,21 @@ hi CursorLine   cterm=NONE ctermbg=black
 hi CursorLineNr cterm=bold ctermfg=black ctermbg=yellow
 hi LineNr cterm=none ctermfg=darkgrey
 
-set tabstop=4
-set softtabstop=0 noexpandtab
+" " Exchange all tabs with 4 spaces:
+" set tabstop=4
+" set softtabstop=0
+" set noexpandtab
+" set shiftwidth=4
+
+" Use just tabs with the length of 4 spaces
+set noexpandtab
+set copyindent
+set preserveindent
+set softtabstop=0
 set shiftwidth=4
+set tabstop=4
+" Force the aboth settings for the listed filetypes
+autocmd FileType c,cpp,java,python setlocal noet ci pi sts=0 sw=4 ts=4
 
 set hlsearch
 set incsearch
@@ -225,3 +237,9 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
+
+" Show whitespaces with "leader, leader, w" or "F5"
+noremap <F5> :set list!<CR>
+noremap <leader><leader>w :set list!<CR>
+"  inoremap <F5> <C-o>:set list!<CR>
+"  cnoremap <F5> <C-c>:set list!<CR>
