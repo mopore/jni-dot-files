@@ -28,17 +28,24 @@
 # printf "Go to iCloud:\ticloud\n"
 # alias icloud='cd ~/Library/Mobile\ Documents/'
 
+# To emulate the native Mac commands 'pbcopy' and 'pbpaste' on Linux
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 # Docker
+# alias docker-compose='docker compose'
 # alias dattach='docker attach --sig-proxy=false'
 # printf "Docker attach:\t\tdattach <containername>\n"
+
+# Kubernetes
+alias k='kubectl'
 
 # Common
 alias gr='cd ~/Dev/git_rep'
 # printf "Go to git rep:\t\tgitrep\n"
 
+# Only show root mount point when calling duf
 alias duf='duf -only-mp "/"'
-# printf "Only show root mount point when calling duf\n"
 
 # Optional if exa installed
 # alias ls='exa --group-directories-first --icons'
@@ -159,3 +166,10 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 # if type rg &> /dev/null; then
 #   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # fi
+
+# This starts the z to make easy fast navigation to folders
+# See: https://github.com/rupa/z
+# Available via 
+# paru -S "z-git"
+# brew install z
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
