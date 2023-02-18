@@ -191,4 +191,7 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 # Available via 
 # paru -S "z-git"
 # brew install z
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+# Linux
+# [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+# Mac
+# . /usr/local/etc/profile.d/z.sh
