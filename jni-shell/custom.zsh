@@ -62,21 +62,42 @@ alias svim='sudo vim'
 
 alias grep='grep --ignore-case'
 
+
 # Optional if gdu installed: Ignore PD mounted folders when exexuting Go Disk Usage tool
 # alias gdu='gdu --ignore-dirs /proc,/dev,/sys,/run,/home/jni/PdChKaderSync,/home/jni/PdOneDriveSync'
 # alias ncdu='echo "Use gdu please"'
 
 
-
 # Optional if Alacritty installed: Workaround to get alacritty always working without having alacrrity's termin info having
 # alias ssh='TERM=xterm-256color ssh'
-
-
 
 # Optional GNOME only: Easily open nautilus without warnings and delays by 'open'
 # function open() {
 # 	nohup nautilus -w $1 > /dev/null 2>&1 &
 # }
+
+
+# Create a directory in cd into it
+function mkcd() {
+	mkdir -p "$1" && cd "$1"
+}
+
+# Run python http server on currend directory
+function webserver() {
+	# Check if port is set, otherwise use 8080
+	if [ -z "$1" ]
+	then
+		port=8080
+	else
+		port=$1
+	fi
+	# Get local IP address
+	ip=$(ip a | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head --lines 1)
+	# ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head --lines 1)
+	echo "Visit: http://$ip:$port\n"
+	python3 -m http.server $port
+}
+
 # Add your own Environment variables here:
 # export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 # export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -90,7 +111,6 @@ alias grep='grep --ignore-case'
 # alias svim='sudo nvim'
 
 
-
 # V I M   A S   M A N  P A G E   V I E W E R
 EDITOR=/usr/bin/vim
 #
@@ -100,7 +120,6 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 	    vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
 		-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
 		-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-
 
 
 # # Optional: V I M   M O D E
