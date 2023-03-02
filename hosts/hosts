@@ -27,8 +27,9 @@ ff02::2		    ip6-allrouters
 192.168.199.245 ho.NzxtLinux
 192.168.199.123 ho.livingtv
 192.168.199.226 ho.broombed
-# 192.168.199.104 PD-jni-manjaro
-# 192.168.199.114 jni-deskpi-frank
+192.168.199.204 ho.cudaIgnition
+192.168.199.75	ho.neoCutoff
+192.168.199.105	ho.synology
 
 # JNI Wireguard
 10.200.0.1 wg.Freedom
