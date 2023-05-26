@@ -47,7 +47,7 @@ alias gr='cd ~/Dev/git_rep'
 # Only show root mount point when calling duf
 alias duf='duf -only-mp "/"'
 
-# alias exa='exa --group-directories-first --icons'
+alias exa='exa --group-directories-first --icons'
 
 # alias la='ls -a'
 # alias l1='ls -1'
@@ -62,11 +62,12 @@ alias svim='sudo vim'
 
 alias grep='grep --ignore-case'
 
-
 # Optional if gdu installed: Ignore PD mounted folders when exexuting Go Disk Usage tool
 # alias gdu='gdu --ignore-dirs /proc,/dev,/sys,/run,/home/jni/PdChKaderSync,/home/jni/PdOneDriveSync'
 # alias ncdu='echo "Use gdu please"'
 
+# JNI's GPT on CLI
+alias ai='docker container run jni-gpt-on-cli'
 
 # Optional if Alacritty installed: Workaround to get alacritty always working without having alacrrity's termin info having
 # alias ssh='TERM=xterm-256color ssh'
