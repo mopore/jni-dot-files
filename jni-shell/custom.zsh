@@ -47,8 +47,8 @@ alias gr='cd ~/Dev/git_rep'
 # Only show root mount point when calling duf
 alias duf='duf -only-mp "/"'
 
-# Optional if exa installed
-# alias ls='exa --group-directories-first --icons'
+# alias exa='exa --group-directories-first --icons'
+
 # alias la='ls -a'
 # alias l1='ls -1'
 
