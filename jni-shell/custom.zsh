@@ -72,7 +72,7 @@ alias grep='grep --ignore-case'
 # alias ncdu='echo "Use gdu please"'
 
 # JNI's GPT on CLI
-alias ai='docker container run jni-gpt-on-cli'
+alias ai='docker container run --rm jni-gpt-on-cli'
 
 # Optional if Alacritty installed: Workaround to get alacritty always working without having alacrrity's termin info having
 # alias ssh='TERM=xterm-256color ssh'
