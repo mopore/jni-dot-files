@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Put me into $ZSH/custom/custom.zsh
 
 # Optional Pi only
