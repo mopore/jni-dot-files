@@ -48,6 +48,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
