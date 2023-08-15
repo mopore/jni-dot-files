@@ -20,6 +20,7 @@ It also includes a script to setup my shell environment with ZSH, Oh my ZSH! and
 
 Supported configurations:
 * Shell setup with ZSH, Oh my ZSH!, PowerLevel10k [README](./jni-shell/README.md)
+* Neovim [README](./neovim/README.md)
 * kitty [README](./kitty/README.md)
 * TMUX [README](./tmux/README.md)
 * GTile Gnome Extension [README](./gtile/README.md)
@@ -67,7 +68,8 @@ pacman -S mdr
 
 # Release History
 
-## v0.2.0 (Unreleased)
+## v0.2.0
+- Add Neovim config.
 - Add configuration for kitty.
 - Remove neovim from vim configuration.
 - Update readme files.
