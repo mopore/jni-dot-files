@@ -537,7 +537,8 @@ require('copilot').setup({  -- JNI addition
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = "<M-CR>",
+      -- accept = "<M-CR>",  -- Alt + Enter
+      accept = "<S-Tab>",  -- Shift + Tab
       accept_word = false,
       accept_line = false,
       next = "<M-]>",
