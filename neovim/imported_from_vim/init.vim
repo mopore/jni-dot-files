@@ -228,7 +228,7 @@ nnoremap <leader><leader>l :set nonu!<CR>:set norelativenumber!<CR>
 " Capital Y copies right from the cursor until the end of line (like D deletes)
 nnoremap Y y$
 
-" Keeping the cursor centered when using searh and joining lines.
+" Keeping the cursor centered when using search and joining lines.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
