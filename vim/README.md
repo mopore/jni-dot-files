@@ -15,10 +15,6 @@ This script workis only on user level and must not be executed with 'sudo'.
 curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_vim_config.sh | /bin/bash
 ```
 
-### Neovim
-```
-curl -sSL https://raw.githubusercontent.com/mopore/jni-dot-files/main/vim/install_neovim_config.sh | /bin/bash
-```
 
 ## What you will have to do post installation
 Run `:PlugInstall` inside vim and reload vim.
