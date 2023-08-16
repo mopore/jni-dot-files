@@ -27,27 +27,101 @@ Supported configurations:
 * Vim [README](./vim/README.md)
 * alacritty [README](./alacritty/README.md)
 
-# What's the motivation?
+# Motivation
 The aim is to get a system quicker configured and gain general productivity.
 
 
-# How to use
+# Application
 
-## Application
-TODO Describe how to use it.
+## Neovim
+
+| Shortcut              | Description |
+| --------------------- | --- |
+| `Space` + `s` + `h`   | Search help |
+| `Space` + `g` + `f`   | Search in git files |
+| `Ctrl` & `f`          | Search text in current file/buffer |
+| `Space` + `Space`     | Show current open files/buffers |
+| `Space` + `?`         | Show recently opened files/buffers |
+| `Ctrl` & `t``         | Open in Tab |
+| `g` + `t``            | Next tab |
+| `g` + `T``            | Previous tab |
+| `Ctrl` & `w` + `c`      | Close current window (on top) |
+| `Ctrl` & h,j,k,l      | Move between windows |
+
+### LSP specific shortcuts
+
+| Shortcut              | Description |
+| --------------------- | --- |
+| `g` + `d`             | Go to definition |
+| `g` + `r`             | Find references |
+| `g` + `I`             | Go to implementation(s) |
+| `Space` + `d` + `s`   | Search symbols in current file/buffer |
+| `Alt` & `k`           | Show documentation |
+| `Ctrl` +(*) `space`   | incrementally increases the selection. | 
+| `Space` + `q`         | Show diagnostics |
+| `Space` + `e`         | Show details |
+| `]` + `d`             | Next diagnostics |
+| `[` + `d`             | Prev diagnostics |
+
+`:Format` will format the current buffer.
+
+Use `:Telescope keymaps` to show shortcuts.
+`:Telescope help_tags` offers a fuzzy find over all help files.
+
+Type `:Mason` to open install additional language support.
+Use `i` to install and `u` to uninstall.
+
+### Github Copilot
+
+| Shortcut              | Description |
+| --------------------- | --- |
+| `Space` + `/` + `/`   | Toggle comment of current line |
+| `Space` + `/`         | Toggle comment of selection |
 
 
-### TMUX
+### Diagnostics from Language Server for errors and warnings
 
-| Shortcut | Description |
-| --- | --- |
-| `Ctrl` & `a` + `-` | Split up & down |
-| `Ctrl` & `a` + `\|` | Split left & right |
-| `Ctrl` & `a` + `x` | Close current pane |
-| `Ctrl` & `a` + `z` | Toggle current pane is 100% |
-| `Ctrl` & `a` + h,j,k,l | Move to pane in direction |
-| `Ctrl` & `a` + h,j,k,l | Resizing: Move boder in direction |
-| `Ctrl` & `a` + `Space` | Toggle layouts |
+| Shortcut              | Description |
+| --------------------- | --- |
+| `Space` + `q`         | Toggles diagnostics window |
+| `]` + `d`             | Next diagnostics |
+| `[` + `d`             | Prev diagnostics |
+
+
+### Surround-Plugin 
+https://github.com/tpope/vim-surround
+* Visualize a word and press `S` + `"` to surround it with `"`.
+* To chance an existing surrounding with () to [] , press `c` + `s` + `(` + `[`.
+
+
+### Undotree
+Use `Space` + `u` to open the undotree.
+
+### nvim-tree
+Besides browsing offers many options to manipulate files and folders.
+
+| Shortcut              | Description |
+| --------------------- | --- |
+| `Space` + `e`         | Toggle nvim-tree window |
+| `g` + `?`             | Show Keymappings |
+| `Ctrl` & `t`          | Open in new tab  |
+| `Enter`               | Enters file |
+
+
+## TMUX
+
+| Shortcut                  | Description |
+| ------------------------- | --- |
+| `Ctrl` & `a` + `-`        | Split up & down |
+| `Ctrl` & `a` + `\|`       | Split left & right |
+| `Ctrl` & `a` + `x`        | Close current pane |
+| `Ctrl` & `a` + `z`        | Toggle current pane is 100% |
+| `Ctrl` & `a` + h,j,k,l    | Move to pane in direction |
+| `Ctrl` & `a` + h,j,k,l    | Resizing: Move boder in direction |
+| `Ctrl` & `a` + `Space`    | Toggle layouts |
+
+
+
 
 
 # Setup

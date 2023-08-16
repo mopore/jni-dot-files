@@ -43,6 +43,12 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- For nvim-tree -- JNI addition
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -73,7 +79,15 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  'zbirenbaum/copilot.lua',  -- Add Lua version of Github Copilot -- JNI addition 
+
+  -- Lua Version of Github Copilot -- JNI addition
+  'zbirenbaum/copilot.lua',
+
+  -- Surround plugin -- JNI addition
+  'tpope/vim-surround',
+
+  -- Undotree
+  'mbbill/undotree',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -109,12 +123,6 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
-  -- -- Github Copilot
-  -- {
-  --   'github/copilot.vim',
-  --   opts = {}
-  -- },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
@@ -195,6 +203,19 @@ require('lazy').setup({
         end,
       },
     },
+  },
+
+  {
+    -- nvim-tree (A file explorer)
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
   },
 
   {
@@ -291,28 +312,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Use 'jj' and 'kk' to escape to normal mode -- JNI addition
-vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
-vim.keymap.set('i', 'kk', '<Esc>', { noremap = true, silent = true })
-
--- Split line under current cursor with Shift + K (Capital) -- JNI addition
-vim.keymap.set('n', 'K', 'i<CR><Esc>k$', { noremap = true, silent = true })
-
--- breaking the undo chain on each , . ? ; -- JNI addition
-vim.keymap.set('i', ',', ',<c-g>u', { noremap = true, silent = true })
-vim.keymap.set('i', '.', '.<c-g>u', { noremap = true, silent = true })
-vim.keymap.set('i', '!', '!<c-g>u', { noremap = true, silent = true })
-vim.keymap.set('i', '?', '?<c-g>u', { noremap = true, silent = true })
-
--- Keeping the cursor centered when using search and joining lines. -- JNI addition
-vim.keymap.set('n', 'n', 'nzzzv', { noremap = true, silent = true })
-vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true, silent = true })
-vim.keymap.set('n', 'J', 'mzJ`z', { noremap = true, silent = true })
-
 
 -- Copilot -- JNI addition
 -- Discard current suggestion with <C-]>
-vim.keymap.set('n', '<leader>/',':Copilot status<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>/',':Copilot status<CR>', { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -429,7 +432,7 @@ require('nvim-treesitter.configs').setup {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })  -- Want it for explorer
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Configure LSP ]]
@@ -488,10 +491,10 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -516,50 +519,6 @@ local servers = {
 -- Setup neovim lua configuration
 require('neodev').setup()
 
-require('copilot').setup({  -- JNI addition
-  panel = {
-    enabled = false,
-    -- auto_refresh = false,
-    -- keymap = {
-    --   jump_prev = "[[",
-    --   jump_next = "]]",
-    --   accept = "<CR>",
-    --   refresh = "gr",
-    --   open = "<M-CR>"
-    -- },
-    -- layout = {
-    --   position = "bottom", -- | top | left | right
-    --   ratio = 0.4
-    -- },
-  },
-  suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    debounce = 75,
-    keymap = {
-      -- accept = "<M-CR>",  -- Alt + Enter
-      accept = "<S-Tab>",  -- Shift + Tab
-      accept_word = false,
-      accept_line = false,
-      next = "<M-]>",
-      prev = "<M-[>",
-      dismiss = "<C-]>",
-    },
-  },
-  filetypes = {
-    yaml = false,
-    markdown = true,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ["."] = false,
-  },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
-})
 
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -616,15 +575,15 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    -- ['<S-Tab>'] = cmp.mapping(function(fallback)  -- JNI Addition - avoid conflict with copilot
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.locally_jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -632,8 +591,9 @@ cmp.setup {
   },
 }
 
-jni_additions = require("jni_additions")
-jni_additions.load()
+
+JNI_ADDITIONS = require("jni_additions")
+JNI_ADDITIONS.load()
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
