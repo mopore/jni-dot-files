@@ -28,17 +28,36 @@ Supported configurations:
 * alacritty [README](./alacritty/README.md)
 
 # What's the motivation?
-The aim is to get a system quicker configured to a state that I like it to be.
+The aim is to get a system quicker configured and gain general productivity.
+
 
 # How to use
+
+## Application
+TODO Describe how to use it.
+
+
+### TMUX
+
+| Shortcut | Description |
+| --- | --- |
+| `Ctrl` & `a` + `-` | Split up & down |
+| `Ctrl` & `a` + `\|` | Split left & right |
+| `Ctrl` & `a` + `x` | Close current pane |
+| `Ctrl` & `a` + `z` | Toggle current pane is 100% |
+| `Ctrl` & `a` + h,j,k,l | Move to pane in direction |
+| `Ctrl` & `a` + h,j,k,l | Resizing: Move boder in direction |
+| `Ctrl` & `a` + `Space` | Toggle layouts |
+
+
+# Setup
 There is a subfolder for each app (e.g. `./kitty` for Kitty).
 Each subfolder holds at least one app related config file and potentially an installation script.
 View the config file(s) and and use the corresponding installation script to apply the configuration
 to your system.
 
-
-# Install Scripts
-You find the source code under each subfolder.
+## Install Scripts
+If available you find install and setup scripts under each subfolder.
 
 ## JNI Shell (ZSH, Oh my ZSH!, PowerLevel10k)
 To install and configure the shell:
