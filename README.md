@@ -57,7 +57,7 @@ The aim is to get a system quicker configured and gain general productivity.
 | `g` + `I`             | Go to implementation(s) |
 | `Space` + `d` + `s`   | Search symbols in current file/buffer |
 | `Alt` & `k`           | Show documentation |
-| `Ctrl` (+ `space`)*   | incrementally increases the selection. | 
+| `Ctrl` + (`space`)*   | incrementally increases the selection. | 
 | `Space` + `q`         | Show diagnostics |
 | `Space` + `e`         | Show details |
 | `]` + `d`             | Next diagnostics |
