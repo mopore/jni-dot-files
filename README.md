@@ -42,10 +42,10 @@ The aim is to get a system quicker configured and gain general productivity.
 | `Ctrl` & `f`          | Search text in current file/buffer |
 | `Space` + `Space`     | Show current open files/buffers |
 | `Space` + `?`         | Show recently opened files/buffers |
-| `Ctrl` & `t``         | Open in Tab |
-| `g` + `t``            | Next tab |
-| `g` + `T``            | Previous tab |
-| `Ctrl` & `w` + `c`      | Close current window (on top) |
+| `Ctrl` & `t`          | Open in Tab |
+| `g` + `t`             | Next tab |
+| `g` + `T`             | Previous tab |
+| `Ctrl` & `w` + `c`    | Close current window (on top) |
 | `Ctrl` & h,j,k,l      | Move between windows |
 
 ### LSP specific shortcuts
@@ -57,7 +57,7 @@ The aim is to get a system quicker configured and gain general productivity.
 | `g` + `I`             | Go to implementation(s) |
 | `Space` + `d` + `s`   | Search symbols in current file/buffer |
 | `Alt` & `k`           | Show documentation |
-| `Ctrl` +(*) `space`   | incrementally increases the selection. | 
+| `Ctrl` (+ `space`)*   | incrementally increases the selection. | 
 | `Space` + `q`         | Show diagnostics |
 | `Space` + `e`         | Show details |
 | `]` + `d`             | Next diagnostics |
