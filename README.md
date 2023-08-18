@@ -60,6 +60,8 @@ The aim is to get a system quicker configured and gain general productivity.
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
 | `Space` + `q`         | Show diagnostics |
 | `Space` + `e`         | Show details |
+| `Space` + `c` + `c`   | "[C]ode [A]ction" - Perform action for issue |
+| `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
 | `]` + `d`             | Next diagnostics |
 | `[` + `d`             | Prev diagnostics |
 
