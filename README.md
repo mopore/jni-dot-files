@@ -137,9 +137,6 @@ To push use `:G push`.
 | `Ctrl` & `a` + `Space`    | Toggle layouts |
 
 
-
-
-
 # Setup
 There is a subfolder for each app (e.g. `./kitty` for Kitty).
 Each subfolder holds at least one app related config file and potentially an installation script.
