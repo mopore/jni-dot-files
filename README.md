@@ -97,7 +97,9 @@ https://github.com/tpope/vim-surround
 ### Undotree
 Use `Space` + `u` to open the undotree.
 
+
 ### nvim-tree
+https://github.com/kyazdani42/nvim-tree.lua
 Besides browsing offers many options to manipulate files and folders.
 
 | Shortcut              | Description |
@@ -105,7 +107,15 @@ Besides browsing offers many options to manipulate files and folders.
 | `Space` + `e`         | Toggle nvim-tree window |
 | `g` + `?`             | Show Keymappings |
 | `Ctrl` & `t`          | Open in new tab  |
+| `Ctrl` & `v`          | Open in left & right split  |
+| `Ctrl` & `x`          | Open in up & down split |
 | `Enter`               | Enters file |
+
+
+### Fugitive (Git Plugin)
+https://github.com/tpope/vim-fugitive
+
+Use `:G <command>` to show the git status.
 
 
 ## TMUX
