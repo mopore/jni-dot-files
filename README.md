@@ -116,6 +116,10 @@ Besides browsing offers many options to manipulate files and folders.
 https://github.com/tpope/vim-fugitive
 
 Use `:G <command>` to show the git status.
+Do not forget to SAVE the file before trying to add it to the staging area.
+To stage a file `:G add -A`.
+For committing us `:G commit`.
+To push use `:G push`.
 
 
 ## TMUX
