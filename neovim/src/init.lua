@@ -261,6 +261,9 @@ vim.o.expandtab = 4
 -- Set highlight on search
 vim.o.hlsearch = true
 
+-- Do not wrap lines -- JNI addition
+vim.o.wrap = false
+
 -- Make line numbers default and relative -- JNI addition
 vim.wo.number = true
 vim.wo.relativenumber = true
