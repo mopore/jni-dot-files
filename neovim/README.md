@@ -14,6 +14,10 @@ The config aims to include the existing JNI VIM configuration from this reposito
 2023-09-15).
 Also the config takes input from [ThePrimeagen's Neovim config](https://github.com/ThePrimeagen/init.lua)
 
+## Optional Pre-Requirements:
+Have ripgrep installed to have telescopre work faster.
+Run `brew install ripgrep` on MacOS or `sudo pacman -S ripgrep` on Ubuntu.
+
 ## Install
 This directory includes an interactive script `install.sh` to create a backup of the existing 
 configuration and **optionally** installs this project's neovim config. The backups are stored
