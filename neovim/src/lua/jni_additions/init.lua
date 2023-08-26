@@ -65,8 +65,11 @@ M.load = function()
     vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true, silent = true })
     vim.keymap.set('n', 'J', 'mzJ`z', { noremap = true, silent = true })
 
+    -- While 'ZZ' is ':wq' and 'ZQ' is ':q!' and 'ZW' should be ':w'
+    vim.keymap.set('n', 'ZW', ':w<CR>', { noremap = true, silent = true })
+
     -- Lua Copilot Configuration
-    require('copilot').setup({ 
+    require('copilot').setup({
         panel = {
             enabled = false,
             -- auto_refresh = false,
