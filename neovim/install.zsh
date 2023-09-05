@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# Provide --noconfirm as first argument to skip user confirmation
 
 set -euo pipefail
 
@@ -10,6 +11,12 @@ ORIGINAL_DIR=$(pwd)
 
 SWITCH_ON=1
 SWITCH_OFF=0
+
+user_interaction=SWITCH_ON
+# Check if $1 is set and is --noconfirm
+if [ -n "${1:-}" ] && [ "$1" = "--noconfirm" ]; then
+	user_interaction=SWITCH_OFF
+fi
 
 
 function ask_user() {
@@ -23,21 +30,32 @@ function ask_user() {
 	fi
 }
 
+function deploy() {
+	rm -rf "$NEO_VIM_CONFIG_PATH"
+	mkdir -p "$NEO_VIM_CONFIG_PATH"
+	cp -rv src/* "$NEO_VIM_CONFIG_PATH"
+}
+
+
 perform_backup=$SWITCH_ON 
 
 if [ ! -d "$NEO_VIM_CONFIG_PATH" ]; then
 	echo "No neovim config directory found at $NEO_VIM_CONFIG_PATH"
 	perform_backup=$SWITCH_OFF
-	if ! ask_user "Proceed anyway...?"; then
-		exit 1
+	if (( user_interaction )); then
+		if ! ask_user "Proceed anyway...?"; then
+			exit 1
+		fi
 	fi
 fi
 
 if [ -z "$(ls -A "$NEO_VIM_CONFIG_PATH")" ]; then
 	echo "Neovim config directory is empty at $NEO_VIM_CONFIG_PATH"
 	perform_backup=$SWITCH_OFF
-	if ! ask_user "Proceed anyway...?"; then
-		exit 1
+	if (( user_interaction )); then
+		if ! ask_user "Proceed anyway...?"; then
+			exit 1
+		fi
 	fi
 fi
 
@@ -54,10 +72,12 @@ if (( perform_backup )); then
 	cd "$ORIGINAL_DIR"
 fi
 
-if ask_user "Deploy new neovim config...?" ; then
-	rm -rf "$NEO_VIM_CONFIG_PATH"
-	mkdir -p "$NEO_VIM_CONFIG_PATH"
-	cp -rv src/* "$NEO_VIM_CONFIG_PATH"
+if (( user_interaction )); then
+	if ask_user "Deploy new neovim config...?" ; then
+		deploy
+	fi
+else
+	deploy
 fi
 
 exit 0
