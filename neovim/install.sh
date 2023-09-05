@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Provide --noconfirm as first argument to skip user confirmation
 
 set -euo pipefail
@@ -15,6 +15,7 @@ SWITCH_OFF=0
 user_interaction=SWITCH_ON
 # Check if $1 is set and is --noconfirm
 if [ -n "${1:-}" ] && [ "$1" = "--noconfirm" ]; then
+	echo "Running without user interaction"
 	user_interaction=SWITCH_OFF
 fi
 
