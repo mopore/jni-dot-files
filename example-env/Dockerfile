@@ -21,7 +21,7 @@ RUN git clone https://github.com/mopore/jni-dot-files && \
     /root/jni-dot-files/jni-shell/install_jni-shell.sh
 
 # Install Neovim config
-# RUN /root/jni-dot-files/neovim/install.zsh
-
+RUN cd /root/jni-dot-files/neovim
+RUN /bin/zsh -c "source /root/jni-dot-files/neovim/install.sh --noconfirm"
 
 CMD ["/bin/zsh"]

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # Provide --noconfirm as first argument to skip user confirmation
 
 set -euo pipefail
