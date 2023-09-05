@@ -14,8 +14,7 @@ WORKDIR /root
 
 RUN pacman -Syu --noconfirm && \
     pacman -S --noconfirm git gcc nodejs npm go gcc make python python-pip && \
-    pacman -S --noconfirm ripgrep fzf zoxide exa bat neovim 
-
+    pacman -S --noconfirm ripgrep fzf exa bat neovim 
 
 # Install JNI Shell with zsh, oh-my-zsh and powerlevel10k
 RUN git clone https://github.com/mopore/jni-dot-files && \
