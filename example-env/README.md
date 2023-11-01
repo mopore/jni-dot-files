@@ -7,24 +7,27 @@ docker container run --name manjarotest -it manjarolinux/base
 
 Exectute the following inside the container:
 
-## Prepare the system
+## System Update and Dependencies
 Update the system `pacman -Syu --noconfirm`
 Install base dev tools `pacman -S --noconfirm git gcc make`
 And furhter dev tools `pacman -S --noconfirm nodejs npm go python python-pip`
 Install packages for tis demo `pacman -S --noconfirm ripgrep fzf exa bat neovim`
 
+## JNI Shell
 Switch to home `cd ~`
-Clone the jni dot files `git clone https://github.com/mopore/jni-dot-files`
-Switch to jni shell directory `cd jni-dot-files/jni-shell`
+Clone the JNI dot files `git clone https://github.com/mopore/jni-dot-files`
+Switch to JNI shell directory `cd jni-dot-files/jni-shell`
 Execute `./install_jni-shell.sh`
 Exit the shell (the container will be stopped)
 Start the container again `docker container start manjarotest`
 Enter the container `docker container exec -it manjarotest /bin/zsh`
 
+## Neovim  Config
 Install neovim config by moving to `~/jni-dot-files/neovim` and executing 
 `./install.sh`
 
-You could commit the new container version with neovim installed:
+## Snapshotting to a new image
+Exit the container and commit the changes to a new image:
 ```bash
 docker container commit manjarotest manjarotest-neovim
 ```
@@ -39,8 +42,8 @@ Run the new container with neovim installed:
 docker container run --rm -it manjarotest-neovim /bin/zsh
 ```
 
-
-# Committing/Snapshotting a container
+# Appendix
+## Committing/Snapshotting a container
 Run a container named "manajortest" to operate on.
 ```bash
 docker container run --name manjarotest -it manjarolinux/base
