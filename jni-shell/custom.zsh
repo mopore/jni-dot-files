@@ -55,16 +55,14 @@ alias ea='exa -a'
 alias el='exa -l'
 alias e1='exa -1'
 
-# alias la='ls -a'
-# alias l1='ls -1'
+alias la='ls -a'
+alias l1='ls -1'
 
 # Optional Let remove and move confirm
 # alias mv='mv -i'
 # alias rm='rm -i'
 
 alias ..='cd ..'
-
-alias svim='sudo vim'
 
 alias grep='grep --ignore-case'
 
@@ -83,11 +81,6 @@ alias ai='docker container run --rm jni-gpt-on-cli'
 # 	nohup nautilus -w $1 > /dev/null 2>&1 &
 # }
 
-
-# Create a directory in cd into it
-function mkcd() {
-	mkdir -p "$1" && cd "$1"
-}
 
 # Run python http server on currend directory
 function webserver() {
@@ -114,21 +107,23 @@ function webserver() {
 # Prefer Neovim over Vim if Neovim is installed
 # export VIM=/usr/share/nvim
 if [ -x "$(command -v nvim)" ]; then
-  export EDITOR='nvim'
-  alias vim='nvim'
-  alias svim='sudo nvim'
+	export EDITOR='nvim'
+	alias vim='nvim'
+	alias svim='sudo nvim'
+else
+	if [ -x "$(command -v vim)" ]; then
+		export EDITOR='vim'
+		alias svim='sudo vim'
+	fi
 fi
 
-
-# V I M   A S   M A N  P A G E   V I E W E R
-EDITOR=/usr/bin/vim
 #
 # Define vim is the view for man pages
 # Add this line to your vimrc: let $PAGER=''
-export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-	    vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-		-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-		-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+# export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+#     vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+# 	-c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+# 	-c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 
 # # Optional: V I M   M O D E
@@ -195,12 +190,10 @@ export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 #   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # fi
 
-# This starts the z to make easy fast navigation to folders
-# See: https://github.com/rupa/z
-# Available via 
-# paru -S "z-git"
-# brew install z
-# Linux
-# [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+# Use Linux Zoxide (inspired by z) installable via pacman
+if [ -x "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
+
 # Mac
 # . /usr/local/etc/profile.d/z.sh
