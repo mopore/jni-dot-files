@@ -47,6 +47,9 @@ The aim is to get a system quicker configured and gain general productivity.
 | `g` + `T`             | Previous tab |
 | `Ctrl` & `w` + `c`    | Close current window (on top) |
 | `Ctrl` & h,j,k,l      | Move between windows |
+| `z` + `f`             | Create new folding zone |
+| `z` + `a`             | Toggle folding zone |
+| `z` + `d`             | Delete folding zone |
 
 ### LSP specific shortcuts
 
