@@ -111,11 +111,13 @@ function webserver() {
 # export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
 
-# # Optional: Prefer Neovim over Vim
-# # Prefer Neovim over vim
+# Prefer Neovim over Vim if Neovim is installed
 # export VIM=/usr/share/nvim
-# alias vim='nvim'
-# alias svim='sudo nvim'
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR='nvim'
+  alias vim='nvim'
+  alias svim='sudo nvim'
+fi
 
 
 # V I M   A S   M A N  P A G E   V I E W E R
