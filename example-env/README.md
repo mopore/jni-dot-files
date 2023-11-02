@@ -1,11 +1,21 @@
-# Create the Neovim Dev environment Image manually
+# Neovim Dev Environment via Dockerfile
+Build the image with the provided Dockerfile:
+```bash
+docker buildx -t manjarotest-env .
+```
 
-Run the Manjaro base image
+Run the container (as a temporary container) to test the environment:
+```bash
+docker container run --rm -it manjarotest-env
+```
+
+# Neovim Dev Environment Manual Creation
+Execute the following commands (inside a container):
+
+Start with the running the Manjaro base image as a container:
 ```bash
 docker container run --name manjarotest -it manjarolinux/base
 ```
-
-Execute the following inside the container:
 
 ## System Update and Dependencies
 Update the system `pacman -Syu --noconfirm`
