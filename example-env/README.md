@@ -5,13 +5,13 @@ Run the Manjaro base image
 docker container run --name manjarotest -it manjarolinux/base
 ```
 
-Exectute the following inside the container:
+Execute the following inside the container:
 
 ## System Update and Dependencies
 Update the system `pacman -Syu --noconfirm`
-Install base dev tools `pacman -S --noconfirm git gcc make`
+Install base dev tools `pacman -S --noconfirm git gcc make &&`
 And furhter dev tools `pacman -S --noconfirm nodejs npm go python python-pip`
-Install packages for tis demo `pacman -S --noconfirm ripgrep fzf exa bat neovim`
+Install packages for tis demo `pacman -S --noconfirm ripgrep fzf exa bat zoxide neovim`
 
 ## JNI Shell
 Switch to home `cd ~`
