@@ -63,7 +63,7 @@ The aim is to get a system quicker configured and gain general productivity.
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
 | `Space` + `q`         | Show diagnostics |
 | `Space` + `e`         | Show details |
-| `Space` + `c` + `c`   | "[C]ode [A]ction" - Perform action for issue |
+| `Space` + `c` + `a`   | "[C]ode [A]ction" - Perform action for issue |
 | `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
 | `]` + `d`             | Next diagnostics |
 | `[` + `d`             | Prev diagnostics |
@@ -80,8 +80,8 @@ Use `i` to install and `u` to uninstall.
 
 | Shortcut              | Description |
 | --------------------- | --- |
-| `Space` + `/` + `/`   | Toggle comment of current line |
-| `Space` + `/`         | Toggle comment of selection |
+| `g` + `c` + `c`   | Toggle comment of current line |
+| `g` + `c`         | Toggle comment of selection |
 
 
 ### Diagnostics from Language Server for errors and warnings
