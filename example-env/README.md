@@ -1,12 +1,12 @@
 # Neovim Dev Environment via Dockerfile
 Build the image with the provided Dockerfile:
 ```bash
-docker buildx build -t manjarotest-env .
+docker buildx build -t neovim-testenv .
 ```
 
 Run the container (as a temporary container) to test the environment:
 ```bash
-docker container run --rm -it manjarotest-env
+docker container run --rm -it neovim-testenv
 ```
 
 Note that the Github Copilot configuration is not included in this image.
@@ -53,7 +53,7 @@ the Github Copilot authentication process with the ex command `:Copilot auth`.
 ## Snapshotting to a new image
 Exit the container and commit the changes to a new image:
 ```bash
-docker container commit manjarotest manjarotest-neovim
+docker container commit manjarotest neovim-testenv
 ```
 
 Then stop and remove the test container:
@@ -64,14 +64,21 @@ docker container rm manjarotest
 
 Run the new container with neovim installed:
 ```bash
-docker container run --rm -it manjarotest-neovim /bin/zsh
+docker container run --rm -it neovim-testenv /bin/zsh
 ```
 
 # Appendix
-## Committing/Snapshotting a container
-Run a container named "manajortest" to operate on.
+## Using Webserver Feature
+Run the container with an open port:
 ```bash
-docker container run --name pxd-base -it manjarolinux/base
+docker container run --rm -p 8080:8080 -it pxd-neovim-devenv /bin/zsh
+```
+Use the command `webserver 8080` in a directory you want to have exposed.
+
+## Committing/Snapshotting a container
+Run a container named "manjaro-base" to operate on.
+```bash
+docker container run --name manjaro-base -it manjarolinux/base
 ```
 
 Change the content of the container.
@@ -81,15 +88,15 @@ echo "Hello PXD" > /var/test.txt
 
 Exit the container (stops it) and commit the changes to a new image.
 ```bash
-docker container commit pxd-base pxd-test-txt
+docker container commit manjaro-base manjaro-test-txt
 ```
 
 Remove the the stopped container you created a new image from:
 ```bash
-docker container rm pxd-base
+docker container rm manjaro-base
 ```
 
 Test if the newly created image contains the file.
 ```bash
-docker container run --rm pxd-test-txt cat /var/test.txt
+docker container run --rm manjaro-test-txt cat /var/test.txt
 ```
