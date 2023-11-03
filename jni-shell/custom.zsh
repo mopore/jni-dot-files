@@ -64,6 +64,11 @@ alias l1='ls -1'
 
 alias ..='cd ..'
 
+# Create a directory in cd into it
+function take() {
+	mkdir -p "$1" && cd "$1"
+}
+
 alias grep='grep --ignore-case'
 
 # Optional if gdu installed: Ignore PD mounted folders when exexuting Go Disk Usage tool
