@@ -1,7 +1,7 @@
 # Neovim Dev Environment via Dockerfile
 - Build the image with the provided Dockerfile:
 ```bash
-docker buildx -t manjarotest-env .
+docker buildx build -t manjarotest-env .
 ```
 
 - Run the container (as a temporary container) to test the environment:
