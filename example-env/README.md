@@ -20,7 +20,7 @@ docker container run --name manjarotest -it manjarolinux/base
 
 ## System Update and Dependencies
 - Update the system `pacman -Syu --noconfirm`
-- Install base dev tools `pacman -S --noconfirm git gcc make &&`
+- Install base dev tools `pacman -S --noconfirm git gcc make`
 - And furhter dev tools `pacman -S --noconfirm nodejs npm go python python-pip`
 - Install packages for tis demo `pacman -S --noconfirm ripgrep fzf exa bat zoxide neovim`
 
@@ -58,26 +58,25 @@ docker container run --rm -it manjarotest-neovim /bin/zsh
 ## Committing/Snapshotting a container
 Run a container named "manajortest" to operate on.
 ```bash
-docker container run --name manjarotest -it manjarolinux/base
+docker container run --name pxd-base -it manjarolinux/base
 ```
 
 Change the content of the container.
 ```bash
-echo "Hello PXD" > /test.txt
+echo "Hello PXD" > /var/test.txt
 ```
 
-Commit your change to a new image.
+Exit the container (stops it) and commit the changes to a new image.
 ```bash
-docker container commit manjarotest manjarotest-test.txt
+docker container commit pxd-base pxd-test-txt
 ```
 
-Stop and remove the committed container: 
+Remove the the stopped container you created a new image from:
 ```bash
-docker container stop manjarotest && \
-docker container rm manjarotest
+docker container rm pxd-base
 ```
 
 Test if the newly created image contains the file.
 ```bash
-docker container run --rm manjarotest-test.txt cat /test.txt
+docker container run --rm pxd-test-txt cat /var/test.txt
 ```

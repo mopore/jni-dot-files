@@ -50,13 +50,14 @@ alias duf='duf -only-mp "/"'
 
 # Optional if exa installed
 alias exa='exa --group-directories-first --icons'
-alias e='exa'
-alias ea='exa -a'
-alias el='exa -l'
+alias e='exa -1'
 alias e1='exa -1'
+alias ee='exa -l'
+alias ea='exa -a'
 
-alias la='ls -a'
 alias l1='ls -1'
+alias la='ls -a'
+alias ll='ls -a'
 
 # Optional Let remove and move confirm
 # alias mv='mv -i'
