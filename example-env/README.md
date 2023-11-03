@@ -9,6 +9,16 @@ Run the container (as a temporary container) to test the environment:
 docker container run --rm -it manjarotest-env
 ```
 
+Note that the Github Copilot configuration is not included in this image.
+You have to launch the container and trigger the authentication process
+manually with the ex command `:Copilot auth`.
+The configuration will then be store here:
+```
+~/.config/github-copilot
+├── hosts.json
+└── versions.json
+```
+
 # Neovim Dev Environment Manual Creation
 Execute the following commands (inside a container):
 
@@ -33,9 +43,12 @@ docker container run --name manjarotest -it manjarolinux/base
 - Start the container again `docker container start manjarotest`
 - Enter the container `docker container exec -it manjarotest /bin/zsh`
 
-## Neovim  Config
-Install neovim config by moving to `~/jni-dot-files/neovim` and executing 
+## Neovim Config and Github Copilot
+- Install neovim config by moving to `~/jni-dot-files/neovim` and executing 
 `./install.sh`
+
+- After the installation run Neovim with `vim` (aliased to `nvim`) and trigger
+the Github Copilot authentication process with the ex command `:Copilot auth`.
 
 ## Snapshotting to a new image
 Exit the container and commit the changes to a new image:
