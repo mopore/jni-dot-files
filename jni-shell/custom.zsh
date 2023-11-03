@@ -52,6 +52,7 @@ alias duf='duf -only-mp "/"'
 alias exa='exa --group-directories-first --icons'
 alias e='exa -1'
 alias e1='exa -1'
+alias el='exa -l'
 alias ee='exa -l'
 alias ea='exa -a'
 
