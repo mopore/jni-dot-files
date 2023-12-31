@@ -31,42 +31,64 @@ Supported configurations:
 The aim is to get a system quicker configured and gain general productivity.
 
 
-# Application
+# Shortcuts and Command Overview
 
-## Neovim
+## Neovim Shortcuts
+
+### Search
+| Shortcut               | Description                        |  
+| ---------------------- | ---                                |
+| `Space` + `Space`      | Show current open files/buffers    |
+| `Ctrl` & `f`           | Search text in current file/buffer |
+| `Space` + `s` + `h`    | Search help                        |
+| `Space` + `s` + `f`    | Search files (by name)             |
+| `Space` + `s` + `g`    | Search files (via grep)            |
+| `Space` + `g` + `f`    | Search in git files                |
+| `Space` + `?`          | Show recently opened files/buffers |
+
+### Tabs
+
+| Shortcut               | Description                        |
+| ---------------------- | ---                                |
+| `Ctrl` & `t`           | Open in Tab                        |
+| `g` + `t`              | Next tab                           |
+| `g` + `T`              | Previous tab                       |
+
+### Windows
+k
+| Shortcut               | Description                        |
+| ---------------------- | ---                                |
+| `Ctrl` & `w` + `c`     | Close current window (on top)      |
+| `Ctrl` & `w` + h,j,k,l | Move between windows               |
+
+### Folding
+
+| Shortcut               | Description                        |
+| ---------------------- | ---                                |
+| `z` + `f`              | Create new folding zone            |
+| `z` + `a`              | Toggle folding zone                |
+| `z` + `d`              | Delete folding zone                |
+
+### LSP Diagnostics
 
 | Shortcut              | Description |
 | --------------------- | --- |
-| `Space` + `s` + `h`   | Search help |
-| `Space` + `g` + `f`   | Search in git files |
-| `Ctrl` & `f`          | Search text in current file/buffer |
-| `Space` + `Space`     | Show current open files/buffers |
-| `Space` + `?`         | Show recently opened files/buffers |
-| `Ctrl` & `t`          | Open in Tab |
-| `g` + `t`             | Next tab |
-| `g` + `T`             | Previous tab |
-| `Ctrl` & `w` + `c`    | Close current window (on top) |
-| `Ctrl` & h,j,k,l      | Move between windows |
-| `z` + `f`             | Create new folding zone |
-| `z` + `a`             | Toggle folding zone |
-| `z` + `d`             | Delete folding zone |
+| `Space` + `s` + `d`   | Show diagnostics |
+| `]` + `d`             | Next diagnostics |
+| `[` + `d`             | Prev diagnostics |
+| `Space` + `d` + `s`   | Show symbols in cuttent file | 
+| `Space` + `c` + `a`   | "[C]ode [A]ction" - Perform action for issue |
+| `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
 
-### LSP specific shortcuts
+### LSP Navigation
 
 | Shortcut              | Description |
 | --------------------- | --- |
 | `g` + `d`             | Go to definition |
 | `g` + `r`             | Find references |
 | `g` + `I`             | Go to implementation(s) |
-| `Space` + `d` + `s`   | Search symbols in current file/buffer |
-| `Alt` & `k`           | Show documentation |
+| `Alt` & `k`           | Show documentation under cursor |
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
-| `Space` + `q`         | Show diagnostics |
-| `Space` + `e`         | Show details |
-| `Space` + `c` + `a`   | "[C]ode [A]ction" - Perform action for issue |
-| `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
-| `]` + `d`             | Next diagnostics |
-| `[` + `d`             | Prev diagnostics |
 
 `:Format` will format the current buffer.
 
@@ -76,21 +98,13 @@ Use `:Telescope keymaps` to show shortcuts.
 Type `:Mason` to open install additional language support.
 Use `i` to install and `u` to uninstall.
 
-### Github Copilot
+
+### Comments
 
 | Shortcut              | Description |
 | --------------------- | --- |
 | `g` + `c` + `c`   | Toggle comment of current line |
 | `g` + `c`         | Toggle comment of selection |
-
-
-### Diagnostics from Language Server for errors and warnings
-
-| Shortcut              | Description |
-| --------------------- | --- |
-| `Space` + `q`         | Toggles diagnostics window |
-| `]` + `d`             | Next diagnostics |
-| `[` + `d`             | Prev diagnostics |
 
 
 ### Surround-Plugin 

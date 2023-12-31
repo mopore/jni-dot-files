@@ -71,8 +71,40 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+    -- NOTE: First, some plugins that don't require any configuration
 
+    {
+        'goolord/alpha-nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            local alpha = require("alpha")
+            local dashboard = require("alpha.themes.startify")
+            dashboard.section.header.val = {
+                  [[                                                                       ]],
+                  [[                                                                       ]],
+                  [[                                                                     ]],
+                  [[       ████ ██████           █████      ██                     ]],
+                  [[      ███████████             █████                             ]],
+                  [[      █████████ ███████████████████ ███   ███████████   ]],
+                  [[     █████████  ███    █████████████ █████ ██████████████   ]],
+                  [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+                  [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+                  [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+                  [[                                                                       ]],
+                  [[                                                                       ]],
+                }
+
+            _Gopts = {
+              position = "center",
+              hl = "Type",
+              -- wrap = "overflow";
+            }
+
+            dashboard.opts.opts.noautocmd = true
+            alpha.setup(dashboard.opts)
+        end
+    };
+  --
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -183,6 +215,9 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
+  -- Nicer window for code actions
+  'nvim-telescope/telescope-ui-select.nvim',
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -201,6 +236,7 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      'nvim-telescope/telescope-ui-select.nvim'
     },
   },
 
@@ -258,7 +294,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = 4
 
 -- Set highlight on search
-vim.o.hlsearch = true
+vim.o.hlsearch = false
 
 -- Do not wrap lines -- JNI addition
 vim.o.wrap = false
@@ -341,10 +377,18 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+            -- even more opts
+      }
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'ui-select')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

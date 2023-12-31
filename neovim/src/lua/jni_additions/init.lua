@@ -44,6 +44,9 @@ M.load = function()
         },
     })
 
+    -- Split to the right by default
+    vim.opt.splitright = true
+
     -- Toggle undotree to <leader>u
     vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 

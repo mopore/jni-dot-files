@@ -25,7 +25,7 @@ if [[ ${#candidates[@]} -eq 0 ]]; then
 # If there's exactly one file
 elif [[ ${#candidates[@]} -eq 1 ]]; then
     choosen_backup_file=${candidates[1]}
-    echo "Found the following backup file: $choosen_backup_file"
+    echo "Found the following backup file(s): $choosen_backup_file"
 # If there's more than one file, use fzf to allow user to select
 else
     choosen_backup_file=$(printf "%s\n" "${candidates[@]}" | fzf --prompt="Choose a backup file: ")
