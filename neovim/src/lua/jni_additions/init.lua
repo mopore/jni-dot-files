@@ -10,10 +10,15 @@ local M = {}
 
 M.load = function()
     -- Setting the Neovim background color to transparent (regardless of the theme)
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'VertSplit', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'Normal', { bg = '#000911' })
+    vim.api.nvim_set_hl(0, 'NormalNC', { bg = '#000911' })
+    vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = '#000911' })
+    vim.api.nvim_set_hl(0, 'VertSplit', { bg = '#000911' })
+    -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'VertSplit', { bg = 'none' })
+    --
     -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
     -- vim.api.nvim_set_hl(0, 'Comment', { bg = 'none' })
     -- vim.api.nvim_set_hl(0, 'Constant', { bg = 'none' })
@@ -36,9 +41,9 @@ M.load = function()
     -- vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = 'none' })
 
     -- Set the line number colors
-    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#7C8795' })
-    vim.api.nvim_set_hl(0, 'LineNr', { fg='#dcb771', bold=true })
-    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#95817C' })
+    vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#7C8795' })
+    vim.api.nvim_set_hl(0, 'LineNr', { fg = '#dcb771', bold = true })
+    vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#95817C' })
 
     -- Setup the comment plugin
     require('Comment').setup({
@@ -79,6 +84,22 @@ M.load = function()
     -- While 'ZZ' is ':wq' and 'ZQ' is ':q!' and 'ZW' should be ':w'
     vim.keymap.set('n', 'ZW', ':w<CR>', { noremap = true, silent = true })
 
+
+    -- Remapping 'Ctrl-w c' to 'Ctrl-w x' for closing the current window
+    vim.api.nvim_set_keymap('n', '<C-w>x', '<C-w>c', {
+        noremap = true,
+        silent = true,
+        desc = 'Close current window',
+    })
+
+    -- Remapping 'Ctrl-w r' to 'Ctrl-w w' for swapping window with the next
+    vim.api.nvim_set_keymap('n', '<C-w>w', '<C-w>r', {
+        noremap = true,
+        silent = true,
+        desc = 'Swap with next window'
+    })
+
+
     -- Lua Copilot Configuration
     require('copilot').setup({
         panel = {
@@ -101,13 +122,13 @@ M.load = function()
             auto_trigger = true,
             debounce = 75,
             keymap = {
-            -- accept = "<M-CR>",  -- Alt + Enter
-            accept = "<S-Tab>",  -- Shift + Tab
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
+                -- accept = "<M-CR>",  -- Alt + Enter
+                accept = "<S-Tab>", -- Shift + Tab
+                accept_word = false,
+                accept_line = false,
+                next = "<M-]>",
+                prev = "<M-[>",
+                dismiss = "<C-]>",
             },
         },
         filetypes = {
@@ -125,6 +146,17 @@ M.load = function()
         server_opts_overrides = {},
     })
 
+
+    -- rcarriga/nvim-notify Configuration
+    -- Renders notification windows
+    vim.notify = require("notify")
+    require("notify").setup({
+        background_colour = "#000911",
+        stages = "fade",  -- Search help for 'noitfy.Config'
+        render = "default",  -- Search help for 'noitity-render'
+    })
+
+
     -- NvimTree Configuration
     -- empty setup using defaults
     require("nvim-tree").setup({
@@ -139,8 +171,21 @@ M.load = function()
             dotfiles = true,
         },
     })
+    local function open_nvim_tree(data)
+        -- buffer is a directory
+        local directory = vim.fn.isdirectory(data.file) == 1
 
-    -- Toggle undotree to <leader>u
+        if not directory then
+            return
+        end
+
+        -- change to the directory
+        vim.cmd.cd(data.file)
+
+        -- open the tree
+        require("nvim-tree.api").tree.open()
+    end
+    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
     vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 end
 

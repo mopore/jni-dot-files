@@ -73,7 +73,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     -- NOTE: First, some plugins that don't require any configuration
 
+    -- JNI Addition (Nice notifications)
+    "rcarriga/nvim-notify",
+
+    -- JNI Addition (Splash Screen)
     {
+
         'goolord/alpha-nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
@@ -294,7 +299,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = 4
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Do not wrap lines -- JNI addition
 vim.o.wrap = false
@@ -565,8 +570,6 @@ local servers = {
 -- Setup neovim lua configuration
 require('neodev').setup()
 
-
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -636,7 +639,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
 
 -- Use my custom plugin "jni additions" to add more customizations.
 --

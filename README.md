@@ -58,7 +58,7 @@ The aim is to get a system quicker configured and gain general productivity.
 k
 | Shortcut               | Description                        |
 | ---------------------- | ---                                |
-| `Ctrl` & `w` + `c`     | Close current window (on top)      |
+| `Ctrl` & `w` + `x`     | Close current window               |
 | `Ctrl` & `w` + h,j,k,l | Move between windows               |
 
 ### Folding
