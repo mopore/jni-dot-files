@@ -1,3 +1,11 @@
+-- This is a local plugin to add more customization to my Neovim setup.
+--
+-- It will be loaded by the main init.lua file like this::
+-- JNI_ADDITIONS = require("jni_additions")
+-- JNI_ADDITIONS.load()
+--
+-- For an example of a remote plugin see https://github.com/mopore/example_lua.nvim
+
 local M = {}
 
 M.load = function()

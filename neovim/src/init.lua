@@ -638,6 +638,12 @@ cmp.setup {
 }
 
 
+-- Use my custom plugin "jni additions" to add more customizations.
+--
+-- The plugin is local to this current and located under 
+-- `<current_directory>/lua/jni_additions/init.lua`
+--
+-- For an example of a remote plugin see https://github.com/mopore/example_lua.nvim
 JNI_ADDITIONS = require("jni_additions")
 JNI_ADDITIONS.load()
 
