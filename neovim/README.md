@@ -31,3 +31,11 @@ current configuration.
 ## Old Vim Config
 The sub directory `imported_from_vim` includes an `init.vim` file representing my former vim config
 as of 2023-08-15. This file is only for lookup and migration purposes present.
+
+## Custom Local Plugin
+This configuration comes with a custom local neovim plugin "jni_additions". This
+plugin encapsulates most of the JNI specific configurations and mappings.
+The plugin also showcases a user command "TestMe" which calls a local program
+"helloworld" (see the corresponding folder) and demonstrates communication via
+JSON as an command line argument (in) and the standard output (out).
+For parsing the JSON an additional library (lunajson) is packages with the plugin.

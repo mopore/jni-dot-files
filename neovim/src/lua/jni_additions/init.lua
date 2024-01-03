@@ -187,6 +187,39 @@ M.load = function()
     end
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
     vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+
+    local function createJsonInput()
+        local person = {name = "Jenso"}
+        -- local jsonInput =  "{\"name\": \"Jens\"}"
+        local lunajson = require("lunajson")
+        local jsonInput = lunajson.encode(person)
+        return jsonInput
+    end
+
+    local function parseJsonOutput(jsonData)
+        local lunajson = require("lunajson")
+        local person = lunajson.decode(jsonData[1])
+        if person == nil or person.name == nil then
+            vim.notify("Invalid JSON")
+            return
+        else
+            local text = "The person's name is " .. person.name
+            vim.notify(text)
+        end
+    end
+
+    local function TestMe()
+        local input_lines = {"helloworld",createJsonInput()}
+        vim.fn.jobstart(input_lines, {
+            stdout_buffered = true,
+            on_stdout = function(_, data)
+                if data then
+                    parseJsonOutput(data)
+                end
+            end,
+        })
+    end
+    vim.api.nvim_create_user_command("TestMe", TestMe, {})
 end
 
 return M
