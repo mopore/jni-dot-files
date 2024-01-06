@@ -4,58 +4,33 @@
 -- JNI_ADDITIONS = require("jni_additions")
 -- JNI_ADDITIONS.load()
 --
+-- This
 -- For an example of a remote plugin see https://github.com/mopore/example_lua.nvim
 
 local M = {}
 
 M.load = function()
+
+    --   ____       _   _   _                 
+    --  / ___|  ___| |_| |_(_)_ __   __ _ ___ 
+    --  \___ \ / _ \ __| __| | '_ \ / _` / __|
+    --   ___) |  __/ |_| |_| | | | | (_| \__ \
+    --  |____/ \___|\__|\__|_|_| |_|\__, |___/
+    --                              |___/     
+    --
     -- Setting the Neovim background color to transparent (regardless of the theme)
     vim.api.nvim_set_hl(0, 'Normal', { bg = '#000911' })
     vim.api.nvim_set_hl(0, 'NormalNC', { bg = '#000911' })
     vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = '#000911' })
     vim.api.nvim_set_hl(0, 'VertSplit', { bg = '#000911' })
-    -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'VertSplit', { bg = 'none' })
-    --
-    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Comment', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Constant', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Special', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Identifier', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Statement', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'PreProc', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Type', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Underlined', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Todo', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'String', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Function', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Conditional', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Repeat', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Operator', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'Structure', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'LineNr', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'NonText', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = 'none' })
 
     -- Set the line number colors
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#7C8795' })
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#dcb771', bold = true })
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#95817C' })
 
-    -- Setup the comment plugin
-    require('Comment').setup({
-        toggler = {
-            ---Line-comment toggle keymap
-            line = '<leader>//',
-        },
-        opleader = {
-            ---Line-comment keymap
-            line = '<leader>/',
-        },
-    })
+    -- Set the search highlight colors
+    vim.api.nvim_set_hl(0, 'Search', { bg = '#6b4e34', fg = '#23211f' })
 
     -- Split to the right by default
     vim.opt.splitright = true
@@ -84,7 +59,6 @@ M.load = function()
     -- While 'ZZ' is ':wq' and 'ZQ' is ':q!' and 'ZW' should be ':w'
     vim.keymap.set('n', 'ZW', ':w<CR>', { noremap = true, silent = true })
 
-
     -- Remapping 'Ctrl-w c' to 'Ctrl-w x' for closing the current window
     vim.api.nvim_set_keymap('n', '<C-w>x', '<C-w>c', {
         noremap = true,
@@ -99,8 +73,61 @@ M.load = function()
         desc = 'Swap with next window'
     })
 
+    -- SOURCING CURRENT FILE WITH <leader>%
+    --
+    vim.keymap.set("n", "<leader>%", ":source %<CR>", { noremap = true, silent = true })
 
-    -- Lua Copilot Configuration
+
+    --    ____          _                    ____                      _     
+    --   / ___|   _ ___| |_ ___  _ __ ___   / ___|  ___  __ _ _ __ ___| |__  
+    --  | |  | | | / __| __/ _ \| '_ ` _ \  \___ \ / _ \/ _` | '__/ __| '_ \ 
+    --  | |__| |_| \__ \ || (_) | | | | | |  ___) |  __/ (_| | | | (__| | | |
+    --   \____\__,_|___/\__\___/|_| |_| |_| |____/ \___|\__,_|_|  \___|_| |_|
+    --
+    -- 1 - Pressing '*' will highlight the current word under the cursor and 
+    -- pressing '*' again will remove the highlight.
+    --
+    -- 2 - When highlighting is enabled, the cursor will NOT jump to the next
+    -- match.
+    --
+    M.jniHighlighted = false
+    function _G.CustomSearch()
+        if not M.jniHighlighted then
+            vim.cmd('normal! *')
+            vim.api.nvim_command('set hlsearch')
+            vim.fn.execute('normal! N')
+            M.jniHighlighted = true
+        else
+            vim.api.nvim_command('set nohlsearch')
+            M.jniHighlighted = false
+        end
+    end
+    vim.keymap.set('n', '*', CustomSearch, { noremap = true, silent = true })
+
+
+    --   ____  _             _           
+    --  |  _ \| |_   _  __ _(_)_ __  ___ 
+    --  | |_) | | | | |/ _` | | '_ \/ __|
+    --  |  __/| | |_| | (_| | | | | \__ \
+    --  |_|   |_|\__,_|\__, |_|_| |_|___/
+    --                 |___/             
+
+    -- COMMENT PLUGIN
+    --
+    require('Comment').setup({
+        toggler = {
+            ---Line-comment toggle keymap
+            line = '<leader>//',
+        },
+        opleader = {
+            ---Line-comment keymap
+            line = '<leader>/',
+        },
+    })
+
+
+    -- GITHUB COPILOT
+    --
     require('copilot').setup({
         panel = {
             enabled = false,
@@ -135,7 +162,7 @@ M.load = function()
             yaml = false,
             markdown = true,
             help = false,
-            gitcommit = false,
+            gitcommit = true,
             gitrebase = false,
             hgcommit = false,
             svn = false,
@@ -145,8 +172,13 @@ M.load = function()
         copilot_node_command = 'node', -- Node.js version must be > 16.x
         server_opts_overrides = {},
     })
+    -- Define a custom color for Copilot suggestions
+    vim.cmd [[
+      highlight CopilotSuggestion guifg=#452e45 ctermfg=8
+    ]]
 
-
+    -- FANCIER NOTIFICATIONS
+    --
     -- rcarriga/nvim-notify Configuration
     -- Renders notification windows
     vim.notify = require("notify")
@@ -157,7 +189,8 @@ M.load = function()
     })
 
 
-    -- NvimTree Configuration
+    -- NVIMTREE CONFIGURATION
+    --
     -- empty setup using defaults
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
@@ -188,6 +221,16 @@ M.load = function()
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
     vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 
+
+    --  _____         _   _             
+    -- |_   _|__  ___| |_(_)_ __   __ _ 
+    --   | |/ _ \/ __| __| | '_ \ / _` |
+    --   | |  __/\__ \ |_| | | | | (_| |
+    --   |_|\___||___/\__|_|_| |_|\__, |
+    --                            |___/ 
+    -- Testing calling an external program and parsing input and outputs
+    -- with JSON
+    --
     local function createJsonInput()
         local person = {name = "Jenso"}
         -- local jsonInput =  "{\"name\": \"Jens\"}"
@@ -220,6 +263,7 @@ M.load = function()
         })
     end
     vim.api.nvim_create_user_command("TestMe", TestMe, {})
+
 end
 
 return M
