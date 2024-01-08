@@ -186,13 +186,20 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- Theme
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
+
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
 
   {
     -- Set lualine as statusline
@@ -202,7 +209,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
@@ -316,11 +323,23 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
+--
+--   ____      _                     _                         
+--  / ___|___ | | ___  _ __ ___  ___| |__   ___ _ __ ___   ___ 
+-- | |   / _ \| |/ _ \| '__/ __|/ __| '_ \ / _ \ '_ ` _ \ / _ \
+-- | |__| (_) | | (_) | |  \__ \ (__| | | |  __/ | | | | |  __/
+--  \____\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___|
+--                                                             
+--
 -- Configure theme style to -- JNI addition
-require('onedark').setup {
-  style = 'warmer'
-}
-require('onedark').load()
+-- require('onedark').setup {
+--   style = 'warmer'
+-- }
+-- require('onedark').load()
+
+vim.cmd.colorscheme "catppuccin"
+  -- Alternatives:
+  -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 
 -- [[ Setting options ]]

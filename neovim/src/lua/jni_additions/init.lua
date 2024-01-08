@@ -29,8 +29,8 @@ M.load = function()
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#dcb771', bold = true })
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#95817C' })
 
-    -- Set the search highlight colors
-    vim.api.nvim_set_hl(0, 'Search', { bg = '#6b4e34', fg = '#23211f' })
+    -- Set the search NOT-highlight colors
+    vim.api.nvim_set_hl(0, 'Search', { bg = '#7a4452', fg = '#23211f' })
 
     -- Split to the right by default
     vim.opt.splitright = true
