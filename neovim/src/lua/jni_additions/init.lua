@@ -36,7 +36,7 @@ M.load = function()
     vim.opt.splitright = true
 
     -- Toggle undotree to <leader>u
-    vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
 
     -- Use 'jj' and 'kk' to escape to normal mode
     vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
@@ -75,8 +75,53 @@ M.load = function()
 
     -- SOURCING CURRENT FILE WITH <leader>%
     --
-    vim.keymap.set("n", "<leader>%", ":source %<CR>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>%", ":source %<CR>", { noremap = true, silent = true, desc = "Source current file" })
 
+
+    --  ____  _  __  __   _   _     _     
+    -- |  _ \(_)/ _|/ _| | |_| |__ (_)___ 
+    -- | | | | | |_| |_  | __| '_ \| / __|
+    -- | |_| | |  _|  _| | |_| | | | \__ \
+    -- |____/|_|_| |_|    \__|_| |_|_|___/
+    --                                    
+    -- DIFFTHIS (built-in)
+    -- Shows the diff of the two currently opened files in vertival splits
+    -- Als necessary to have no other splits open
+    --
+    M.jniDiffedThis = false
+    function _G.DiffThis()
+        if not M.jniDiffedThis then
+
+            -- -- Check if NvimTree would need to be closed so we have only two
+            -- -- windows open.
+            -- local nvim_tree_open = require("nvim-tree.view").is_visible()
+            -- local window_count = vim.api.nvim_list_wins()
+            -- local ready_to_diff = false
+            -- if nvim_tree_open then
+            --     if window_count == 3 then
+            --         -- Close the NvimTree window
+            --         vim.api.nvim_command('NvimTreeClose')
+            --         ready_to_diff = true
+            --     else
+            -- end
+            --     if window_count == 2 then
+            --         ready_to_diff = true
+            --     end
+            -- end
+            -- if not ready_to_diff then
+            --     vim.notify("Please ensure to have only two windows open")
+            --     return
+            -- end
+
+            -- Diff the two windows
+            vim.api.nvim_command('windo diffthis')
+            M.jniDiffedThis = true
+        else
+            vim.api.nvim_command('windo diffoff')
+            M.jniDiffedThis = false
+        end
+    end
+    vim.keymap.set("n", "<leader>dt", DiffThis, { noremap = true, silent = true, desc = "[D]document [D]iff [T]his" })
 
     --    ____          _                    ____                      _     
     --   / ___|   _ ___| |_ ___  _ __ ___   / ___|  ___  __ _ _ __ ___| |__  
@@ -188,7 +233,6 @@ M.load = function()
         render = "default",  -- Search help for 'noitity-render'
     })
 
-
     -- NVIMTREE CONFIGURATION
     --
     -- empty setup using defaults
@@ -219,7 +263,7 @@ M.load = function()
         require("nvim-tree.api").tree.open()
     end
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-    vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+    vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = "Toggle NvimTree" })
 
 
     --  _____         _   _             

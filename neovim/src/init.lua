@@ -71,44 +71,45 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-    -- NOTE: First, some plugins that don't require any configuration
+  -- NOTE: First, some plugins that don't require any configuration
 
-    -- JNI Addition (Nice notifications)
-    "rcarriga/nvim-notify",
+  -- JNI Addition (Nice notifications)
+  "rcarriga/nvim-notify",
 
-    -- JNI Addition (Splash Screen)
-    {
+  -- JNI Addition (Splash Screen)
+  {
 
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function ()
-            local alpha = require("alpha")
-            local dashboard = require("alpha.themes.startify")
-            dashboard.section.header.val = {
-                  [[                                                                       ]],
-                  [[                                                                       ]],
-                  [[                                                                     ]],
-                  [[       ████ ██████           █████      ██                     ]],
-                  [[      ███████████             █████                             ]],
-                  [[      █████████ ███████████████████ ███   ███████████   ]],
-                  [[     █████████  ███    █████████████ █████ ██████████████   ]],
-                  [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
-                  [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-                  [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-                  [[                                                                       ]],
-                  [[                                                                       ]],
-                }
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.startify")
+      dashboard.section.header.val = {
+        [[                                                                       ]],
+        [[                                                                       ]],
+        [[                                                                     ]],
+        [[       ████ ██████           █████      ██                     ]],
+        [[      ███████████             █████                             ]],
+        [[      █████████ ███████████████████ ███   ███████████   ]],
+        [[     █████████  ███    █████████████ █████ ██████████████   ]],
+        [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+        [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+        [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+        [[                                                                       ]],
+        [[                                                                       ]],
+      }
 
-            _Gopts = {
-              position = "center",
-              hl = "Type",
-              -- wrap = "overflow";
-            }
+      _Gopts = {
+        position = "center",
+        hl = "Type",
+        -- wrap = "overflow";
+      }
 
-            dashboard.opts.opts.noautocmd = true
-            alpha.setup(dashboard.opts)
-        end
-    };
+      dashboard.opts.opts.noautocmd = true
+      alpha.setup(dashboard.opts)
+    end
+  },
+
   --
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -138,7 +139,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -162,7 +163,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -176,7 +177,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -204,17 +206,49 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
-    },
+      tabline = {
+        lualine_a = { 'mode' },
+        lualine_b = { { 'filename', path = 3 } },
+        lualine_y = { 'filetype', 'diagnostics' },
+        lualine_z = {'searchcount' },
+      },
+      inactive_tabline = {
+        lualine_a = { 'mode' },
+        lualine_b = { { 'filename', path = 3 } },
+        lualine_y = { 'filetype', 'diagnostics' },
+        lualine_z = {'searchcount' },
+      },
+      -- lualine_a = {},
+      -- lualine_b = { { 'filename', path = 3 } },
+      -- lualine_y = { 'filetype', 'diagnostics' },
+      -- lualine_z = {'filetype', 'diagnostics' },
+      sections = {
+        lualine_a = {},
+        lualine_b = { 'branch', 'diff' },
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = {},
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+      },
+      -- inactive_sections = {
+      --   lualine_a = {},
+      --   lualine_b = {},
+      --   lualine_c = { { 'filename', path = 1 } },
+      --   lualine_x = { 'location' },
+      --   lualine_y = {},
+      --   lualine_z = {}
+      -- },
+      },
   },
 
   {
     -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
-      main = "ibl",
-      opts = {
-       debounce = 100,
-       indent = { char = "┊" },
-      }
+    main = "ibl",
+    opts = {
+      debounce = 100,
+      indent = { char = "┊" },
+    }
   },
 
   -- "gc" to comment visual regions/lines
@@ -284,7 +318,7 @@ require('lazy').setup({
 
 -- Configure theme style to -- JNI addition
 require('onedark').setup {
-    style = 'warmer'
+  style = 'warmer'
 }
 require('onedark').load()
 
@@ -385,7 +419,7 @@ require('telescope').setup {
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
-            -- even more opts
+        -- even more opts
       }
     }
   }
@@ -557,12 +591,12 @@ local servers = {
   -- Add a configuration for pylsp -- JNI addition
   pylsp = {
     pylsp = {
-        plugins = {
-          pycodestyle = {
-            ignore = {'W191'},  -- See: https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
-            maxLineLength = 100
-          }
+      plugins = {
+        pycodestyle = {
+          ignore = { 'W191' }, -- See: https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
+          maxLineLength = 100
         }
+      }
     }
   },
 }
@@ -642,7 +676,7 @@ cmp.setup {
 
 -- Use my custom plugin "jni additions" to add more customizations.
 --
--- The plugin is local to this current and located under 
+-- The plugin is local to this current and located under
 -- `<current_directory>/lua/jni_additions/init.lua`
 --
 -- For an example of a remote plugin see https://github.com/mopore/example_lua.nvim
