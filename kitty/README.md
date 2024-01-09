@@ -14,3 +14,7 @@ This script works only on user level and must not be executed with 'sudo'.
 ## Configuration Overview
 * Ctrl + n creates a new instance
 * Sets MesloLGS NF as default font.
+
+## Installation on MacOS
+- Copy to `~/.local/share/fonts` and 
+- then run `sudo fc-cache -fr`
