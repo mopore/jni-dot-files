@@ -9,12 +9,12 @@ This script works only on user level and must not be executed with 'sudo'.
 * If necessary, a `~/.config/kitty` folder will be created.
 
 ## What you will have to do post installation
-* Install 'MesloLGS NF' fonts (regular, bold, italic, bold italic) as provided in this folder.
-
-## Configuration Overview
-* Ctrl + n creates a new instance
-* Sets MesloLGS NF as default font.
+* Install 'JetBrains Mono' fonts (located in subfolder).
 
 ## Installation on MacOS
 - Copy to `~/.local/share/fonts` and 
 - then run `sudo fc-cache -fr`
+
+## Good to know
+* Ctrl + n creates a new instance
+
