@@ -115,11 +115,13 @@ function webserver() {
 # export VIM=/usr/share/nvim
 if [ -x "$(command -v nvim)" ]; then
 	export EDITOR='nvim'
+	alias v='nvim'
 	alias vim='nvim'
 	alias svim='sudo nvim'
 else
 	if [ -x "$(command -v vim)" ]; then
 		export EDITOR='vim'
+		alias v='vim'
 		alias svim='sudo vim'
 	fi
 fi
