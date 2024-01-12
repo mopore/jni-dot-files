@@ -1,4 +1,4 @@
--- This is a local plugin to add more customization to my Neovim setup.
+-- This is a local plugin to add more customization to my Neovim setup.G e
 --
 -- It will be loaded by the main init.lua file like this::
 -- JNI_ADDITIONS = require("jni_additions")
@@ -149,6 +149,29 @@ M.load = function()
     end
     vim.keymap.set('n', '*', CustomSearch, { noremap = true, silent = true })
 
+    --  _____ _ _        ____                      _     
+    -- |  ___(_) | ___  / ___|  ___  __ _ _ __ ___| |__  
+    -- | |_  | | |/ _ \ \___ \ / _ \/ _` | '__/ __| '_ \ 
+    -- |  _| | | |  __/  ___) |  __/ (_| | | | (__| | | |
+    -- |_|   |_|_|\___| |____/ \___|\__,_|_|  \___|_| |_|
+    --                                                   
+    -- File search with <space>s<space> with Telescope's git_files  if possible
+    -- otherwise use normal file search via Telescope
+    M.vim_entered = function ()
+        -- Check if we are in a git repo
+        local result = vim.fn.system('git rev-parse --is-inside-work-tree 2>/dev/null')
+        local is_git_repo =  "true" == vim.trim(result)
+
+        if is_git_repo then
+            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').git_files, { desc = '[S]earch [space] File[S] (Git)' })
+        else
+            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').find_files, { desc = '[S]earch [space] all File[S]' })
+        end
+    end
+    vim.api.nvim_create_autocmd("VimEnter", {
+        group = vim.api.nvim_create_augroup("JniAdditionsFileSearch", { clear = true }),
+        callback = M.vim_entered
+    })
 
     --   ____  _             _           
     --  |  _ \| |_   _  __ _(_)_ __  ___ 
@@ -169,7 +192,6 @@ M.load = function()
             line = '<leader>/',
         },
     })
-
 
     -- GITHUB COPILOT
     --
@@ -307,7 +329,6 @@ M.load = function()
         })
     end
     vim.api.nvim_create_user_command("TestMe", TestMe, {})
-
 end
 
 return M
