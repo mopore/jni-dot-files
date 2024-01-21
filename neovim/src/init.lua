@@ -618,6 +618,9 @@ local servers = {
       }
     }
   },
+  bashls = {
+    filetypes = { 'sh', 'zsh' },
+  },
 }
 
 -- Setup neovim lua configuration
