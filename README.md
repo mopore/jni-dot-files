@@ -36,15 +36,19 @@ The aim is to get a system quicker configured and gain general productivity.
 ## Neovim Shortcuts
 
 ### Search
-| Shortcut               | Description                        |  
-| ---------------------- | ---                                |
-| `Space` + `Space`      | Show current open files/buffers    |
-| `Ctrl` & `f`           | Search text in current file/buffer |
-| `Space` + `s` + `h`    | Search help                        |
-| `Space` + `s` + `f`    | Search files (by name)             |
-| `Space` + `s` + `g`    | Search files (via grep)            |
-| `Space` + `g` + `f`    | Search in git files                |
-| `Space` + `?`          | Show recently opened files/buffers |
+| Shortcut                | Description                        |  
+| ----------------------- | ---                                |
+| `Space` + `Space`       | Show current open files/buffers    |
+| `Ctrl` & `f`            | Search text in current file/buffer |
+| `Space` + `s` + `h`     | Search help                        |
+| `Space` + `s` + `Space` | Search files (smart)              |
+| `Space` + `s` + `f`     | Search files (by name)             |
+| `Space` + `s` + `g`     | Search files (via grep)            |
+| `Space` + `g` + `f`     | Search in git files                |
+| `Space` + `?`           | Show recently opened files/buffers |
+
+smart search: If the cd is in a git repo, the search is in git file
+search mode otherwise in file search mode.
 
 ### Tabs
 
@@ -55,7 +59,7 @@ The aim is to get a system quicker configured and gain general productivity.
 | `g` + `T`              | Previous tab                       |
 
 ### Windows
-k
+
 | Shortcut               | Description                        |
 | ---------------------- | ---                                |
 | `Ctrl` & `w` + `x`     | Close current window               |
@@ -73,11 +77,10 @@ k
 
 | Shortcut              | Description |
 | --------------------- | --- |
-| `Space` + `s` + `d`   | Show diagnostics |
+| `Space` + `c` + `a`   | "[C]ode [A]ction" - Perform action for issue |
+| `Space` + `s` + `s`   | Search symbols (e.g., props or methods) |
 | `]` + `d`             | Next diagnostics |
 | `[` + `d`             | Prev diagnostics |
-| `Space` + `d` + `s`   | Show symbols in cuttent file | 
-| `Space` + `c` + `a`   | "[C]ode [A]ction" - Perform action for issue |
 | `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
 
 ### LSP Navigation
@@ -90,6 +93,12 @@ k
 | `Alt` & `k`           | Show documentation under cursor |
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
 
+### Diff this
+When two windows are open (side by side) `Space` + `d` + `t` will diff the
+currently opened windows.
+
+
+### Misc
 `:Format` will format the current buffer.
 
 Use `:Telescope keymaps` to show shortcuts.
