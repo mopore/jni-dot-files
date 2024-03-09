@@ -204,5 +204,10 @@ if [ -x "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
 fi
 
+
+# # Optional use "bun" via a docke container
+# # Download the latest bun image: docker pull oven/bun:latest
+# alias bun="docker run -p 8080:8080 --name "bun-temp-runner" --interactive --tty --rm -v $(pwd):/app -w /app oven/bun bun"
+
 # Mac
 # . /usr/local/etc/profile.d/z.sh
