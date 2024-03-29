@@ -31,6 +31,7 @@ ff02::2		    ip6-allrouters
 192.168.199.204 ho.cudaIgnition
 192.168.199.75	ho.neoCutoff
 192.168.199.105	ho.synology
+192.168.199.246	ho.jnimacstudio
 
 # JNI Wireguard
 10.200.0.1 wg.Freedom
