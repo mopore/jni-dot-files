@@ -43,6 +43,7 @@ ff02::2		    ip6-allrouters
 10.200.0.7 wg.HomePiNeo
 10.200.0.8 wg.iPhonePro2020
 10.200.0.9 wg.watchdog
+10.200.0.11 wg.jnimacstudio
 
 # PRODYNA Setup
 10.5.120.136 pd.local.BebbiOfficePi
