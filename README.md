@@ -41,11 +41,12 @@ The aim is to get a system quicker configured and gain general productivity.
 | `Space` + `Space`       | Show current open files/buffers    |
 | `Ctrl` & `f`            | Search text in current file/buffer |
 | `Space` + `s` + `h`     | Search help                        |
-| `Space` + `s` + `Space` | Search files (smart)              |
+| `Space` + `s` + `Space` | Search files (smart)               |
 | `Space` + `s` + `f`     | Search files (by name)             |
 | `Space` + `s` + `g`     | Search files (via grep)            |
 | `Space` + `g` + `f`     | Search in git files                |
 | `Space` + `?`           | Show recently opened files/buffers |
+| `Ctrl` + `v`            | Create a vertical split window     |
 
 smart search: If the cd is in a git repo, the search is in git file
 search mode otherwise in file search mode.
@@ -101,12 +102,16 @@ currently opened windows.
 ### Misc
 `:Format` will format the current buffer.
 
-Use `:Telescope keymaps` to show shortcuts.
+Use `:Telescope keymaps` to show shortcuts / key bindings.
 `:Telescope help_tags` offers a fuzzy find over all help files.
+
+Type `:Lazy` to open the plugin manager.
+Use `u` to update and `i` to install plugins.
+`q` to close the plugin manager.
 
 Type `:Mason` to open install additional language support.
 Use `i` to install and `u` to uninstall.
-
+`q` to close the plugin manager.
 
 ### Comments
 
