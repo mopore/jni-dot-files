@@ -300,6 +300,15 @@ require('lazy').setup({
   },
 
   {
+    -- nvim leap (jump like a cangaroo)
+    "ggandor/leap.nvim",
+    config = function()
+      vim.keymap.set({'n', 'x', 'o'}, '<leader>k',  '<Plug>(leap-backward)', { desc = '[k] leap up ↑', noremap = true, silent = true })
+      vim.keymap.set({'n', 'x', 'o'}, '<leader>j',  '<Plug>(leap-forward)', { desc = '[j] leap down ↓', noremap = true, silent = true })
+    end,
+  },
+
+  {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {

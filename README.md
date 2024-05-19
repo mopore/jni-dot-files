@@ -60,6 +60,14 @@ git file search mode otherwise in file search mode.
 | `Z` + `Q`               | :qa exit only when nothing to save |
 
 
+### Navigation / Leap / Movement
+
+| Shortcut                | Description                        |
+| ----------------------- | ---                                |
+| `Space` + `k` + 2 chars | jump leap up ↑                     |
+| `Space` + `j` + 2 chars | jump leap down ↓                   |
+
+
 ### Windows
 
 | Shortcut               | Description                           |
@@ -238,8 +246,12 @@ pacman -S mdr
 # Release History
 
 ## v1.0.0 (Untagged)
-- Better exit commands
+- Leap jumping w/ leap.nvim
 - Integration of Debugging with DAP for Go
+- Better exit commands
+- Custom functions (smar search and highlighting, etc.)
+- Lua call examples
+- Better Documetation
 
 ## v0.2.0
 - Add Neovim config.
