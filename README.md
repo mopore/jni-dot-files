@@ -35,7 +35,7 @@ The aim is to get a system quicker configured and gain general productivity.
 
 ## Neovim Shortcuts
 
-### Search
+### Search / Views
 | Shortcut                | Description                        |  
 | ----------------------- | ---                                |
 | `Space` + `Space`       | Show current open files/buffers    |
@@ -93,6 +93,19 @@ search mode otherwise in file search mode.
 | `g` + `I`             | Go to implementation(s) |
 | `Alt` & `k`           | Show documentation under cursor |
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
+
+### Debugging (DAP + Go)
+You will need to have `Delve` installed to debug Go code.
+
+| Shortcut                | Description |
+| ----------------------- | --- |
+| `Space` + `d` + `b`     | Set a breakpoint |
+| `Space` + `d` + `Space` | Start session / Continue |
+| `Space` + `d` + `l`     | Step over/next |
+| `Space` + `d` + `j`     | Step into |
+| `Space` + `d` + `k`     | Step out |
+| `Space` + `d` + `x`     | Close session |
+| `Space` + `d` + `r`     | Restart session |
 
 ### Diff this
 When two windows are open (side by side) `Space` + `d` + `t` will diff the
