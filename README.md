@@ -41,30 +41,41 @@ The aim is to get a system quicker configured and gain general productivity.
 | `Space` + `Space`       | Show current open files/buffers    |
 | `Ctrl` & `f`            | Search text in current file/buffer |
 | `Space` + `s` + `h`     | Search help                        |
-| `Space` + `s` + `Space` | Search files (smart)               |
+| `Space` + `s` + `Space` | Search files (\*smart)             |
+| `Space` + `s` + `g`     | Search IN files (via grep)         |
 | `Space` + `s` + `f`     | Search files (by name)             |
-| `Space` + `s` + `g`     | Search files (via grep)            |
 | `Space` + `g` + `f`     | Search in git files                |
 | `Space` + `?`           | Show recently opened files/buffers |
-| `Ctrl` + `v`            | Create a vertical split window     |
 
-smart search: If the cd is in a git repo, the search is in git file
-search mode otherwise in file search mode.
+\* smart search: If the current directory is in a git repo, the search is in 
+git file search mode otherwise in file search mode.
 
-### Tabs
 
-| Shortcut               | Description                        |
-| ---------------------- | ---                                |
-| `Ctrl` & `t`           | Open in Tab                        |
-| `g` + `t`              | Next tab                           |
-| `g` + `T`              | Previous tab                       |
+### Exiting
+
+| Shortcut                | Description                        |  
+| ----------------------- | ---                                |
+| `Z` + `Z`               | :wa :wq Save all & exit            |
+| `Z` + `Q`               | :qa exit only when nothing to save |
+
 
 ### Windows
 
-| Shortcut               | Description                        |
-| ---------------------- | ---                                |
-| `Ctrl` & `w` + `x`     | Close current window               |
-| `Ctrl` & `w` + h,j,k,l | Move between windows               |
+| Shortcut               | Description                           |
+| ---------------------- | ---                                   |
+| `Ctrl` + `v`           | Vertical split from file under cursor |
+| `Ctrl` & `w` + `x`     | Close current window                  |
+| `Ctrl` & `w` + h,j,k,l | Move between windows                  |
+
+
+### Tabs
+
+| Shortcut               | Description                           |
+| ---------------------- | ---                                   |
+| `Ctrl` & `t`           | Open in Tab                           |
+| `g` + `t`              | Next tab                              |
+| `g` + `T`              | Previous tab                          |
+
 
 ### Folding
 
@@ -73,6 +84,7 @@ search mode otherwise in file search mode.
 | `z` + `f`              | Create new folding zone            |
 | `z` + `a`              | Toggle folding zone                |
 | `z` + `d`              | Delete folding zone                |
+
 
 ### LSP Diagnostics
 
@@ -84,6 +96,7 @@ search mode otherwise in file search mode.
 | `[` + `d`             | Prev diagnostics |
 | `Space` + `r` + `n`   | [R]e[n]ame all references of symbol under cursor |
 
+
 ### LSP Navigation
 
 | Shortcut              | Description |
@@ -93,6 +106,7 @@ search mode otherwise in file search mode.
 | `g` + `I`             | Go to implementation(s) |
 | `Alt` & `k`           | Show documentation under cursor |
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
+
 
 ### Debugging (DAP + Go)
 You will need to have `Delve` installed to debug Go code.
@@ -106,6 +120,8 @@ You will need to have `Delve` installed to debug Go code.
 | `Space` + `d` + `k`     | Step out |
 | `Space` + `d` + `x`     | Close session |
 | `Space` + `d` + `r`     | Restart session |
+| `Space` + `d` + `?`     | Inspect variable under cursor |
+
 
 ### Diff this
 When two windows are open (side by side) `Space` + `d` + `t` will diff the
@@ -125,6 +141,7 @@ Use `u` to update and `i` to install plugins.
 Type `:Mason` to open install additional language support.
 Use `i` to install and `u` to uninstall.
 `q` to close the plugin manager.
+
 
 ### Comments
 
@@ -153,9 +170,10 @@ Besides browsing offers many options to manipulate files and folders.
 | `Space` + `e`         | Toggle nvim-tree window |
 | `g` + `?`             | Show Keymappings |
 | `Ctrl` & `t`          | Open in new tab  |
-| `Ctrl` & `v`          | Open in left & right split  |
-| `Ctrl` & `x`          | Open in up & down split |
+| `Ctrl` & `v`          | Open in left & right split - vertical split  |
+| `Ctrl` & `x`          | Open in up & down split - horizontal spplit |
 | `Enter`               | Enters file |
+| `a`                   | Add file or directory (with trailing `/`) |
 
 
 ### Fugitive (Git Plugin)

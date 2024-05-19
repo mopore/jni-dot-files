@@ -327,7 +327,7 @@ M.load = function()
         function()
           ui.eval(nil, { enter = true })
         end,
-      { desc = '[D]ebug [?] inspect under cursor ' }
+      { desc = '[D]ebug [?] inspect under cursor' }
     )
 
 
