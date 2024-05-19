@@ -310,7 +310,9 @@ M.load = function()
     if not delvePresent then
         vim.notify(
             "Delve is missing for debugging Go programs.\n" ..
-            "Install with: pacman -S delve",
+            "Install with:\n" ..
+            "pacman -S delve\n" ..
+            "brew install delve",
             vim.log.levels.ERROR,
             { title = "Delve not found" }
         )
