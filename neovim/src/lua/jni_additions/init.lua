@@ -56,8 +56,14 @@ M.load = function()
     vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true, silent = true })
     vim.keymap.set('n', 'J', 'mzJ`z', { noremap = true, silent = true })
 
-    -- While 'ZZ' is ':wq' and 'ZQ' is ':q!' and 'ZW' should be ':w'
-    vim.keymap.set('n', 'ZW', ':w<CR>', { noremap = true, silent = true })
+    -- | Shortcut                | Description                        |
+    -- | ----------------------- | ---                                |
+    -- | `Z` + `Z`               | :wa :qa Save all & exit            |
+    -- | `Z` + `W`               | :wa Save all                       |
+    -- | `Z` + `Q`               | :qa exit only when nothing to save |
+    vim.keymap.set('n', 'ZZ', ':wa<CR>:qa<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', 'ZW', ':wa<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', 'ZQ', ':qa<CR>', { noremap = true, silent = true })
 
     -- Remapping 'Ctrl-w c' to 'Ctrl-w x' for closing the current window
     vim.api.nvim_set_keymap('n', '<C-w>x', '<C-w>c', {

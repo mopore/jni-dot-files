@@ -53,9 +53,10 @@ git file search mode otherwise in file search mode.
 
 ### Exiting
 
-| Shortcut                | Description                        |  
+| Shortcut                | Description                        |
 | ----------------------- | ---                                |
-| `Z` + `Z`               | :wa :wq Save all & exit            |
+| `Z` + `Z`               | :wa :qa Save all & exit            |
+| `Z` + `W`               | :wa Save all                       |
 | `Z` + `Q`               | :qa exit only when nothing to save |
 
 
