@@ -237,12 +237,15 @@ pacman -S mdr
 
 # Release History
 
+## v1.0.0 (Untagged)
+- Better exit commands
+- Integration of Debugging with DAP for Go
+
 ## v0.2.0
 - Add Neovim config.
 - Add configuration for kitty.
 - Remove neovim from vim configuration.
 - Update readme files.
-
 
 ## v0.1.0
 - Vim configuration added.
