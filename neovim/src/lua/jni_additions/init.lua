@@ -121,7 +121,7 @@ M.load = function()
             M.jniDiffedThis = false
         end
     end
-    vim.keymap.set("n", "<leader>dt", DiffThis, { noremap = true, silent = true, desc = "[D]document [D]iff [T]his" })
+    vim.keymap.set("n", "<leader>dt", DiffThis, { noremap = true, silent = true, desc = "[D]iff [T]hese 2 files" })
 
     --    ____          _                    ____                      _     
     --   / ___|   _ ___| |_ ___  _ __ ___   / ___|  ___  __ _ _ __ ___| |__  
@@ -163,9 +163,9 @@ M.load = function()
         local is_git_repo =  "true" == vim.trim(result)
 
         if is_git_repo then
-            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').git_files, { desc = '[S]earch [space] File[S] (Git)' })
+            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').git_files, { desc = '[S]earch [space] git repo files' })
         else
-            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').find_files, { desc = '[S]earch [space] all File[S]' })
+            vim.keymap.set('n', '<leader>s<space>', require('telescope.builtin').find_files, { desc = '[S]earch [space] files' })
         end
     end
     vim.api.nvim_create_autocmd("VimEnter", {
@@ -182,16 +182,7 @@ M.load = function()
 
     -- COMMENT PLUGIN
     --
-    require('Comment').setup({
-        toggler = {
-            ---Line-comment toggle keymap
-            line = '<leader>//',
-        },
-        opleader = {
-            ---Line-comment keymap
-            line = '<leader>/',
-        },
-    })
+    require('Comment').setup()
 
     -- GITHUB COPILOT
     --
@@ -301,6 +292,44 @@ M.load = function()
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
     vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = "Toggle NvimTree" })
 
+--   ____    _    ____    ____       _                       _             
+--  |  _ \  / \  |  _ \  |  _ \  ___| |__  _   _  __ _  __ _(_)_ __   __ _ 
+--  | | | |/ _ \ | |_) | | | | |/ _ \ '_ \| | | |/ _` |/ _` | | '_ \ / _` |
+--  | |_| / ___ \|  __/  | |_| |  __/ |_) | |_| | (_| | (_| | | | | | (_| |
+--  |____/_/   \_\_|     |____/ \___|_.__/ \__,_|\__, |\__, |_|_| |_|\__, |
+--                                               |___/ |___/         |___/ 
+    -- For debugging w/ Go Lang you need "Delve" installed.
+    -- The executable is called "dlv"
+    local delvePresent = vim.fn.executable('dlv') == 1
+    if not delvePresent then
+        vim.notify(
+            "Delve is missing for debugging Go programs.\n" ..
+            "Install with: pacman -S delve",
+            vim.log.levels.ERROR,
+            { title = "Delve not found" }
+        )
+    end
+
+    local dap = require('dap')
+    local ui = require('dapui')
+
+    vim.keymap.set( 'n', '<leader>db', dap.toggle_breakpoint, { desc = '[D]ebug [B] toggle breakpoint' })
+    vim.keymap.set( 'n', '<leader>d<space>', dap.continue, { desc = '[D]ebug [space] start/continue' })
+    vim.keymap.set( 'n', '<leader>dr', dap.restart, { desc = '[D]ebug [r] RESTART' })
+    vim.keymap.set( 'n', '<leader>dj', dap.step_into, { desc = '[D]ebug [j] step into' })
+    vim.keymap.set( 'n', '<leader>dl', dap.step_over, { desc = '[D]ebug [l] step over' })
+    vim.keymap.set( 'n', '<leader>dk', dap.step_out, { desc = '[D]ebug [k] step out' })
+    vim.keymap.set( 'n', '<leader>dx', dap.disconnect, { desc = '[D]ebug [x] CLOSE' })
+
+    vim.keymap.set(
+      'n',
+      '<leader>d?',
+        function()
+          ui.eval(nil, { enter = true })
+        end,
+      { desc = '[D]ebug [?] inspect under cursor ' }
+    )
+
 
     --  _____         _   _             
     -- |_   _|__  ___| |_(_)_ __   __ _ 
@@ -331,7 +360,9 @@ M.load = function()
         end
     end
 
-    local function TestMe()
+    local function ReadWriteExternal()
+        local external_program = "helloworld"
+
         -- This test requires an external program "helloworld" which receives 
         -- an input string and returns a JSON string.
         --
@@ -341,7 +372,7 @@ M.load = function()
         -- Output:
         -- {"name": "Jens"}
         --
-        local input_lines = {"helloworld",createJsonInput()}
+        local input_lines = {external_program,createJsonInput()}
         vim.fn.jobstart(input_lines, {
             stdout_buffered = true,
             on_stdout = function(_, data)
@@ -350,6 +381,12 @@ M.load = function()
                 end
             end,
         })
+    end
+    vim.api.nvim_create_user_command("ReadWriteExternal", ReadWriteExternal, {})
+
+
+    local function TestMe()
+        vim.notify("I am here to get called.", vim.log.levels.INFO, { title = "TestMe" })
     end
     vim.api.nvim_create_user_command("TestMe", TestMe, {})
 end

@@ -308,19 +308,46 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+--   ____    _    ____    ____       _                       _             
+--  |  _ \  / \  |  _ \  |  _ \  ___| |__  _   _  __ _  __ _(_)_ __   __ _ 
+--  | | | |/ _ \ | |_) | | | | |/ _ \ '_ \| | | |/ _` |/ _` | | '_ \ / _` |
+--  | |_| / ___ \|  __/  | |_| |  __/ |_) | |_| | (_| | (_| | | | | | (_| |
+--  |____/_/   \_\_|     |____/ \___|_.__/ \__,_|\__, |\__, |_|_| |_|\__, |
+--                                               |___/ |___/         |___/ 
+-- 
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "leoluz/nvim-dap-go",
+      "nvim-neotest/nvim-nio",
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      local dap = require('dap')
+      local ui = require('dapui')
+      local virttext = require('nvim-dap-virtual-text')
+      local go = require('dap-go')
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+      dap.listeners.before.attach.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        ui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        ui.close()
+      end
+      go.setup()
+      ui.setup()
+      virttext.setup({})
+
+    end
+  },
 }, {})
 
 --
