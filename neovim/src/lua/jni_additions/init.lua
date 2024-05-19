@@ -250,9 +250,23 @@ M.load = function()
     -- Renders notification windows
     vim.notify = require("notify")
     require("notify").setup({
+        top_down = false,
         background_colour = "#000911",
         stages = "fade",  -- Search help for 'noitfy.Config'
-        render = "default",  -- Search help for 'noitity-render'
+        render = "default",  -- Search help for 'notity-render'
+        level = 2,
+        timeout = 5000,
+        icons = {
+          DEBUG = "",
+          ERROR = "",
+          INFO = "",
+          TRACE = "✎",
+          WARN = ""
+        },
+        time_formats = {
+          notification = "%T",
+          notification_history = "%FT%T"
+        },
     })
 
     -- NVIMTREE CONFIGURATION
@@ -318,6 +332,15 @@ M.load = function()
     end
 
     local function TestMe()
+        -- This test requires an external program "helloworld" which receives 
+        -- an input string and returns a JSON string.
+        --
+        -- Call:
+        -- helloworld "{\"name\": \"Jens\"}"
+        --
+        -- Output:
+        -- {"name": "Jens"}
+        --
         local input_lines = {"helloworld",createJsonInput()}
         vim.fn.jobstart(input_lines, {
             stdout_buffered = true,
