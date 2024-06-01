@@ -385,7 +385,7 @@ vim.cmd.colorscheme "catppuccin"
 -- Set default tabstop to 4 -- JNI addition
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.o.expandtab = 4
+vim.o.expandtab = true
 
 -- Set highlight on search
 vim.o.hlsearch = true
