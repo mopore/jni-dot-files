@@ -38,6 +38,9 @@
 # alias dattach='docker attach --sig-proxy=false'
 # printf "Docker attach:\t\tdattach <containername>\n"
 
+# Alias to show UTC time
+alias utc='date -u +%Y-%m-%dT%H:%M:%SZ  # Current date and time in UTC and ISO 8601'
+
 # Kubernetes
 alias k='kubectl'
 

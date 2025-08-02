@@ -311,8 +311,7 @@ M.load = function()
         vim.notify(
             "Delve is missing for debugging Go programs.\n" ..
             "Install with:\n" ..
-            "pacman -S delve\n" ..
-            "brew install delve",
+            "go install github.com/go-delve/delve/cmd/dlv@latest",
             vim.log.levels.ERROR,
             { title = "Delve not found" }
         )
