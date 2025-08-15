@@ -110,23 +110,6 @@ require('lazy').setup({
     end
   },
 
-  --
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
-  -- Lua Version of Github Copilot -- JNI addition
-  'zbirenbaum/copilot.lua',
-
-  -- Surround plugin -- JNI addition
-  'tpope/vim-surround',
-
-  -- Undotree
-  'mbbill/undotree',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -145,6 +128,23 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+
+  --
+  -- Git related plugins
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
+  -- Lua Version of Github Copilot -- JNI addition
+  'zbirenbaum/copilot.lua',
+
+  -- Surround plugin -- JNI addition
+  'tpope/vim-surround',
+
+  -- Undotree
+  'mbbill/undotree',
 
   {
     -- Autocompletion
@@ -356,6 +356,19 @@ require('lazy').setup({
       virttext.setup({})
 
     end
+  },
+  {
+    --- Plugin to spawn a neovim iframe for a text field
+    ---
+    --  _____ _                     _           
+    -- |  ___(_)_ __ ___ _ ____   _(_)_ __ ___  
+    -- | |_  | | '__/ _ \ '_ \ \ / / | '_ ` _ \ 
+    -- |  _| | | | |  __/ | | \ V /| | | | | | |
+    -- |_|   |_|_|  \___|_| |_|\_/ |_|_| |_| |_|
+    --                                          
+    ---
+    'glacambre/firenvim',
+    build = ":call firenvim#install(0)"
   },
 }, {})
 
@@ -635,7 +648,7 @@ local servers = {
   gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  tsserver = {},
+  ts_ls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -667,23 +680,44 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
+
+
+local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
+-- Use setup_handlers if available, otherwise fall back to a simple loop
+if type(mason_lspconfig.setup_handlers) == 'function' then
+  mason_lspconfig.setup_handlers({
+    function(server_name)
+      require('lspconfig')[server_name].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      })
+    end,
+  })
+else
+  -- Older mason-lspconfig: configure servers directly
+  for server_name, _ in pairs(servers) do
+    local cfg = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
+    -- Only setup if lspconfig knows the server (avoids nil indexing)
+    if require('lspconfig')[server_name] then
+      require('lspconfig')[server_name].setup(cfg)
+    end
   end
-}
+end
+
+
+
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -731,6 +765,21 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+}
+
+-- [[ Configure Firenvim ]]
+--
+vim.g.firenvim_config = {
+    globalSettings = { alt = "all" },
+    localSettings = {
+        [".*"] = {
+            cmdline  = "neovim",
+            content  = "text",
+            priority = 0,
+            selector = "textarea",
+            takeover = "never"
+        }
+    }
 }
 
 -- Use my custom plugin "jni additions" to add more customizations.
