@@ -1,3 +1,9 @@
+-- Lunajson is a pure Lua JSON library.
+--
+-- You can encode and decode JSON data using the `lunajson` module.
+--
+-- See my usage example in "jnni_additions/init.lua"
+--
 local newdecoder = require 'lunajson.decoder'
 local newencoder = require 'lunajson.encoder'
 local sax = require 'lunajson.sax'

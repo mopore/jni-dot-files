@@ -70,11 +70,12 @@ git file search mode otherwise in file search mode.
 
 ### Windows
 
-| Shortcut               | Description                           |
-| ---------------------- | ---                                   |
-| `Ctrl` + `v`           | Vertical split from file under cursor |
-| `Ctrl` & `w` + `x`     | Close current window                  |
-| `Ctrl` & `w` + h,j,k,l | Move between windows                  |
+| Shortcut                     | Description                           |
+| ---------------------------- | ---                                   |
+| `Ctrl` + `v`                 | Vertical split from file under cursor |
+| `Ctrl` & `w` + `Ctrl` & `q`  | Close current window                  |
+| `Ctrl` & `w` + h,j,k,l       | Move between windows                  |
+| `Ctrl` & `w` + `Ctrl` & `w`  | Move to next window                   |
 
 
 ### Tabs
