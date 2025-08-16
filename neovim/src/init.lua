@@ -217,13 +217,13 @@ require('lazy').setup({
         lualine_a = { 'mode' },
         lualine_b = { { 'filename', path = 3 } },
         lualine_y = { 'filetype', 'diagnostics' },
-        lualine_z = {'searchcount' },
+        lualine_z = { 'searchcount' },
       },
       inactive_tabline = {
         lualine_a = { 'mode' },
         lualine_b = { { 'filename', path = 3 } },
         lualine_y = { 'filetype', 'diagnostics' },
-        lualine_z = {'searchcount' },
+        lualine_z = { 'searchcount' },
       },
       -- lualine_a = {},
       -- lualine_b = { { 'filename', path = 3 } },
@@ -245,7 +245,7 @@ require('lazy').setup({
       --   lualine_y = {},
       --   lualine_z = {}
       -- },
-      },
+    },
   },
 
   {
@@ -287,12 +287,12 @@ require('lazy').setup({
   },
 
 
---  _   ___     _____ __  __   _____              
--- | \ | \ \   / /_ _|  \/  | |_   _| __ ___  ___ 
--- |  \| |\ \ / / | || |\/| |   | || '__/ _ \/ _ \
--- | |\  | \ V /  | || |  | |   | || | |  __/  __/
--- |_| \_|  \_/  |___|_|  |_|   |_||_|  \___|\___|
---                                                
+  --  _   ___     _____ __  __   _____
+  -- | \ | \ \   / /_ _|  \/  | |_   _| __ ___  ___
+  -- |  \| |\ \ / / | || |\/| |   | || '__/ _ \/ _ \
+  -- | |\  | \ V /  | || |  | |   | || | |  __/  __/
+  -- |_| \_|  \_/  |___|_|  |_|   |_||_|  \___|\___|
+  --
   {
     -- nvim-tree (A file explorer)
     "nvim-tree/nvim-tree.lua",
@@ -308,19 +308,21 @@ require('lazy').setup({
 
   {
 
---      _                                 
---     | |_   _ _ __ ___  _ __   ___ _ __ 
---  _  | | | | | '_ ` _ \| '_ \ / _ \ '__|
--- | |_| | |_| | | | | | | |_) |  __/ |   
---  \___/ \__,_|_| |_| |_| .__/ \___|_|   
---                       |_|              
+    --      _
+    --     | |_   _ _ __ ___  _ __   ___ _ __
+    --  _  | | | | | '_ ` _ \| '_ \ / _ \ '__|
+    -- | |_| | |_| | | | | | | |_) |  __/ |
+    --  \___/ \__,_|_| |_| |_| .__/ \___|_|
+    --                       |_|
     --
     -- Use leader, type the first to chars and the appearing marked character to jump to that character.
     -- nvim leap (jump like a cangaroo)
     "ggandor/leap.nvim",
     config = function()
-      vim.keymap.set({'n', 'x', 'o'}, '<leader>k',  '<Plug>(leap-backward)', { desc = '[k] leap up ↑', noremap = true, silent = true })
-      vim.keymap.set({'n', 'x', 'o'}, '<leader>j',  '<Plug>(leap-forward)', { desc = '[j] leap down ↓', noremap = true, silent = true })
+      vim.keymap.set({ 'n', 'x', 'o' }, '<leader>k', '<Plug>(leap-backward)',
+        { desc = '[k] leap up ↑', noremap = true, silent = true })
+      vim.keymap.set({ 'n', 'x', 'o' }, '<leader>j', '<Plug>(leap-forward)',
+        { desc = '[j] leap down ↓', noremap = true, silent = true })
     end,
   },
 
@@ -334,13 +336,13 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
---   ____    _    ____    ____       _                       _             
---  |  _ \  / \  |  _ \  |  _ \  ___| |__  _   _  __ _  __ _(_)_ __   __ _ 
---  | | | |/ _ \ | |_) | | | | |/ _ \ '_ \| | | |/ _` |/ _` | | '_ \ / _` |
---  | |_| / ___ \|  __/  | |_| |  __/ |_) | |_| | (_| | (_| | | | | | (_| |
---  |____/_/   \_\_|     |____/ \___|_.__/ \__,_|\__, |\__, |_|_| |_|\__, |
---                                               |___/ |___/         |___/ 
--- 
+  --   ____    _    ____    ____       _                       _
+  --  |  _ \  / \  |  _ \  |  _ \  ___| |__  _   _  __ _  __ _(_)_ __   __ _
+  --  | | | |/ _ \ | |_) | | | | |/ _ \ '_ \| | | |/ _` |/ _` | | '_ \ / _` |
+  --  | |_| / ___ \|  __/  | |_| |  __/ |_) | |_| | (_| | (_| | | | | | (_| |
+  --  |____/_/   \_\_|     |____/ \___|_.__/ \__,_|\__, |\__, |_|_| |_|\__, |
+  --                                               |___/ |___/         |___/
+  --
   {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -371,18 +373,17 @@ require('lazy').setup({
       go.setup()
       ui.setup()
       virttext.setup({})
-
     end
   },
   {
     --- Plugin to spawn a neovim iframe for a text field
     ---
-    --  _____ _                     _           
-    -- |  ___(_)_ __ ___ _ ____   _(_)_ __ ___  
-    -- | |_  | | '__/ _ \ '_ \ \ / / | '_ ` _ \ 
+    --  _____ _                     _
+    -- |  ___(_)_ __ ___ _ ____   _(_)_ __ ___
+    -- | |_  | | '__/ _ \ '_ \ \ / / | '_ ` _ \
     -- |  _| | | | |  __/ | | \ V /| | | | | | |
     -- |_|   |_|_|  \___|_| |_|\_/ |_|_| |_| |_|
-    --                                          
+    --
     ---
     'glacambre/firenvim',
     build = ":call firenvim#install(0)"
@@ -390,12 +391,12 @@ require('lazy').setup({
 }, {})
 
 --
---   ____      _                     _                         
---  / ___|___ | | ___  _ __ ___  ___| |__   ___ _ __ ___   ___ 
+--   ____      _                     _
+--  / ___|___ | | ___  _ __ ___  ___| |__   ___ _ __ ___   ___
 -- | |   / _ \| |/ _ \| '__/ __|/ __| '_ \ / _ \ '_ ` _ \ / _ \
 -- | |__| (_) | | (_) | |  \__ \ (__| | | |  __/ | | | | |  __/
 --  \____\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___|
---                                                             
+--
 --
 -- Configure theme style to -- JNI addition
 -- require('onedark').setup {
@@ -404,17 +405,17 @@ require('lazy').setup({
 -- require('onedark').load()
 
 vim.cmd.colorscheme "catppuccin"
-  -- Alternatives:
-  -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- Alternatives:
+-- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
 
 --
---  _____    _                                
--- |_   _|__| | ___  ___  ___ ___  _ __   ___ 
+--  _____    _
+-- |_   _|__| | ___  ___  ___ ___  _ __   ___
 --   | |/ _ \ |/ _ \/ __|/ __/ _ \| '_ \ / _ \
 --   | |  __/ |  __/\__ \ (_| (_) | |_) |  __/
 --   |_|\___|_|\___||___/\___\___/| .__/ \___|
---                                |_|         
+--                                |_|
 --
 --
 -- See `:help telescope` and `:help telescope.setup()`
@@ -461,12 +462,12 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 
 
---  _____                   _ _   _            
--- |_   _| __ ___  ___  ___(_) |_| |_ ___ _ __ 
+--  _____                   _ _   _
+-- |_   _| __ ___  ___  ___(_) |_| |_ ___ _ __
 --   | || '__/ _ \/ _ \/ __| | __| __/ _ \ '__|
---   | || | |  __/  __/\__ \ | |_| ||  __/ |   
---   |_||_|  \___|\___||___/_|\__|\__\___|_|   
---                                             
+--   | || | |  __/  __/\__ \ | |_| ||  __/ |
+--   |_||_|  \___|\___||___/_|\__|\__\___|_|
+--
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
@@ -534,15 +535,17 @@ require('nvim-treesitter.configs').setup {
 }
 
 
---  _     ____  ____  
--- | |   / ___||  _ \ 
+--  _     ____  ____
+-- | |   / ___||  _ \
 -- | |   \___ \| |_) |
--- | |___ ___) |  __/ 
--- |_____|____/|_|    
---                    
+-- | |___ ___) |  __/
+-- |_____|____/|_|
+--
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
+    print("LSP started.");
+
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -584,6 +587,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
 end
 
 -- Enable the following language servers
@@ -631,52 +635,21 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local mason_lspconfig = require('mason-lspconfig')
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
--- Use setup_handlers if available, otherwise fall back to a simple loop
-if type(mason_lspconfig.setup_handlers) == 'function' then
-  mason_lspconfig.setup_handlers({
-    function(server_name)
-      require('lspconfig')[server_name].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      })
-    end,
-  })
-else
-  -- Older mason-lspconfig: configure servers directly
-  for server_name, _ in pairs(servers) do
-    local cfg = {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-    -- Only setup if lspconfig knows the server (avoids nil indexing)
-    if require('lspconfig')[server_name] then
-      require('lspconfig')[server_name].setup(cfg)
-    end
+for server_name, _ in pairs(servers) do
+  local cfg = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = servers[server_name],
+    filetypes = (servers[server_name] or {}).filetypes,
+  }
+  -- Only setup if lspconfig knows the server (avoids nil indexing)
+  if require('lspconfig')[server_name] then
+    require('lspconfig')[server_name].setup(cfg)
   end
 end
+
 
 require("config.plugins").load()
 require("config.settings").load()
 require("config.keymap").load()
-
--- Use my custom plugin "jni additions" to add more customizations.
---
--- The plugin is local to this current and located under
--- `<current_directory>/lua/jni_additions/init.lua`
---
--- For an example of a remote plugin see https://github.com/mopore/example_lua.nvim
---
--- If you want to reuse ths plugin:
--- JNI_ADDITIONS = require("jni_additions")
--- JNI_ADDITIONS.load()
 require("jni_additions").load()
