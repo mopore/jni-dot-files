@@ -78,6 +78,28 @@ M.load = function()
         }
     }
 
+    -- Indent-Blankline
+    --
+    require("ibl").setup({
+        indent = {
+            -- char = "│",
+            -- highlight = "LineNr",
+            -- show_trailing_blankline_indent = false,
+            -- show_first_indent_level = false,
+        },
+        scope = {
+            enabled = true,
+            show_start = false,
+            show_end = false,
+        },
+        exclude = {
+            filetypes = { "help", "dashboard", "packer", "NvimTree" },
+            buftypes = { "terminal" },
+        },
+    })
+
+
+
     -- COMMENT PLUGIN
     --
     require('Comment').setup()

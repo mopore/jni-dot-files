@@ -544,7 +544,7 @@ require('nvim-treesitter.configs').setup {
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-    print("LSP started.");
+    print("LSP connected.");
 
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -649,7 +649,7 @@ for server_name, _ in pairs(servers) do
 end
 
 
-require("config.plugins").load()
-require("config.settings").load()
-require("config.keymap").load()
+require("config.0_plugins").load()
+require("config.1_settings").load()
+require("config.2_keymap").load()
 require("jni_additions").load()

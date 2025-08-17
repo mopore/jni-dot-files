@@ -13,14 +13,16 @@ M.load = function()
     -- See `:help vim.o`
     -- NOTE: You can change these options as you wish!
 
-    -- Set default tabstop to 4 -- JNI addition
+    vim.o.expandtab = false -- Use real tabs instead of spaces
     vim.o.tabstop = 4
     vim.o.shiftwidth = 4
     vim.o.softtabstop = 4
-    vim.o.expandtab = true
 
     -- Set highlight on search
     vim.o.hlsearch = true
+
+    -- Rounded borders
+    vim.o.winborder = 'rounded'
 
     -- Do not wrap lines -- JNI addition
     vim.o.wrap = false
