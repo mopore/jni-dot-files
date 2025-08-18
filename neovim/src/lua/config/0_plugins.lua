@@ -133,7 +133,7 @@ M.load = function()
                 accept_line = false,
                 next = "<M-]>",
                 prev = "<M-[>",
-                dismiss = "<C-]>",
+                dismiss = "<C-[>",
             },
         },
         filetypes = {
