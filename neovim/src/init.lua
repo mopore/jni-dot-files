@@ -388,6 +388,23 @@ require('lazy').setup({
     'glacambre/firenvim',
     build = ":call firenvim#install(0)"
   },
+
+  {
+    --- Plugin to pick a currently open buffer
+    --  ____        _            
+    -- / ___| _ __ (_)_ __   ___ 
+    -- \___ \| '_ \| | '_ \ / _ \
+    --  ___) | | | | | |_) |  __/
+    -- |____/|_| |_|_| .__/ \___|
+    --               |_|         
+    "leath-dub/snipe.nvim",
+    keys = {
+      {"<leader><space>", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
+    },
+    opts = {}
+  }
+
+
 }, {})
 
 --
@@ -443,7 +460,7 @@ pcall(require('telescope').load_extension, 'ui-select')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+-- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 -- Fuzzy search in current file (was '<leader>/') -- JNI addtion
 vim.keymap.set('n', '<c-f>', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.

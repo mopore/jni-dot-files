@@ -27,6 +27,7 @@ Supported configurations:
 * Vim [README](./vim/README.md)
 * alacritty [README](./alacritty/README.md)
 
+
 # Motivation
 The aim is to get a system quicker configured and gain general productivity.
 
@@ -38,17 +39,29 @@ The aim is to get a system quicker configured and gain general productivity.
 ### Search / Views
 | Shortcut                | Description                        |  
 | ----------------------- | ---                                |
-| `Space` + `Space`       | Show current open files/buffers    |
+| `Space` + `Space`       | Show open buffers (\* snipe)       |
 | `Ctrl` & `f`            | Search text in current file/buffer |
 | `Space` + `s` + `h`     | Search help                        |
-| `Space` + `s` + `Space` | Search files (\*smart)             |
+| `Space` + `s` + `Space` | Search files (\*\* smart)          |
 | `Space` + `s` + `g`     | Search IN files (via grep)         |
 | `Space` + `s` + `f`     | Search files (by name)             |
 | `Space` + `g` + `f`     | Search in git files                |
 | `Space` + `?`           | Show recently opened files/buffers |
 
-\* smart search: If the current directory is in a git repo, the search is in 
+\* snipe (plugin) config is described below.
+\*\* smart search: If the current directory is in a git repo, the search is in 
 git file search mode otherwise in file search mode.
+
+
+### Snipe (Buffer/File Switcher)
+
+| Shortcut                | Description                        |  
+| ----------------------- | ---                                |
+| `k`                     | Select buffer up                   |
+| `j`                     | Select buffer down                 |
+| `q`                     | Close under cursor                 |
+| `\|`                    | Split vertically w/ under cursor   |
+| `-`                     | Split horizontally w/ under cursor |
 
 
 ### Exiting

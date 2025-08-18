@@ -13,6 +13,8 @@ M.load = function()
     -- See `:help vim.o`
     -- NOTE: You can change these options as you wish!
 
+    vim.o.cursorline = true -- Highlight the current line
+
     vim.o.expandtab = false -- Use real tabs instead of spaces
     vim.o.tabstop = 4
     vim.o.shiftwidth = 4
