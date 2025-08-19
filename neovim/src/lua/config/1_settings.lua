@@ -20,6 +20,14 @@ M.load = function()
     vim.o.shiftwidth = 4
     vim.o.softtabstop = 4
 
+    --  Not that the settings above can be overridden by a .editorconfig file
+    --  
+    --  Such a file is also placed in this project's `src` directory:
+    --     [*.lua]
+    --     indent_style = space
+    --     indent_size = 2
+
+
     -- Set highlight on search
     vim.o.hlsearch = true
 
