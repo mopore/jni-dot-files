@@ -45,7 +45,7 @@ M.load = function()
     vim.o.showtabline = 2
 
     -- Show a column after x digits -- JNI addition
-    vim.o.colorcolumn = "80"
+    vim.o.colorcolumn = "100"
 
     -- Enable mouse mode
     vim.o.mouse = 'a'
@@ -106,6 +106,9 @@ M.load = function()
 
     -- Set the search NOT-highlight colors
     vim.api.nvim_set_hl(0, 'Search', { bg = '#7a4452', fg = '#23211f' })
+
+  -- Set the color column (the indicator after 80/100 characters)
+    vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#100819' })  -- very dark purple
 
     -- Split to the right by default
     vim.opt.splitright = true
