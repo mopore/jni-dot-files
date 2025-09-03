@@ -28,8 +28,9 @@ M.load = function()
     vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
 
     -- Use 'jj' and 'kk' to escape to normal mode
-    vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
-    vim.keymap.set('i', 'kk', '<Esc>', { noremap = true, silent = true })
+    vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+    -- vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
+    -- vim.keymap.set('i', 'kk', '<Esc>', { noremap = true, silent = true })
 
     -- Split line under current cursor with Shift + K (Capital)
     vim.keymap.set('n', 'K', 'i<CR><Esc>k$', { noremap = true, silent = true })
