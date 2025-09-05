@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 wezterm.on("format-window-title", function()
   -- return "  wezterm"
-  return "λ wezterm"
+  return "λ - hack!"
 end)
 
 local c = wezterm.config_builder()
