@@ -7,6 +7,9 @@ end)
 
 local c = wezterm.config_builder()
 
+-- c.enable_wayland = false -- If you want window decorations
+-- c.front_end = "OpenGL"  -- Needed for Arch VM on Apple Silicon
+
 c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 18.0
 c.window_close_confirmation = 'NeverPrompt'
