@@ -5,17 +5,19 @@ wezterm.on("format-window-title", function()
   return "λ wezterm"
 end)
 
-local config = wezterm.config_builder()
+local c = wezterm.config_builder()
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 18.0
-config.window_close_confirmation = 'NeverPrompt'
+c.font = wezterm.font("JetBrainsMono Nerd Font")
+c.font_size = 18.0
+c.window_close_confirmation = 'NeverPrompt'
 
-config.window_background_opacity = 0.9
-config.text_background_opacity = 1.0
-config.macos_window_background_blur = 20
+c.window_background_opacity = 0.9
+c.text_background_opacity = 1.0
+c.macos_window_background_blur = 20
 
-config.colors = {
+c.enable_tab_bar = false
+
+c.colors = {
 foreground = "#D9E0EE",
     background = "#000911",
     cursor_bg = "#D9E0EE",
@@ -47,13 +49,8 @@ foreground = "#D9E0EE",
 
 }
 
-
-
-config.enable_tab_bar = false
--- config.window_decorations = "RESIZE"
-
 -- Fullscreen toggle with Super+Enters
-config.keys = {
+c.keys = {
 	{
 		key = "Enter",
 		mods = "CMD",
@@ -61,12 +58,10 @@ config.keys = {
 	},
 }
 
-config.exit_behavior = "Close"
+c.exit_behavior = "Close"
 
 -- Use the following to launch tmux on startup
 -- /bin/zsh -c "tmux attach"
-config.default_prog = {"/opt/homebrew/bin/tmux", "attach"}
+c.default_prog = {"/opt/homebrew/bin/tmux", "attach"}
 
-
-
-return config
+return c
