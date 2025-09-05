@@ -1,11 +1,14 @@
 local wezterm = require("wezterm")
 
 wezterm.on("format-window-title", function()
-  -- return "  wezterm"
+  -- return "  - hack!"  -- for real arch
   return "λ wezterm"
 end)
 
 local c = wezterm.config_builder()
+
+-- c.enable_wayland = false -- If you want window decorations
+-- c.front_end = "OpenGL"  -- Needed for Arch VM on Apple Silicon
 
 c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 18.0
