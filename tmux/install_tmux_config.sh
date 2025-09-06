@@ -21,13 +21,16 @@ if ! command -v tmux >/dev/null 2>&1 ; then
 fi
 
 # Set up tmux config
-if [ -f "~/.tmux.conf" ] ; then
+if [ -f "${HOME}/tmux.conf" ] ; then
     # Remove old Tmux config as backup to current folder
     mv ~/.tmux.conf ~/tmux.conf.backup
 fi
 curl -fLo ./tmux.conf https://raw.githubusercontent.com/mopore/jni-dot-files/main/tmux/tmux.conf
-mv ./tmux.conf ~/.tmux.conf
+mv ./tmux.conf "${HOME}/.tmux.conf"
+
+# Install TMUX Plugin Manager
+git clone https://github.com/tmux-plugins/tpm "${HOME}/.tmux/plugins/tpm"
 
 clear
-echo "Tmux is read! Start with 'tmux a'."
+echo "Tmux is ready! Start with 'tmux a'."
 exit 0

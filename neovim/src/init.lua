@@ -5,7 +5,6 @@
 =====================================================================
 
 Kickstart.nvim is *not* a distribution.
-
 Kickstart.nvim is a template for your own configuration.
   The goal is that you can read every line of code, top-to-bottom, understand
   what your configuration is doing, and modify it to suit your needs.
@@ -428,6 +427,31 @@ require('lazy').setup({
     config = function(_, opts) require("fine-cmdline").setup(opts) end,
   },
 
+  {
+    --  _____ __  __ _   ___  __  _   _             _             _             
+    -- |_   _|  \/  | | | \ \/ / | \ | | __ ___   _(_) __ _  __ _| |_ ___  _ __ 
+    --   | | | |\/| | | | |\  /  |  \| |/ _` \ \ / / |/ _` |/ _` | __/ _ \| '__|
+    --   | | | |  | | |_| |/  \  | |\  | (_| |\ V /| | (_| | (_| | || (_) | |   
+    --   |_| |_|  |_|\___//_/\_\ |_| \_|\__,_| \_/ |_|\__, |\__,_|\__\___/|_|   
+    --                                                |___/                     
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  }
+
 }, {})
 
 --
@@ -667,7 +691,6 @@ local servers = {
     filetypes = { 'sh', 'zsh' },
   },
 }
-
 
 -- Setup neovim lua configuration
 require('neodev').setup()

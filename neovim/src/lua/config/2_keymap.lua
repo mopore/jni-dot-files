@@ -9,6 +9,16 @@ local M = {}
 
 M.load = function()
 
+
+    vim.keymap.set('n', '<c-h>', ':TmuxNavigateLeft<CR>', { silent = true} )
+    vim.keymap.set('n', '<c-j>', ':TmuxNavigateDown<CR>', { silent = true} )
+    vim.keymap.set('n', '<c-k>', ':TmuxNavigateUp<CR>', { silent = true} )
+    vim.keymap.set('n', '<c-l>', ':TmuxNavigateRight<CR>', { silent = true} )
+    -- vim.keymap.set('n', '<c-h>', ':wincmd h<CR>', { silent = true} )
+    -- vim.keymap.set('n', '<c-j>', ':wincmd j<CR>', { silent = true} )
+    -- vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', { silent = true} )
+    -- vim.keymap.set('n', '<c-l>', ':wincmd l<CR>', { silent = true} )
+
     -- Keymaps for better default experience
     -- See `:help vim.keymap.set()`
     vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
