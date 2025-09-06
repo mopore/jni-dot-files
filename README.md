@@ -13,7 +13,6 @@
 Source for ASCII-fonts: https://www.coolgenerator.com/ascii-text-generator
 (Font: Delta Corps Priest 1
 
-
 # What is this?
 This repository holds my personal dot config files to configure and/or install my favorite apps.
 It also includes a script to setup my shell environment with ZSH, Oh my ZSH! and PowerLevel10k.
@@ -79,6 +78,17 @@ git file search mode otherwise in file search mode.
 | ----------------------- | ---                                |
 | `Space` + `k` + 2 chars | jump leap up ↑                     |
 | `Space` + `j` + 2 chars | jump leap down ↓                   |
+
+### GitHub Copilot
+
+Suggestion come only when requested by "next suggestion" or "previous suggestion".
+
+| Shortcut                | Description                        |
+| ----------------------- | ---                                |
+| `Shift` & `Tab`         | Accept current suggestion          |
+| `Alt` & `[`             | Next suggestions                   |
+| `Alt` & `]`             | Previous suggestion                |
+| `Ctrl` & `[`            | Dismiss                            |
 
 
 ### Windows

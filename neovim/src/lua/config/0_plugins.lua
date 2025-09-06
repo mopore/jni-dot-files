@@ -104,30 +104,18 @@ M.load = function()
     require('Comment').setup()
 
 
-    -- GITHUB COPILOT
+    -- GITHUB COPILOT (Lua edition by zbirenbaum/copilot.lua)
     --
     require('copilot').setup({
+        -- The 'panel' could show previews.
         panel = {
             enabled = false,
-            -- auto_refresh = false,
-            -- keymap = {
-            --   jump_prev = "[[",
-            --   jump_next = "]]",
-            --   accept = "<CR>",
-            --   refresh = "gr",
-            --   open = "<M-CR>"
-            -- },
-            -- layout = {
-            --   position = "bottom", -- | top | left | right
-            --   ratio = 0.4
-            -- },
         },
         suggestion = {
             enabled = true,
-            auto_trigger = true,
+            auto_trigger = false,
             debounce = 75,
             keymap = {
-                -- accept = "<M-CR>",  -- Alt + Enter
                 accept = "<S-Tab>", -- Shift + Tab
                 accept_word = false,
                 accept_line = false,
