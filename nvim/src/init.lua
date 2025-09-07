@@ -19,7 +19,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require("config.0_lazy").load()
-require("config.1_plugin_conf").load()
+require("config.1_lsp_cmp_config").load()
 require("config.2_settings").load()
 require("config.3_keymap").load()
 require("jni_additions").load()

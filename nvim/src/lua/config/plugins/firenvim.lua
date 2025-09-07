@@ -11,9 +11,20 @@ return {
     ---
     'glacambre/firenvim',
     enabled = true,
-    build = ":call firenvim#install(0)"
-    -- config = function()
-    --   -- To be exectute for setup
-    -- end,
+    build = ":call firenvim#install(0)",
+    config = function()
+      vim.g.firenvim_config = {
+        globalSettings = { alt = "all" },
+        localSettings = {
+          [".*"] = {
+            cmdline  = "neovim",
+            content  = "text",
+            priority = 0,
+            selector = "textarea",
+            takeover = "never"
+          }
+        }
+      }
+    end,
   },
 }

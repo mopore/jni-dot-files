@@ -180,7 +180,8 @@ M.load = function()
         local external_program = "helloworld"
 
         -- This test requires an external program "helloworld" which receives 
-        -- an input string and returns a JSON string.
+        -- an input string and returns a JSON string. This program is available
+        -- in the base "nvim" directory down path of this file.
         --
         -- Call:
         -- helloworld "{\"name\": \"Jens\"}"
