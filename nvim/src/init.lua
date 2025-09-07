@@ -18,8 +18,7 @@ I hope you enjoy your Neovim journey,
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require("config.0_lazy").load()
-require("config.1_lsp_cmp_config").load()
-require("config.2_settings").load()
-require("config.3_keymap").load()
-require("jni_additions").load()
+require("config.0_lazy_bootstrap").load()
+require("config.1_settings").load()
+require("config.2_keymaps").load()
+require("custom.jni_additions").load()
