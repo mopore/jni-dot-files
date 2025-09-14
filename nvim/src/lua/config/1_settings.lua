@@ -55,6 +55,19 @@ M.load = function()
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
   vim.o.clipboard = 'unnamedplus'
+  -- OSC 52 is natively supported by Neovim since v0.10 and allows copying to the clipboard 
+  -- which (when running in a TMUX session) can be propagated to the TMUX host.
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
 
   -- Enable break indent
   vim.o.breakindent = true
