@@ -34,8 +34,9 @@ function ask_user() {
 function deploy() {
 	rm -rf "$NEO_VIM_CONFIG_PATH"
 	mkdir -p "$NEO_VIM_CONFIG_PATH"
-	cp -rv src/* "$NEO_VIM_CONFIG_PATH"
-	cp -rv src/.* "$NEO_VIM_CONFIG_PATH"  # Copy hidden files like .editorconfig and .luarc.json 
+
+	# Copies evertyhing (inclduing hidden files like .editorconfig and .luarc.json)
+	cp -av "${ORIGINAL_DIR}/src/." "$NEO_VIM_CONFIG_PATH/"  
 }
 
 
