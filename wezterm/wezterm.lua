@@ -18,6 +18,8 @@ wezterm.on("gui-startup", function(cmd)
   window:gui_window():set_position(pos_x, pos_y)
   window:gui_window():set_inner_size(win_w, win_h)
 end)
+
+
 local c = wezterm.config_builder()
 
 -- c.enable_wayland = false -- If you want window decorations on Wayland (switch to X11)
