@@ -20,7 +20,14 @@ return {
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = 'super-tab' },
+      keymap = {
+        preset = 'default',
+        -- Customizations
+        ['<C-k>'] = false, -- Disable to not interfere with tmux navigation
+        ['<Right>'] = { 'accept', 'fallback' },
+        ['<Enter>'] = { 'accept', 'fallback' },
+        ['<Esc>'] = { 'hide', 'fallback' },
+      },
 
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
