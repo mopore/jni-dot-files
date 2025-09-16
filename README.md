@@ -185,9 +185,12 @@ Use `i` to install and `u` to uninstall.
 
 
 ### Surround-Plugin 
-https://github.com/tpope/vim-surround
-* Visualize a word and press `S` + `"` to surround it with `"`.
-* To chance an existing surrounding with () to [] , press `c` + `s` + `(` + `[`.
+
+| Shortcut                    | Description |
+| --------------------------- | --- |
+| Visualize + `S` + character | Add surrounding of "character" |
+| `c` + `s` + character       | Change surrounding of "character" |
+| `d` + `s` + character       | Delete surrounding of "character" |
 
 
 ### Undotree
