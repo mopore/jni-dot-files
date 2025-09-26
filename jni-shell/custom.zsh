@@ -38,6 +38,9 @@
 # alias dattach='docker attach --sig-proxy=false'
 # printf "Docker attach:\t\tdattach <containername>\n"
 
+# kill the fzf searched process - needs fzf works on Linux and Mac
+alias killfzf="ps -u $USER -o pid,comm | fzf | awk '{print $1}' | xargs -r kill"
+
 # Alias to show UTC time
 alias utc='date -u +%Y-%m-%dT%H:%M:%SZ  # Current date and time in UTC and ISO 8601'
 
