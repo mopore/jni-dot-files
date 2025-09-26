@@ -5,6 +5,21 @@ wezterm.on("format-window-title", function()
   return "λ - hack!"
 end)
 
+
+-- Track fullscreen state
+wezterm.on("window-resized", function(window, _)
+  local overrides = window:get_config_overrides() or {}
+  if window:get_dimensions().is_full_screen then
+    overrides.window_background_opacity = 1.0
+    overrides.macos_window_background_blur = nil
+  else
+    overrides.window_background_opacity = 0.9
+    overrides.macos_window_background_blur = 20
+  end
+  window:set_config_overrides(overrides)
+end)
+
+
 -- Place and size the window on startup
 wezterm.on("gui-startup", function(cmd)
   local _, _, window = wezterm.mux.spawn_window(cmd or {})
