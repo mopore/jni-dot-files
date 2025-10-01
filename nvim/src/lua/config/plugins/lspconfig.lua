@@ -1,130 +1,109 @@
 return {
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
+    -- Core LSP (no more require('lspconfig').X.setup)
+    "neovim/nvim-lspconfig",
     enabled = true,
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
+      -- Mason moved orgs + v2 behavior
+      { "mason-org/mason.nvim", config = true },
+      { "mason-org/mason-lspconfig.nvim", opts = {} },
 
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      -- Status / UI extras
+      { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      -- Better Lua-runtime typing
+      "folke/neodev.nvim",
+      -- your completion
+      "saghen/blink.cmp",
     },
+
     config = function()
-      -- [[ Configure LSP ]]
-      --  This function gets run when an LSP connects to a particular buffer.
+      -- Your on_attach is unchanged
       local on_attach = function(_, bufnr)
-        print("LSP connected.");
-
-        -- NOTE: Remember that lua is a real programming language, and as such it is possible
-        -- to define small helper and utility functions so you don't have to repeat yourself
-        -- many times.
-        --
-        -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
+        print("LSP connected.")
         local nmap = function(keys, func, desc)
-          if desc then
-            desc = 'LSP: ' .. desc
-          end
-
-          vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+          if desc then desc = "LSP: " .. desc end
+          vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
         end
 
-        nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-        nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+        nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+        nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+        nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+        nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+        nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+        nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+        nmap("<leader>ss", require("telescope.builtin").lsp_document_symbols, "[S]earch [S]ymbols")
+        nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+        nmap("<M-k>", vim.lsp.buf.hover, "Hover Documentation")
+        nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+        nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+        nmap("<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "[W]orkspace [L]ist Folders")
 
-        nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-        nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-        nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols')
-        nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-        -- See `:help K` for why this keymap
-        -- Change the hover documentation from 'K' to 'Alt' and 'k' -- JNI addition
-        nmap('<M-k>', vim.lsp.buf.hover, 'Hover Documentation')
-        nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-        -- Lesser used LSP functionality
-        nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-        nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-        nmap('<leader>wl', function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, '[W]orkspace [L]ist Folders')
-
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-          vim.lsp.buf.format()
-        end, { desc = 'Format current buffer with LSP' })
-
+        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_) vim.lsp.buf.format() end,
+          { desc = "Format current buffer with LSP" })
       end
 
-      -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-      --
-      --  Add any additional override configuration in the following tables. They will be passed to
-      --  the `settings` field of the server config. You must look up that documentation yourself.
-      --
-      --  If you want to override the default filetypes that your language server will attach to you can
-      --  define the property 'filetypes' to the map in question.
-      local servers = {
-        -- clangd = {},
-        gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        ts_ls = {},
-        -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+      -- neodev first
+      require("neodev").setup()
 
+      -- Capabilities (blink.cmp)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+      -- Your servers (same content you had)
+      local servers = {
+        gopls = {},
+        ts_ls = {},
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
           },
         },
-        -- Add a configuration for pylsp -- JNI addition
         pylsp = {
           pylsp = {
             plugins = {
               pycodestyle = {
-                ignore = { 'W191' }, -- See: https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
-                maxLineLength = 100
-              }
-            }
-          }
+                ignore = { "W191" },
+                maxLineLength = 100,
+              },
+            },
+          },
         },
         bashls = {
-          filetypes = { 'sh', 'zsh' },
+          filetypes = { "sh", "zsh" },
         },
       }
 
-      -- Setup neovim lua configuration
-      require('neodev').setup()
-
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- TODO Remove these lines of commented code when blink.cmp works as a replacement 
-      -- for nvim-cmp:
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-      for server_name, _ in pairs(servers) do
-        local cfg = {
+      -- (Optional) set defaults for every LSP via wildcard
+      -- This is neat in 0.11+ and keeps per-server blocks minimal.
+      if vim.fn.has("nvim-0.11") == 1 and vim.lsp and vim.lsp.config then
+        vim.lsp.config("*", {
           capabilities = capabilities,
           on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        }
-        -- Only setup if lspconfig knows the server (avoids nil indexing)
-        if require('lspconfig')[server_name] then
-          require('lspconfig')[server_name].setup(cfg)
-        end
+        })
       end
 
+      -- Define/override each server's config (0.11 API)
+      for name, s in pairs(servers) do
+        vim.lsp.config(name, {
+          -- wildcard defaults above will merge into this
+          settings = s,                      -- your server-specific settings
+          filetypes = s and s.filetypes,     -- allow overriding filetypes
+        })
+      end
+
+      -- Mason v2: install + auto-enable servers
+      -- (mason-lspconfig will call vim.lsp.enable() for installed servers)
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_enable = true, -- default; shown here for clarity
+      })
+
+      -- If you prefer to control enablement yourself, disable automatic_enable and do:
+      -- for name, _ in pairs(servers) do vim.lsp.enable(name) end
     end,
   },
 }
