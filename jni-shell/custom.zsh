@@ -41,6 +41,10 @@
 # kill the fzf searched process - needs fzf works on Linux and Mac
 alias killfzf="ps -u $USER -o pid,comm | fzf | awk '{print $1}' | xargs -r kill"
 
+# Less typing for lazydocker and lazygit
+alias ldocker='lazydocker'
+alias lgit='lazygit'
+
 # Alias to show UTC time
 alias utc='date -u +%Y-%m-%dT%H:%M:%SZ  # Current date and time in UTC and ISO 8601'
 
