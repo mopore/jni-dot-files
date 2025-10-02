@@ -1,0 +1,44 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never
+gui:
+  theme:
+    lightTheme: false
+
+    # Borders
+    activeBorderColor:
+      - "#7aa2f7" # bright blue
+      - bold
+    inactiveBorderColor:
+      - "#565f89" # subtle gray-blue
+
+    # Selected lines / ranges
+    selectedLineBgColor:
+      - "#2e3c64" # deep navy highlight
+    selectedRangeBgColor:
+      - "#3b4261"
+
+    # Commit markers
+    cherryPickedCommitBgColor:
+      - "#bb9af7" # violet
+    cherryPickedCommitFgColor:
+      - "#7aa2f7"
+
+    # Status colors
+    unstagedChangesColor:
+      - "#f7768e" # red
+    stagedChangesColor:
+      - "#9ece6a" # green
+    defaultFgColor:
+      - "#c0caf5" # foreground text
+
+    # Extras
+    searchingActiveBorderColor:
+      - "#e0af68" # yellow search highlight
+    optionsTextColor:
+      - "#7dcfff" # cyan
+    inactiveBorderTitleColor:
+      - "#565f89"
+    activeBorderTitleColor:
+      - "#7aa2f7"
