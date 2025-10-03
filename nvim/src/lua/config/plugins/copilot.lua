@@ -45,6 +45,24 @@ return {
       vim.cmd [[
       highlight CopilotSuggestion guifg=#88aa88 ctermfg=8
       ]]
+
+      --
+      -- Custom keymap to toggle auto trigger
+      --
+      -- After a recent change (2025-10) triggering the "next word" did not seem
+      -- to automatically acitivate makeing the plugin starting to make a suggestion.
+      -- 
+      vim.keymap.set(
+        'n',
+        '<leader>cc',
+        function()
+          local copilot = require('copilot.suggestion')
+          copilot.toggle_auto_trigger()
+          local state = (vim.b.copilot_suggestion_auto_trigger) and "enabled" or "disabled"
+          vim.notify("Copilot auto trigger: " .. state)
+        end,
+        { desc = '[C]opilot [c]toggle auto trigger' }
+      )
     end,
   },
 }

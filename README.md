@@ -81,14 +81,15 @@ git file search mode otherwise in file search mode.
 
 ### GitHub Copilot
 
-Suggestion come only when requested by "next suggestion" or "previous suggestion".
+Suggestion come only when requested by toggleling it on.
 
-| Shortcut                | Description                        |
-| ----------------------- | ---                                |
-| `Shift` & `Tab`         | Accept current suggestion          |
-| `Alt` & `[`             | Next suggestions                   |
-| `Alt` & `]`             | Previous suggestion                |
-| `Ctrl` & `[`            | Dismiss                            |
+| Shortcut                | Description                               |
+| ----------------------- | ---                                       |
+| `Space` + `c` + `c`     | Toogle inline suggestions (default: "off" |
+| `Shift` & `Tab`         | Accept current suggestion                 |
+| `Alt` & `[`             | Next suggestions                          |
+| `Alt` & `]`             | Previous suggestion                       |
+| `Ctrl` & `[`            | Dismiss                                   |
 
 
 ### Windows
