@@ -112,7 +112,7 @@ c.default_prog = {"/usr/bin/tmux", "new", "-A", "-s", "main"}
 
 -- For MacOS, tmux installed via brew is in /opt/homebrew/bin/tmux
 -- Attach to existing tmux session if existing otherwise create a new one
--- c.default_prog = {"/usr/homebrew/bin/tmux", "new", "-A", "-s", "main"}
+-- c.default_prog = {"/opt/homebrew/bin/tmux", "new", "-A", "-s", "main"}
 
 
 --[[
