@@ -91,19 +91,29 @@ c.keys = {
   },
 }
 
-c.exit_behavior = "Close"
+-- Fullscreen toggle with Super+Enters
+c.keys = {
+	{
+		key = "Enter",
+		mods = "CMD",
+		action = wezterm.action.ToggleFullScreen,
+	},
+}
+
+c.exit_behavior = "Close" -- Avoid confirmation dialog on window close
+
 
 -- Use the following to launch tmux on startup
--- /bin/zsh -c "tmux attach"
-c.default_prog = {"/usr/bin/tmux", "attach"}
+-- Attach to existing tmux session if existing otherwise create a new one
+c.default_prog = {"/usr/bin/tmux", "new", "-A", "-s", "main"}
 
 -- For MacOS, tmux installed via brew is in /opt/homebrew/bin/tmux
--- c.default_prog = {"/usr/homebrew/bin/tmux", "attach"}
+-- Attach to existing tmux session if existing otherwise create a new one
+-- c.default_prog = {"/usr/homebrew/bin/tmux", "new", "-A", "-s", "main"}
 
 
 --[[
 -- Example for using general lua code
-
 local time = os.date("%Y-%m-%d %H:%M:%S")
 local file = io.open("/home/jni/time.txt", "w")
 
@@ -114,6 +124,5 @@ else
   file:close()
 end
 --]]
-
 
 return c
