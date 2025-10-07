@@ -40,6 +40,9 @@ local c = wezterm.config_builder()
 -- c.enable_wayland = false -- If you want window decorations on Wayland (switch to X11)
 -- c.front_end = "OpenGL"  -- Needed for Arch VM on Apple Silicon
 
+c.initial_rows = 40
+c.initial_cols = 120
+
 c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 18.0  -- Highly dependent on your monitor DPI
 c.window_close_confirmation = 'NeverPrompt'
