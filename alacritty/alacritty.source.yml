@@ -407,7 +407,7 @@ shell:
   program: /bin/zsh
   args:
     - -c
-    - tmux attach
+    - tmux new -A -s main
 
 # Startup directory
 #
