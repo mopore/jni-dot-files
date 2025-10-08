@@ -232,8 +232,11 @@ To push use `:G push`.
 | `Ctrl` & `a` + `x`        | Close current pane |
 | `Ctrl` & `a` + `z`        | Toggle current pane is 100% |
 | `Ctrl` & `a` + h,j,k,l    | Move to pane in direction |
-| `Ctrl` & `a` + h,j,k,l    | Resizing: Move boder in direction |
+| `Ctrl` & `a` + H,J,K,L    | Resizing: Move boder in direction (use shift) |
 | `Ctrl` & `a` + `Space`    | Toggle layouts |
+| `Ctrl` & `a` + `c`        | Create a new window |
+| `Alt` & `h` or `l`        | Move to window to the left or right |
+| `Ctrl` & `a` + `s`        | Attach to an existing session |
 
 
 # Setup
