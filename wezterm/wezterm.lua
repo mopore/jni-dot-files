@@ -20,19 +20,19 @@ wezterm.on("window-resized", function(window, _)
 end)
 
 
--- Place and size the window on startup
-wezterm.on("gui-startup", function(cmd)
-  local _, _, window = wezterm.mux.spawn_window(cmd or {})
-  local screen_w = 3440
-  local screen_h = 1440
-  local win_w = 1219
-  local win_h = 1295
-  local pos_x = math.floor((screen_w - win_w) / 2)
-  local pos_y = math.floor((screen_h - win_h) / 2) + 45
-
-  window:gui_window():set_position(pos_x, pos_y)
-  window:gui_window():set_inner_size(win_w, win_h)
-end)
+-- -- Place and size the window on startup
+-- wezterm.on("gui-startup", function(cmd)
+--   local _, _, window = wezterm.mux.spawn_window(cmd or {})
+--   local screen_w = 3440
+--   local screen_h = 1440
+--   local win_w = 1219
+--   local win_h = 1295
+--   local pos_x = math.floor((screen_w - win_w) / 2)
+--   local pos_y = math.floor((screen_h - win_h) / 2) + 45
+--
+--   window:gui_window():set_position(pos_x, pos_y)
+--   window:gui_window():set_inner_size(win_w, win_h)
+-- end)
 
 
 local c = wezterm.config_builder()
