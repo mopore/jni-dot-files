@@ -10,24 +10,20 @@ local M = {}
 
 M.load = function()
 
-  -- [[ Setting options ]]
-  -- See `:help vim.o`
-  -- NOTE: You can change these options as you wish!
-
-  vim.o.cursorline = true -- Highlight the current line
-
   vim.o.expandtab = false -- Use real tabs instead of spaces
   vim.o.tabstop = 4
   vim.o.shiftwidth = 4
   vim.o.softtabstop = 4
-
-  --  Not that the settings above can be overridden by a .editorconfig file
+  --
+  --  Note: Above settings can be overridden by a .editorconfig file
   --  
   --  Such a file is also placed in this project's `src` directory:
   --     [*.lua]
   --     indent_style = space
   --     indent_size = 2
 
+  -- Highlight the current line
+  vim.o.cursorline = true
 
   -- Set highlight on search
   vim.o.hlsearch = true
@@ -86,18 +82,12 @@ M.load = function()
   vim.o.updatetime = 250
   vim.o.timeoutlen = 300
 
-  -- Set completeopt to have a better completion experience
   vim.o.completeopt = 'menuone,noselect'
 
-  -- NOTE: You should make sure your terminal supports this
   vim.o.termguicolors = true
 
-  -- Copilot -- JNI addition
-  -- Discard current suggestion with <C-]>
-  -- vim.keymap.set('n', '<leader>/',':Copilot status<CR>', { noremap = true, silent = true })
-
-  -- [[ Highlight on yank ]]
-  -- See `:help vim.highlight.on_yank()`
+  -- Highlight on yank
+  -- 
   local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
   vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
@@ -105,6 +95,15 @@ M.load = function()
     end,
     group = highlight_group,
     pattern = '*',
+  })
+
+  -- Ensure systemd filetype is triggered by file postfix
+  --
+  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = { "*.service", "*.socket", "*.target", "*.timer" },
+    callback = function()
+      vim.bo.filetype = "systemd"
+    end,
   })
 
   -- Setting the Neovim background color to transparent (regardless of the theme)
