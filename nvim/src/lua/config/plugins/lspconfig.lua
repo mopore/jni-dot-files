@@ -19,19 +19,18 @@ return {
 
     config = function()
 
-      -- neodev first
-      require("neodev").setup()
-
       -- Capabilities (blink.cmp)
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      -- Your servers (same content you had)
       local servers = {
         gopls = {},
         ts_ls = {},
         lua_ls = {
           Lua = {
-            workspace = { checkThirdParty = false },
+            runtime = { version = "LuaJIT" },
+            workspace = {
+              checkThirdParty = false,
+            },
             telemetry = { enable = false },
           },
         },
