@@ -76,8 +76,28 @@ return {
       vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch all [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+      -- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+      --
+      -- TODO: Check if the following lines are a good alternative to the standard live_grep which ignores new, changed 
+      -- and unstaged files
+      --
+      -- This version 
+      -- - Includes tracked + modified files
+      -- - Includes new, uningnored files
+      -- - Excludes .gitingore files
+      -- - will stil use rg as default (if available and not changed)
+      vim.keymap.set('n', '<leader>sg', function()
+        local tracked = vim.fn.systemlist('git ls-files')
+        local unstaged = vim.fn.systemlist('git ls-files --others --exclude-standard')
+        local files = vim.list_extend(tracked, unstaged)
+
+        require('telescope.builtin').live_grep({
+          search_dirs = files,
+        })
+      end, { desc = '[S]earch by [G]rep (tracked + unstaged)' })
+
     end,
   },
 }
