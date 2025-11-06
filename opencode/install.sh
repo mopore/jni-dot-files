@@ -17,3 +17,7 @@ cp ./config.json "$OPEN_CODE_CONFIG_DIR/config.json"
 cp -r ./agent "$OPEN_CODE_CONFIG_DIR/agent"
 
 echo "OpenCode configuration has been installed!"
+echo
+echo "Use: \"opencode auth login\" to login with GitHub"
+echo "Use: \"opencode --continue\" to continue last session"
+echo "Use: \"opencode run < instructions.md\" to paste instructions"
