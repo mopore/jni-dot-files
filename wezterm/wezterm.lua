@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local BG_OPACITY = 0.95
 
 wezterm.on("format-window-title", function()
   -- return "  wezterm"
@@ -13,7 +14,7 @@ wezterm.on("window-resized", function(window, _)
     overrides.window_background_opacity = 1.0
     overrides.macos_window_background_blur = nil
   else
-    overrides.window_background_opacity = 0.9
+    overrides.window_background_opacity = BG_OPACITY
     overrides.macos_window_background_blur = 20
   end
   window:set_config_overrides(overrides)
@@ -47,7 +48,7 @@ c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 18.0  -- Highly dependent on your monitor DPI
 c.window_close_confirmation = 'NeverPrompt'
 
-c.window_background_opacity = 0.9
+c.window_background_opacity = BG_OPACITY
 c.text_background_opacity = 1.0
 c.macos_window_background_blur = 20
 
