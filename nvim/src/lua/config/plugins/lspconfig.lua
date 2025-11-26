@@ -47,6 +47,10 @@ return {
         bashls = {
           filetypes = { "sh", "zsh" },
         },
+        eslint = {
+          validate = "on",
+          run = "onType",
+        },
       }
 
       -- (Optional) set defaults for every LSP via wildcard

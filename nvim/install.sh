@@ -40,8 +40,8 @@ function deploy() {
 
 	# copying Love2d library stubs for autocomplete
 	rm -rf ~/.local/share/nvim/lua-language-server/meta/love-api
-	git clone https://github.com/LuaCATS/love2d.git \
-	  ~/.local/share/nvim/lua-language-server/meta/love-api
+	# git clone https://github.com/LuaCATS/love2d.git \
+	#   ~/.local/share/nvim/lua-language-server/meta/love-api
 }
 
 
