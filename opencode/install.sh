@@ -13,7 +13,7 @@ rm -f "$OPEN_CODE_CONFIG_DIR/config.*" || true
 rm -rf "$OPEN_CODE_CONFIG_DIR/agent" || true
 
 cp ./AGENTS.md "$OPEN_CODE_CONFIG_DIR/AGENTS.md"
-cp ./config.jsonc "$OPEN_CODE_CONFIG_DIR/config.jsonc"
+cp ./config.json "$OPEN_CODE_CONFIG_DIR/config.json"
 cp -r ./agent "$OPEN_CODE_CONFIG_DIR/agent"
 
 echo "OpenCode configuration has been installed!"
