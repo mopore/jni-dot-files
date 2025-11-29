@@ -104,16 +104,28 @@ c.keys = {
 	},
 }
 
-c.exit_behavior = "Close" -- Avoid confirmation dialog on window close
-
+c.exit_behavior = "CloseOnCleanExit" -- Avoid confirmation dialog on window close
+c.exit_behavior_messaging = "Verbose"
 
 -- Use the following to launch tmux on startup
 -- Attach to existing tmux session if existing otherwise create a new one
 c.default_prog = {"/usr/bin/tmux", "new", "-A", "-s", "main"}
 
--- For MacOS, tmux installed via brew is in /opt/homebrew/bin/tmux
--- Attach to existing tmux session if existing otherwise create a new one
--- c.default_prog = {"/opt/homebrew/bin/tmux", "new", "-A", "-s", "main"}
+-- -- For MacOS, tmux installed via brew is in /opt/homebrew/bin/tmux
+-- -- and zsh in /opt/homebrew/bin/zsh
+-- -- Attach to existing tmux session if existing otherwise create a new one.
+-- -- Should tmux need new permissions wezterm can still be used with zsh.
+-- c.default_prog = {
+--   "/opt/homebrew/bin/zsh",
+--   "-l",  -- login shell, if you want your usual env
+--   "-c",  -- run the following command
+--   [[
+--     /opt/homebrew/bin/tmux new -A -s main || {
+--       echo "[wezterm] tmux failed, falling back to zsh..." >&2
+--       exec /opt/homebrew/bin/zsh -l
+--     }
+--   ]],
+-- }
 
 
 --[[
