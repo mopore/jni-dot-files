@@ -8,6 +8,7 @@ return {
     -- |  _| | | | |  __/ | | \ V /| | | | | | |
     -- |_|   |_|_|  \___|_| |_|\_/ |_|_| |_| |_|
     --
+    --- Hit Ctrl & E to activate in the Browser when installed properly
     ---
     'glacambre/firenvim',
     enabled = true,
