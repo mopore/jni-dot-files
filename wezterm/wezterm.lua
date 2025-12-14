@@ -38,6 +38,9 @@ end)
 
 local c = wezterm.config_builder()
 
+-- Check before setting
+-- c.max_fps = 120
+
 -- c.enable_wayland = false -- If you want window decorations on Wayland (switch to X11)
 -- c.front_end = "OpenGL"  -- Needed for Arch VM on Apple Silicon
 
