@@ -42,6 +42,10 @@ return {
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        per_filetype = {
+          markdown = { 'path', 'buffer' }, -- no 'lsp', no 'snippets'
+          text     = { 'path', 'buffer' }, -- for .txt (ft=text)
+        },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
