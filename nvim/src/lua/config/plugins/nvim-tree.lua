@@ -19,6 +19,7 @@ return {
         },
         filters = {
           dotfiles = false,
+          custom = { "^\\.git$" },  -- BUT hide .git folder
         },
       })
 
