@@ -106,6 +106,16 @@ M.load = function()
     end,
   })
 
+  -- Treat .env files as "dotenv" instead of "sh"
+  vim.filetype.add({
+    filename = {
+      [".env"] = "dotenv",
+    },
+    pattern = {
+      [".*%.env%..+"] = "dotenv", -- .env.local, .env.production, etc.
+    },
+  })
+
   -- Setting the Neovim background color to transparent (regardless of the theme)
   vim.api.nvim_set_hl(0, 'Normal', { bg = '#000911' })
   vim.api.nvim_set_hl(0, 'NormalNC', { bg = '#000911' })
