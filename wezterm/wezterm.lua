@@ -47,7 +47,10 @@ local c = wezterm.config_builder()
 c.initial_rows = 40
 c.initial_cols = 120
 
-c.font = wezterm.font("JetBrainsMono Nerd Font")
+c.font = wezterm.font_with_fallback{
+  "JetBrainsMono Nerd Font",
+  "Fira Code",
+}
 c.font_size = 18.0  -- Highly dependent on your monitor DPI
 c.window_close_confirmation = 'NeverPrompt'
 
