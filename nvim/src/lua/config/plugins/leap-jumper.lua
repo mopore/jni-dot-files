@@ -10,7 +10,7 @@ return {
     -- Use leader, type the first to chars and the appearing marked character 
     -- to jump to that character.
     -- nvim leap (jump like a cangaroo)
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     enabled = true,
     config = function()
       vim.keymap.set({ 'n', 'x', 'o' }, '<leader>k', '<Plug>(leap-backward)',

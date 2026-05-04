@@ -1,93 +1,76 @@
 return {
   {
-    --  _____                   _ _   _
-    -- |_   _| __ ___  ___  ___(_) |_| |_ ___ _ __
-    --   | || '__/ _ \/ _ \/ __| | __| __/ _ \ '__|
-    --   | || | |  __/  __/\__ \ | |_| ||  __/ |
-    --   |_||_|  \___|\___||___/_|\__|\__\___|_|
-    --
-    -- [[ Configure Treesitter ]]
-    -- See `:help nvim-treesitter`
-    --
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    enabled = true,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    -- Use 'main' branch for 0.12+ compatibility
+    branch = 'main',
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup {
-        -- Add languages to be installed here that you want installed for treesitter
+      -- 1. Parser Management (The new 'main' entry point)
+      -- Note: NO '.configs' here.
+      require('nvim-treesitter').setup {
         ensure_installed = {
-          'c', 'cpp',
-          'typescript','tsx',
-          'go', 'lua', 'python',
-          'rust',
-          'vimdoc', 'vim',
-          'bash'
+          'c', 'cpp', 'typescript', 'tsx', 'go', 'lua',
+          'python', 'rust', 'vimdoc', 'vim', 'bash',
+          'markdown', 'markdown_inline'
         },
-
-        -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
         auto_install = false,
-
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<M-space>',
-          },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ['aa'] = '@parameter.outer',
-              ['ia'] = '@parameter.inner',
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              [']m'] = '@function.outer',
-              [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-              [']M'] = '@function.outer',
-              [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-              ['[m'] = '@function.outer',
-              ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-              ['[M'] = '@function.outer',
-              ['[]'] = '@class.outer',
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-              ['<leader>A'] = '@parameter.inner',
-            },
-          },
-        },
       }
+
+      -- 2. Modern Highlighting (Native 0.12 way)
+      if vim.fn.has("nvim-0.12") == 1 then
+        -- FIXME: Remove after 0.12 is generally available
+        vim.api.nvim_create_autocmd("FileType", {
+          callback = function()
+            pcall(vim.treesitter.start)
+            -- Native 0.12 indentation
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end,
+        })
+      else
+        -- Fallback for your Manjaro 0.11 machine
+        -- This uses the old internal command if it still exists in your local cache
+        pcall(function()
+          vim.cmd('TSEnable highlight')
+          vim.cmd('TSEnable indent')
+        end)
+      end
+
+      -- Custom Dotenv registration
       vim.treesitter.language.register("bash", "dotenv")
     end,
   },
+
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    config = function()
+      -- In 2026, textobjects requires its own setup call
+      require('nvim-treesitter-textobjects').setup {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
+          goto_next_end = { [']M'] = '@function.outer', [']['] = '@class.outer' },
+          goto_previous_start = { ['[m'] = '@function.outer', ['[['] = '@class.outer' },
+          goto_previous_end = { ['[M'] = '@function.outer', ['[]'] = '@class.outer' },
+        },
+        swap = {
+          enable = true,
+          swap_next = { ['<leader>a'] = '@parameter.inner' },
+          swap_previous = { ['<leader>A'] = '@parameter.inner' },
+        },
+      }
+    end
+  }
 }

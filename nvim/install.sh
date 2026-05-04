@@ -35,13 +35,14 @@ function deploy() {
 	rm -rf "$NEO_VIM_CONFIG_PATH"
 	mkdir -p "$NEO_VIM_CONFIG_PATH"
 
-	# Copies evertyhing (inclduing hidden files like .editorconfig and .luarc.json)
+	# Copies evertyhing (including hidden files like .editorconfig and .luarc.json)
 	cp -av "${ORIGINAL_DIR}/src/." "$NEO_VIM_CONFIG_PATH/"  
 
-	# copying Love2d library stubs for autocomplete
+	# Clean Ups
+	#
 	rm -rf ~/.local/share/nvim/lua-language-server/meta/love-api
-	# git clone https://github.com/LuaCATS/love2d.git \
-	#   ~/.local/share/nvim/lua-language-server/meta/love-api
+	rm -rf ~/.local/share/nvim/lazy/nvim-treesitter*
+	rm -f ~/.config/nvim/lazy-lock.json
 }
 
 
