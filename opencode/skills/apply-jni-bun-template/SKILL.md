@@ -1,5 +1,5 @@
 ---
-name: make-bun-project
+name: apply-jni-bun-template
 description: >
   Create a new Bun/TypeScript project from the jni-bun-template
   (https://github.com/mopore/jni-bun-template) in the current directory. Derives the project
@@ -9,7 +9,7 @@ description: >
   jni-bun-template", "init bun project", or similar.
 ---
 
-# Make Bun Project
+# Apply JNI's Bun Template
 
 Creates a new project based on https://github.com/mopore/jni-bun-template in the current
 directory. The current folder name becomes the project name.
