@@ -37,6 +37,7 @@ return {
 
       -- Custom Dotenv registration
       vim.treesitter.language.register("bash", "dotenv")
+      vim.treesitter.language.register("bash", "env")
     end,
   },
 
