@@ -31,6 +31,74 @@ function ask_user() {
 	fi
 }
 
+function detect_pkg_manager() {
+	if command -v pacman &>/dev/null; then
+		echo "pacman"
+	elif command -v brew &>/dev/null; then
+		echo "brew"
+	elif command -v apt &>/dev/null; then
+		echo "apt"
+	else
+		echo "unknown"
+	fi
+}
+
+function ensure_dependencies() {
+	local pkg_manager
+	pkg_manager=$(detect_pkg_manager)
+	echo "Detected package manager: $pkg_manager"
+
+	case "$pkg_manager" in
+		pacman)
+			local to_install=()
+			command -v gcc &>/dev/null || to_install+=(gcc)
+			command -v tree-sitter &>/dev/null || to_install+=(tree-sitter-cli)
+			if [ ${#to_install[@]} -gt 0 ]; then
+				sudo pacman -S --needed --noconfirm "${to_install[@]}"
+			fi
+			;;
+		brew)
+			if ! command -v cc &>/dev/null; then
+				xcode-select --install
+				until command -v cc &>/dev/null; do sleep 5; done
+			fi
+			if ! command -v tree-sitter &>/dev/null; then
+				brew install tree-sitter
+			fi
+			;;
+		apt)
+			local apt_install=()
+			command -v gcc &>/dev/null || apt_install+=(gcc)
+			command -v curl &>/dev/null || apt_install+=(curl)
+			if [ ${#apt_install[@]} -gt 0 ]; then
+				sudo apt-get update -y
+				sudo apt-get install -y "${apt_install[@]}"
+			fi
+			if ! command -v tree-sitter &>/dev/null; then
+				echo "Installing tree-sitter-cli from GitHub releases..."
+				local arch
+				case "$(uname -m)" in
+					aarch64|arm64) arch="arm64" ;;
+					x86_64) arch="x64" ;;
+					armv7*|armv6*) arch="arm" ;;
+					*) echo "ERROR: Unsupported architecture $(uname -m)"; exit 1 ;;
+				esac
+				local url="https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-${arch}.gz"
+				curl -L "$url" | gunzip > /tmp/tree-sitter
+				chmod +x /tmp/tree-sitter
+				sudo mv /tmp/tree-sitter /usr/local/bin/tree-sitter
+				echo "tree-sitter-cli installed to /usr/local/bin/tree-sitter"
+			fi
+			;;
+		*)
+			echo "ERROR: No supported package manager found (need pacman, brew, or apt)"
+			exit 1
+			;;
+	esac
+
+	echo "Dependencies OK: cc=$(which cc 2>/dev/null || which gcc), tree-sitter=$(which tree-sitter)"
+}
+
 function deploy() {
 	rm -rf "$NEO_VIM_CONFIG_PATH"
 	mkdir -p "$NEO_VIM_CONFIG_PATH"
@@ -42,7 +110,15 @@ function deploy() {
 	#
 	rm -rf ~/.local/share/nvim/lua-language-server/meta/love-api
 	rm -rf ~/.local/share/nvim/lazy/nvim-treesitter*
+	rm -rf ~/.local/share/nvim/site/parser-info
 	rm -f ~/.config/nvim/lazy-lock.json
+
+	# Install plugins and compile treesitter parsers headlessly
+	echo "Installing plugins..."
+	nvim --headless "+Lazy! sync" +qa
+	echo "Compiling treesitter parsers (this may take a while)..."
+	nvim --headless -c "lua require('nvim-treesitter.install').install({'bash','typescript','tsx','go','python','rust','cpp'}, {summary=true}):wait(); vim.cmd('qa')"
+	echo "Plugins and parsers installed."
 }
 
 
@@ -80,6 +156,8 @@ if (( perform_backup )); then
 	echo "Old neovim config backed up to $BACKUP_FILE_PATH"
 	cd "$ORIGINAL_DIR"
 fi
+
+ensure_dependencies
 
 if (( user_interaction )); then
 	if ask_user "Deploy new neovim config...?" ; then
