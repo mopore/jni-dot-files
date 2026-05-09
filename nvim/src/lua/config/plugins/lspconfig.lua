@@ -97,7 +97,6 @@ return {
           nmap("<leader>ss", require("telescope.builtin").lsp_document_symbols, "[S]earch [S]ymbols")
           nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
           nmap("<M-k>", vim.lsp.buf.hover, "Hover Documentation")
-          nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
           nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
           nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
           nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")

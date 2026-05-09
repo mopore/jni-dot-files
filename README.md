@@ -138,7 +138,7 @@ Suggestion come only when requested by toggleling it on.
 | `g` + `d`             | Go to definition |
 | `g` + `r`             | Find references |
 | `g` + `I`             | Go to implementation(s) |
-| `Alt` & `k`           | Show documentation under cursor |
+| `Alt` & `k`           | Show (signature) documentation under cursor |
 | `Ctrl` + (`space`)*   | incrementally increases the selection. | 
 
 
