@@ -63,7 +63,7 @@ function ensure_dependencies() {
 				until command -v cc &>/dev/null; do sleep 5; done
 			fi
 			if ! command -v tree-sitter &>/dev/null; then
-				brew install tree-sitter
+				brew install tree-sitter-cli
 			fi
 			;;
 		apt)
