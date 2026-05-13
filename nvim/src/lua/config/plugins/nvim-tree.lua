@@ -20,6 +20,7 @@ return {
         filters = {
           dotfiles = false,
           custom = { "^\\.git$" },  -- BUT hide .git folder
+          exclude = { "/%.env$" },  -- Show .env even if gitignored
         },
       })
 
