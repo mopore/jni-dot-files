@@ -195,7 +195,11 @@ fi
 
 # # Optional if you use node version manager (nvm)
 # # To run nvm the command has to be sourced.
-# source /usr/share/nvm/init-nvm.sh
+if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
+  source /usr/share/nvm/init-nvm.sh
+elif [[ -f "$HOME/.nvm/nvm.sh" ]]; then
+  source "$HOME/.nvm/nvm.sh"
+fi
 
 # # Optional run ripgrep
 # # Install ripgrep first to have a rg command
