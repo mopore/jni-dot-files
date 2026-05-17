@@ -126,7 +126,7 @@ return {
         end,
       },
     }
-      vim.keymap.set("n", "<leader>o", "<CMD>Oil<space>--float<space>.<CR>", { desc = "Open [o]il" })
+      vim.keymap.set("n", "<leader>i", "<CMD>Oil<space>--float<space>.<CR>", { desc = "Open O[i]l" })
     end,
   },
 }
