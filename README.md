@@ -25,6 +25,7 @@ Supported configurations:
 * GTile Gnome Extension [README](./gtile/README.md)
 * Vim [README](./vim/README.md)
 * alacritty [README](./alacritty/README.md)
+* Obsidian Helper (Neovim plugin) [README](./nvim/src/lua/obsidian-helper.nvim/)
 
 
 # Motivation
@@ -196,6 +197,15 @@ Use `i` to install and `u` to uninstall.
 
 ### Undotree
 Use `Space` + `u` to open the undotree.
+
+
+### Obsidian Helper
+
+| Shortcut              | Description |
+| --------------------- | --- |
+| `Space` + `o`          | Create a new note in your Obsidian vault |
+
+Configure vault path with `:ObsidianHelper`.
 
 
 ### nvim-tree
