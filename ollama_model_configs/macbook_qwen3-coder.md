@@ -4,7 +4,7 @@
 ollama pull qwen3-coder:30b
 
 cat > ./Modelfile <<'EOF'
-# Build:  ollama create jni-qwen3-coder -f ~/.ollama/Modelfile
+# Build:  ollama create jni-qwen3-coder -f ./Modelfile
 FROM qwen3-coder:30b
 
 # The payoff vs the 4090: ~40 GB free after the 19 GB model, so context
@@ -22,7 +22,6 @@ PARAMETER repeat_penalty 1.05
 PARAMETER num_gpu 99
 EOF
 
-# alias works here — the file lives at /root/.ollama inside the container
 ollama create jni-qwen3-coder -f ./Modelfile
 
 # Sanity check
