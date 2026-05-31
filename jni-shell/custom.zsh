@@ -52,8 +52,6 @@ alias utc='date -u +%Y-%m-%dT%H:%M:%SZ  # Current date and time in UTC and ISO 8
 alias k='kubectl'
 
 # Common
-alias gr='cd ~/Dev/git_rep'
-# printf "Go to git rep:\t\tgitrep\n"
 
 # Only show root mount point when calling duf
 alias duf='duf -only-mp "/"'
@@ -114,6 +112,17 @@ function webserver() {
 	echo "Visit: http://$ip:$port\n"
 	python3 -m http.server $port
 }
+
+
+# # Warm up call for Ollama with qwen3 coder next on jnimacstudio
+# warmup-coder() {
+#   # warm up call to load model in memory on jnimacstudio
+#   curl -s http://jnimacstudio:11434/api/chat -d '{
+#     "model": "jni-qwen3-coder-next",
+#     "messages": [],
+#     "keep_alive": -1
+#     }' >/dev/null &
+# }
 
 # Add your own Environment variables here:
 # export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
