@@ -12,7 +12,7 @@
   "provider": {
     "Ollama (nzxtlinux)": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama (local)",
+      "name": "Ollama (nzxtlinux)",
       "options": {
         "baseURL": "http://nzxtlinux:11434/v1"
       },
