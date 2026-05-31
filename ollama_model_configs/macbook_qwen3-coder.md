@@ -22,7 +22,6 @@ PARAMETER repeat_penalty 1.05
 PARAMETER num_gpu 99
 EOF
 
-# alias works here — the file lives at /root/.ollama inside the container
 ollama create jni-qwen3-coder -f ./Modelfile
 
 # Sanity check
