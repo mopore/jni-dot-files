@@ -10,9 +10,26 @@
     }
   },
   "provider": {
-    "ollamaLocal": {
+    "Ollama (nzxtlinux)": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://nzxtlinux:11434/v1"
+      },
+      "models": {
+        "jni-qwen3-coder": {
+          "name": "JNI's Qwen3 Coder 30",
+          "tools": true
+        },
+        "jni-devstral-small": {
+          "name": "JNI's Devstral Small 2",
+          "tools": true
+        }
+      }
+    },
+    "Ollama (MacBook)": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (MacBook)",
       "options": {
         "baseURL": "http://localhost:11434/v1"
       },
@@ -22,14 +39,18 @@
         },
         "gpt-oss:20b": {
           "name": "gpt-oss:20b"
+        },
+        "jni-qwen3-coder": {
+          "name": "jni-qwen3-coder",
+          "tools": true
         }
       }
     },
-    "ollamaHome": {
+    "Ollama (jnimacstudio)": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (jnimacstudio)",
       "options": {
-        "baseURL": "http://192.168.199.246:11434/v1"
+        "baseURL": "http://jnimacstudio:11434/v1"
       },
       "models": {
         "gemma4:26b": {
@@ -41,8 +62,9 @@
         "gpt-oss:120b": {
           "name": "gpt-oss:120b"
         },
-        "gpt-oss:20b": {
-          "name": "gpt-oss:20b"
+        "jni-qwen3-coder-next": {
+          "name": "jni-qwen3-coder-next",
+          "tools": true
         }
       }
     }
