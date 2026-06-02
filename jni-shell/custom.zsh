@@ -114,14 +114,27 @@ function webserver() {
 }
 
 
-# # Warm up call for Ollama with qwen3 coder next on jnimacstudio
+# OLLAMA_HOST_FUN="localhost"
+#
 # warmup-coder() {
 #   # warm up call to load model in memory on jnimacstudio
-#   curl -s http://jnimacstudio:11434/api/chat -d '{
-#     "model": "jni-qwen3-coder-next",
+#   curl -s "http://${OLLAMA_HOST_FUN}:11434/api/chat" -d '{
+#     "model": "jni-qwen3-coder",
 #     "messages": [],
 #     "keep_alive": -1
 #     }' >/dev/null &
+# }
+#
+# cooldown() {
+#   curl -s "http://${OLLAMA_HOST_FUN}:11434/api/ps" \
+#     | grep -o '"model":"[^"]*"' | cut -d'"' -f4 \
+#     | while read -r model; do
+#         curl -s "http://${OLLAMA_HOST_FUN}:11434/api/chat" -d "{
+#           \"model\": \"$model\",
+#           \"messages\": [],
+#           \"keep_alive\": 0
+#         }" >/dev/null
+#       done
 # }
 
 # Add your own Environment variables here:
