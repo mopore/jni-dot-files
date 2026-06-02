@@ -19,11 +19,19 @@
       "models": {
         "jni-qwen3-coder": {
           "name": "JNI's Qwen3 Coder 30",
-          "tools": true
+          "tools": true,
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
         },
         "jni-devstral-small": {
           "name": "JNI's Devstral Small 2",
-          "tools": true
+          "tools": true,
+          "limit": {
+            "context": 40960,
+            "output": 8192
+          }
         }
       }
     },
@@ -42,7 +50,11 @@
         },
         "jni-qwen3-coder": {
           "name": "jni-qwen3-coder",
-          "tools": true
+          "tools": true,
+          "limit": {
+            "context": 65536,
+            "output": 8192
+          }
         }
       }
     },
@@ -64,7 +76,11 @@
         },
         "jni-qwen3-coder-next": {
           "name": "jni-qwen3-coder-next",
-          "tools": true
+          "tools": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         }
       }
     }
