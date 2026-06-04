@@ -90,6 +90,11 @@
             "context": 131072,
             "output": 8192
           }
+        },
+        "jni-qwen3.6:27b-128k": {
+          "name": "jni-qwen3.6:27b-128k",
+          "tools": true,
+          "limit": { "context": 131072, "output": 8192 }
         }
       }
     }
