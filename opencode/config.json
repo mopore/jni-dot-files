@@ -9,6 +9,15 @@
       "enabled": true
     }
   },
+  "default_agent": "plan",
+  "agent": {
+    "plan": {
+      "model": "github-copilot/claude-opus-4.8"
+    },
+    "build": {
+      "model": "github-copilot/claude-sonnet-4.6"
+    }
+  },
   "provider": {
     "Ollama (nzxtlinux)": {
       "npm": "@ai-sdk/openai-compatible",
