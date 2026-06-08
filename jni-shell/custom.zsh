@@ -114,18 +114,26 @@ function webserver() {
 }
 
 
-# OLLAMA_HOST_FUN="localhost"
+# local OLLAMA_HOST_FUN="localhost"
 #
-# warmup-coder() {
-#   # warm up call to load model in memory on jnimacstudio
-#   curl -s "http://${OLLAMA_HOST_FUN}:11434/api/chat" -d '{
-#     "model": "jni-qwen3-coder",
-#     "messages": [],
-#     "keep_alive": -1
-#     }' >/dev/null &
+# warmup-ollama() {
+#   local model payload
+#
+#   # query available models from Ollama and let fzf pick one
+#   model=$(curl -s "http://${OLLAMA_HOST_FUN}:11434/api/tags" \
+#     | jq -r '.models[].name' \
+#     | fzf --prompt='Warm up model > ' --height=40% --reverse) || return
+#
+#   [[ -z "$model" ]] && { echo 'No model selected.' >&2; return 1; }
+#
+#   # build payload safely instead of interpolating into a JSON string
+#   payload=$(jq -nc --arg m "$model" '{model: $m, messages: [], keep_alive: -1}')
+#
+#   curl -s "http://${OLLAMA_HOST_FUN}:11434/api/chat" -d "$payload" >/dev/null &
+#   echo "Warming up '${model}' on ${OLLAMA_HOST_FUN}…"
 # }
 #
-# cooldown() {
+# cooldown-ollama() {
 #   curl -s "http://${OLLAMA_HOST_FUN}:11434/api/ps" \
 #     | grep -o '"model":"[^"]*"' | cut -d'"' -f4 \
 #     | while read -r model; do
@@ -136,6 +144,7 @@ function webserver() {
 #         }" >/dev/null
 #       done
 # }
+
 
 # Add your own Environment variables here:
 # export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
