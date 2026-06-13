@@ -24,5 +24,6 @@ cp -r ./skills/ "$OPEN_CODE_CONFIG_DIR/skills"
 echo "OpenCode configuration has been installed!"
 echo
 echo "Use: \"opencode auth login\" to login with GitHub"
+echo "Use: \"opencode auth login --provider openai\" for OpenAI directly"
 echo "Use: \"opencode --continue\" to continue last session"
 echo "Use: \"opencode run < instructions.md\" to paste instructions"
