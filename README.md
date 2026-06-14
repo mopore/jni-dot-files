@@ -223,6 +223,15 @@ Besides browsing offers many options to manipulate files and folders.
 | `a`                   | Add file or directory (with trailing `/`) |
 
 
+### Quickfix List
+Grep search with `Space` + `s` + `g` and hit `Ctrl` & `q` to create quickfix list from it.
+
+| Shortcut     | Description |
+| -------------| --- |
+| `]` + `q`    | Next Quickfix |
+| `[` + `q`    | Prev Quickfix |
+
+
 ### Fugitive (Git Plugin)
 https://github.com/tpope/vim-fugitive
 
