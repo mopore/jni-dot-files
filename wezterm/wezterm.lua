@@ -49,8 +49,11 @@ c.initial_cols = 120
 
 c.font = wezterm.font_with_fallback{
   "JetBrainsMono Nerd Font",
-  "Fira Code",
+  "Noto Sans Mono CJK JP",
 }
+-- install "Noto Sans Mono for general glyph support
+-- pacman -S noto-fonts-cjk
+
 c.font_size = 18.0  -- Highly dependent on your monitor DPI
 c.window_close_confirmation = 'NeverPrompt'
 
