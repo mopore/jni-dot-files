@@ -17,6 +17,16 @@
     "build": {
       "model": "github-copilot/gpt-5.6-luna",
       "reasoningEffort": "max"
+    },
+    "explore": {
+      "model": "github-copilot/gpt-5.6-luna",
+      "reasoningEffort": "low",
+      "textVerbosity": "low"
+    },
+    "general": {
+      "model": "github-copilot/gpt-5.6-luna",
+      "reasoningEffort": "medium",
+      "textVerbosity": "low"
     }
   },
   "provider": {
@@ -95,7 +105,10 @@
         "jni-qwen3.6:27b-128k": {
           "name": "jni-qwen3.6:27b-128k",
           "tools": true,
-          "limit": { "context": 131072, "output": 8192 }
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         }
       }
     }
