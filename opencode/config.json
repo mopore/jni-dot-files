@@ -15,7 +15,8 @@
       "model": "github-copilot/claude-opus-5"
     },
     "build": {
-      "model": "github-copilot/claude-sonnet-4.6"
+      "model": "github-copilot/gpt-5.6-luna",
+      "reasoningEffort": "max"
     }
   },
   "provider": {
