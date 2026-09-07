@@ -9,12 +9,14 @@ if [ ! -d "$OPEN_CODE_CONFIG_DIR" ]; then
 fi
 
 rm -f "$OPEN_CODE_CONFIG_DIR/AGENTS.md" || true
-rm -f "$OPEN_CODE_CONFIG_DIR/config.*" || true
+rm -f "$OPEN_CODE_CONFIG_DIR/config.json" || true
+rm -f "$OPEN_CODE_CONFIG_DIR/config.jsonc" || true
+rm -f "$OPEN_CODE_CONFIG_DIR/opencode.jsonc" || true
 rm -rf "$OPEN_CODE_CONFIG_DIR/agent" || true
 rm -rf "$OPEN_CODE_CONFIG_DIR/skills" || true
 
 cp ./AGENTS.md "$OPEN_CODE_CONFIG_DIR/AGENTS.md"
-cp ./config.json "$OPEN_CODE_CONFIG_DIR/config.json"
+cp ./opencode.jsonc "$OPEN_CODE_CONFIG_DIR/opencode.jsonc"
 cp -r ./skills/ "$OPEN_CODE_CONFIG_DIR/skills"
 
 # Note: We do not need the example agent, hence the commented copy line
