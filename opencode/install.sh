@@ -29,3 +29,5 @@ echo "Use: \"opencode auth login\" to login with GitHub"
 echo "Use: \"opencode auth login --provider openai\" for OpenAI directly"
 echo "Use: \"opencode --continue\" to continue last session"
 echo "Use: \"opencode run < instructions.md\" to paste instructions"
+echo
+echo "For Cerebras add API Key as \"CEREBRAS_API_KEY\" in \$ZSH_CUSTOM/extra_envs.zsh"

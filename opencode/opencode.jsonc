@@ -118,6 +118,12 @@
           }
         }
       }
+    },
+    "cerebras": {
+      "options": {
+        // Add the key in $ZSH_CUSTOM/extra_envs.zsh
+        "apiKey": "{env:CEREBRAS_API_KEY}"
+      }
     }
   }
 }
