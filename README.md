@@ -82,16 +82,43 @@ git file search mode otherwise in file search mode.
 
 ### GitHub Copilot
 
-Suggestion come only when requested by toggleling it on.
+Suggestions appear only when requested by toggling them on.
 
 | Shortcut                | Description                               |
 | ----------------------- | ---                                       |
-| `Space` + `c` + `c`     | Toogle inline suggestions (default: "off" |
+| `Space` + `c` + `c`     | Toggle inline suggestions (default: off) |
 | `Shift` & `Tab`         | Accept current suggestion                 |
-| `Alt` & `[`             | Next suggestions                          |
-| `Alt` & `]`             | Previous suggestion                       |
+| `Alt` + `]`             | Next suggestion                           |
+| `Alt` + `[`             | Previous suggestion                       |
 | `Ctrl` & `[`            | Dismiss                                   |
 
+#### GitHub Enterprise authentication
+
+For a GitHub Enterprise Cloud instance (`*.ghe.com`), set the Copilot auth
+provider URL in the environment before starting Neovim. For example, add this
+to your shell configuration (`~/.zshrc`):
+
+```sh
+export COPILOT_AUTH_PROVIDER_URL="https://company.ghe.com"
+```
+
+Replace `company.ghe.com` with your enterprise hostname. The Neovim config
+adds a trailing slash if needed. Leave this variable unset to use public
+GitHub (`github.com`).
+
+After installing the updated Neovim config, restart Neovim so it picks up the
+environment variable, then re-authenticate:
+
+1. Run `:Copilot auth signout` to sign out of the previous account.
+2. Run `:Copilot auth` (or `:Copilot auth signin`) and complete the device
+   flow at the URL shown in Neovim. For an enterprise instance, this should
+   use `https://company.ghe.com/login/device`.
+3. Run `:Copilot auth info` to check the authenticated account.
+
+The Copilot language server stores credentials in
+`~/.config/github-copilot/auth.db` (or under `$XDG_CONFIG_HOME`). If
+re-authentication still uses the wrong account, sign out and retry after
+confirming the environment variable is present in Neovim's process.
 
 ### Windows
 

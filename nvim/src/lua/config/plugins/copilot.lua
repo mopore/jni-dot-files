@@ -4,7 +4,13 @@ return {
     'zbirenbaum/copilot.lua',
     enabled = true,
     config = function()
+      local auth_provider_url = vim.env.COPILOT_AUTH_PROVIDER_URL
+      if auth_provider_url and auth_provider_url ~= '' then
+        auth_provider_url = auth_provider_url:gsub('/+$', '') .. '/'
+      end
+
       require('copilot').setup({
+        auth_provider_url = auth_provider_url,
         -- The 'panel' could show previews.
         panel = {
           enabled = false,
@@ -33,7 +39,7 @@ return {
           cvs = false,
           ["."] = false,
         },
-        copilot_node_command = 'node', -- Node.js version must be > 16.x
+        copilot_node_command = 'node', -- Only used with server.type = 'nodejs' (Node.js >= 22)
         server_opts_overrides = {},
       })
 
