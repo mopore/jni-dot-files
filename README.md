@@ -96,7 +96,7 @@ Suggestions appear only when requested by toggling them on.
 
 For a GitHub Enterprise Cloud instance (`*.ghe.com`), set the Copilot auth
 provider URL in the environment before starting Neovim. For example, add this
-to your shell configuration (`~/.zshrc`):
+to your shell configuration (e.g. `~/.zshrc`):
 
 ```sh
 export COPILOT_AUTH_PROVIDER_URL="https://company.ghe.com"
