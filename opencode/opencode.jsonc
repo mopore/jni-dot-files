@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/claude-sonnet-5",
+  "model": "github-copilot/claude-sonnet-5-5",
   "small_model": "github-copilot/gpt-6-luna",
   "mcp": {
     "Microsoft Learn MCP Server": {
@@ -12,7 +12,8 @@
   "default_agent": "plan",
   "agent": {
     "plan": {
-      "model": "github-copilot/claude-sonnet-5"
+      "model": "github-copilot/gpt-6.1-sol",
+      "variant": "high"
     },
     "build": {
       "model": "github-copilot/gpt-6-luna",
@@ -20,7 +21,7 @@
       "variant": "high"
     },
     "explore": {
-      "variant": "low",
+      "model": "github-copilot/claude-haiku-5-5",
       "textVerbosity": "low"
     },
     "general": {
