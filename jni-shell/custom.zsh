@@ -97,6 +97,22 @@ alias ai='docker container run --rm jni-gpt-on-cli'
 # }
 
 
+# # Connect to (or create) the 'bg' tmux session on jnimacstudio
+# function bg_jnimacstudio() {
+#   ssh -t jnimacstudio '
+#     TMUX_BIN="/opt/homebrew/bin/tmux"
+#     SHELL_BIN="/opt/homebrew/bin/zsh"
+#
+#     # --- Attach if session exists, otherwise create it and attach ---
+#     if "$TMUX_BIN" has-session -t bg 2>/dev/null; then
+#       exec "$TMUX_BIN" attach -t bg
+#     else
+#       exec "$TMUX_BIN" new-session -A -s bg "$SHELL_BIN" -il
+#     fi
+#   '
+# }
+
+
 # Run python http server on currend directory
 function webserver() {
 	# Check if port is set, otherwise use 8080
