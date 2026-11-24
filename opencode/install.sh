@@ -12,11 +12,13 @@ rm -f "$OPEN_CODE_CONFIG_DIR/AGENTS.md" || true
 rm -f "$OPEN_CODE_CONFIG_DIR/config.json" || true
 rm -f "$OPEN_CODE_CONFIG_DIR/config.jsonc" || true
 rm -f "$OPEN_CODE_CONFIG_DIR/opencode.jsonc" || true
+rm -f "$OPEN_CODE_CONFIG_DIR/cli.json" || true
 rm -rf "$OPEN_CODE_CONFIG_DIR/agent" || true
 rm -rf "$OPEN_CODE_CONFIG_DIR/skills" || true
 
 cp ./AGENTS.md "$OPEN_CODE_CONFIG_DIR/AGENTS.md"
 cp ./opencode.jsonc "$OPEN_CODE_CONFIG_DIR/opencode.jsonc"
+cp ./cli.json "$OPEN_CODE_CONFIG_DIR/cli.json"
 cp -r ./skills/ "$OPEN_CODE_CONFIG_DIR/skills"
 
 # Note: We do not need the example agent, hence the commented copy line
@@ -29,5 +31,6 @@ echo "Use: \"opencode auth login\" to login with GitHub"
 echo "Use: \"opencode auth login --provider openai\" for OpenAI directly"
 echo "Use: \"opencode --continue\" to continue last session"
 echo "Use: \"opencode run < instructions.md\" to paste instructions"
+echo "Use: \"Ctrl+X, T\" to toggle thinking blocks"
 echo
 echo "For Cerebras add API Key as \"CEREBRAS_API_KEY\" in \$ZSH_CUSTOM/extra_envs.zsh"
