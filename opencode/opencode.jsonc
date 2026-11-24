@@ -16,7 +16,7 @@
       "variant": "high"
     },
     "build": {
-      "model": "github-copilot/mai-code-2-flash",
+      "model": "github-copilot/gpt-6-luna",
       // Might work rather then reasoningEffort
       "variant": "high"
     },
